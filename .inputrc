@@ -1,0 +1,8 @@
+set completion-ignore-case on
+set bell-style visible
+set show-all-if-ambiguous on
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+"\e[5D":backward-kill-word
+set match-hidden-files off
+
