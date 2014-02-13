@@ -1,0 +1,7 @@
+hardstatus alwayslastline "%{= kG}[ %{G}%l %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%c %{g}]"
+startup_message off
+#shelltitle '$ |bash'
+screen -t shell bash
+#screen -t errors tail -f /www/logs/audelle-error_log
+#screen -t access tail -f /www/logs/audelle-access_log
+
