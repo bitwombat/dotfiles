@@ -14,6 +14,8 @@ fi
 alias ..="cd .."
 alias cgrep='egrep --color=always'
 alias cp='cp -i'
+alias gv="gvim -geometry 98x24"
+alias gvi="gvim -geometry 98x24"
 alias la='ls -altrh --color=yes --group-directories-first'
 alias le='ls -XBoh --color=yes --group-directories-first'
 alias lg='ls -Blh --color=yes --group-directories-first'
@@ -21,8 +23,14 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 alias lx='ls -lXBoh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 alias mv="mv -i"
+alias pg="less"
+alias virc="vi ~/.bashrc"
 alias vi="vim"
-alias ssh='term_teal; ssh'
+alias wget="wget --progress=dot:mega"
+alias o="open"
+
+# For Lynx
+export WWW_HOME=www.google.com
 
 # For many programs
 export EDITOR=vim
@@ -36,12 +44,18 @@ SVN_MERGE=meld
 # For less
 export LESS="-g -I -F -X -R"
 
+# For Rox?
+export CHOICESPATH=$HOME/cfg/Choices
+
+# For KDE - turn off crash dialog that always happens
+export KDE_DEBUG=0
+
 # For ls
-export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.tif=00;35:*.v=33:*.vhd=30:*.vhdl=30:*.txt=00;33"
+export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.v=33:*.vhd=30:*.vhdl=30:*.txt=00;33"
 
 # Shell settings
 export HISTCONTROL=ignoredups
-export PATH=~/bin:~/bin/bin_common:/sbin:/usr/sbin:$PATH
+export PATH=~/bin/bin_common:/sbin:/usr/sbin:$PATH
 
 # Functions
 function mcd() {
@@ -81,6 +95,23 @@ function dpkgwl() {
   dpkg-query -L $(dpkgw $1);
 }
 
+function dpkgl() {
+  dpkg-query -L $1;
+}
+
+function vix() {
+  if [ $1 ]; then
+    fn=$1
+  else 
+   fn=tmp.$$
+  fi
+  if [ ! -e $fn ]; then
+    echo "#!/" > $fn
+  fi
+  chmod +x $fn
+  vim $fn
+}
+
 # Pull local settings
 [ -e ~/cfg/.bashrc ] && . ~/cfg/.bashrc
 
@@ -91,14 +122,14 @@ case $TERM in
     screen*)
         #SCREENTITLEPROGRAM='\[\ek\e\\\]'
         #SCREENTITLE='\[\ek\w\e\\\]'
-        USERHOST="\[\e[31m\]\u@\h\[\e[0m\]"
+        USERHOST="\[\e[32m\]\u@\h\[\e[0m\]"
         CURDIR="\$CurDir"
     ;;
     xterm*|cygwin*|rxvt*)
         TITLEBAR_START="\e]0;"
         TITLEBAR_END="\007"
         XTERM_TITLEBAR="\[${TITLEBAR_START}\$CurDir${TITLEBAR_END}\]"
-        USERHOST="\[\e[33m\]\u@\h\[\e[0m\]"
+        USERHOST="\[\e[32m\]\u@\h\[\e[0m\]"
         CURDIR="\$CurDir"
         ;;
     *)
@@ -111,4 +142,6 @@ esac
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
 PS1="${ESCAPES}${USERHOST}[${CURDIR}]\$ "
 
+alias cduf="cd /www/uf/uf_checkout/trunk/website/www/wp-content/themes/twentyeleven-child-uf/ ; newgrp www-data"
 
+. /opt/z/z.sh
