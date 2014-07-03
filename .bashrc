@@ -108,7 +108,12 @@ case $TERM in
         ;;
 esac
 
+if [ $UID == 0 ]; then
+    USERSYMBOL="#"
+else
+    USERSYMBOL="\$"
+fi
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}[${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}[${CURDIR}]${USERSYMBOL} "
 
 
