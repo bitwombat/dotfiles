@@ -150,8 +150,14 @@ if [ "$TERM" == "xterm" ]; then
     TERM=xterm-256color
 fi
 
+if [ $UID == 0 ]; then
+    USERSYMBOL="#"
+else
+    USERSYMBOL="\$"
+fi
+
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}[${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}[${CURDIR}]${USERSYMBOL} "
 
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
