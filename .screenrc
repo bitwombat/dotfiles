@@ -1,4 +1,5 @@
-hardstatus alwayslastline "%{= kG}[ %{G}%l %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%c %{g}]"
+#hardstatus alwayslastline "%{= kG}[ %{G}%H %{G}]%{g}[%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%c %{g}]"
+hardstatus alwayslastline "[%H] %-Lw%{= bw}%50>%n%f* %t%{-}%+Lw%="
 startup_message off
 #shelltitle '$ |bash'
 screen -t shell bash

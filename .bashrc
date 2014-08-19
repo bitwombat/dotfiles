@@ -28,6 +28,13 @@ alias virc="vi ~/.bashrc"
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
 alias o="open"
+alias web="newgrp www-data"
+alias rsync="rsync -a --no-inc-recursive --info=progress2 "
+
+function ol () {
+    latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
+    open $latest_file
+}
 
 # For Lynx
 export WWW_HOME=www.google.com
@@ -51,11 +58,11 @@ export CHOICESPATH=$HOME/cfg/Choices
 export KDE_DEBUG=0
 
 # For ls
-export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.v=33:*.vhd=30:*.vhdl=30:*.txt=00;33"
+export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.v=33:*.vhd=30:*.vhdl=30:*.txt=00;33:*.md=00;33"
 
 # Shell settings
 export HISTCONTROL=ignoredups
-export PATH=~/bin/bin_common:/sbin:/usr/sbin:$PATH
+export PATH=~/bin:~/bin/bin_common:/sbin:/usr/sbin:$PATH
 
 # Functions
 function mcd() {
@@ -113,7 +120,7 @@ function vix() {
 }
 
 # Pull local settings
-[ -e ~/cfg/.bashrc ] && . ~/cfg/.bashrc
+[ -e ~/.myconfigs/local/.bashrc ] && . ~/.myconfigs/local/.bashrc
 
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
@@ -139,9 +146,26 @@ case $TERM in
         ;;
 esac
 
+if [ "$TERM" == "xterm" ]; then
+    TERM=xterm-256color
+fi
+
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
 PS1="${ESCAPES}${USERHOST}[${CURDIR}]\$ "
 
-alias cduf="cd /www/uf/uf_checkout/trunk/website/www/wp-content/themes/twentyeleven-child-uf/ ; newgrp www-data"
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 . /opt/z/z.sh
+
+if [[ $- == *i* ]]; then
+    if [ $(groups | awk '{print $1}') == www-data ]; then
+        if ! pwd | grep 'www' &> /dev/null ; then 
+            cd /www
+        fi
+    fi
+fi
+
+. /etc/profile.d/bash_completion.sh

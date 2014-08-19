@@ -13,8 +13,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <C-space> <C-x><C-o>
 
 " Make the 81st column of wide lines stand out
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+" highlight ColorColumn ctermbg=blue
+" call matchadd('ColorColumn', '\%81v', 100)
 
 
 so ~/.vim/plugin/matchit.vim
@@ -71,7 +71,6 @@ set modeline
 set ruler
 set showmatch
 set tabstop=4
-set formatoptions+=ron
 :inoremap # X#
 set shiftwidth=4
 set smartcase
@@ -90,7 +89,7 @@ inoremap jj <ESC>
 " Wrapping
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+set formatoptions=q
 "set colorcolumn=85
 
 " Default to regex searches (not vim expressions)
@@ -160,6 +159,7 @@ autocmd BufReadPost,FileReadPost *.css  set foldmethod=syntax
 autocmd BufReadPost,FileReadPost *.c  set foldmethod=syntax
 autocmd BufReadPost,FileReadPost *.h  set foldmethod=syntax
 autocmd BufReadPost,FileReadPost *.html  set foldmethod=syntax
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " vim -b : edit binary using xxd-format!
 augroup binary
@@ -171,16 +171,6 @@ augroup binary
   au BufWritePre *.bin endif
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
-augroup END
-
-" Drupal *.module and *.install files.
-augroup module
-  autocmd BufRead,BufNewFile *.module set filetype=php
-  autocmd BufRead,BufNewFile *.install set filetype=php
-  autocmd BufRead,BufNewFile *.inc set filetype=php
-  autocmd BufRead,BufNewFile *.module set foldmethod=syntax
-  autocmd BufRead,BufNewFile *.install set foldmethod=syntax
-  autocmd BufRead,BufNewFile *.inc set foldmethod=syntax
 augroup END
 
 augroup text
@@ -199,11 +189,9 @@ augroup pptx
 augroup END 
 
 
-if filereadable( $HOME."/cfg/.vimrc" ) 
-  so $HOME/cfg/.vimrc
+if filereadable( $HOME."/.myconfigs/local/.vimrc" ) 
+  so $HOME/.myconfigs/local/.vimrc
 endif
-
-so /www/uf/4_Greg/configs/vim_abbreviations.vim
 
 set guioptions-=m
 set guioptions-=T
@@ -216,8 +204,7 @@ highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 
 " Better list
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 
 " Better tabbing / completion
 function! SuperCleverTab()
@@ -235,3 +222,6 @@ function! SuperCleverTab()
 endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+execute pathogen#infect()
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
