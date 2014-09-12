@@ -16,7 +16,6 @@ inoremap <C-space> <C-x><C-o>
 " highlight ColorColumn ctermbg=blue
 " call matchadd('ColorColumn', '\%81v', 100)
 
-
 so ~/.vim/plugin/matchit.vim
 
 " Move to match with tab
@@ -32,7 +31,7 @@ set showcmd
 set backspace=indent,eol,start
 set laststatus=2
 
-set scrolloff=15
+"set scrolloff=15
 
 "set ai
 set foldmethod=indent
