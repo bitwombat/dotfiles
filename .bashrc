@@ -12,7 +12,7 @@ if [ -n "$PS1" ]; then
 fi
 
 alias ..="cd .."
-alias cgrep='egrep --color=always'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cp='cp -i'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
@@ -20,20 +20,23 @@ alias la='ls -altrh --color=yes --group-directories-first'
 alias le='ls -XBoh --color=yes --group-directories-first'
 alias lg='ls -Blh --color=yes --group-directories-first'
 alias ll='ls -Boh --color=yes --group-directories-first'
+alias lv="vim -c \"normal '0\""
 alias lx='ls -lXBoh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
+alias mountt='mount | column -t'
 alias mv="mv -i"
-alias pg="less"
-alias virc="vi ~/.bashrc"
-alias vi="vim"
-alias wget="wget --progress=dot:mega"
 alias o="open"
-alias web="newgrp www-data"
+alias pg="less"
+alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
+alias vi="vim"
+alias web="newgrp www-data"
+alias wget="wget --progress=dot:mega"
+
 
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
-    open $latest_file
+    xdg-open "$latest_file"
 }
 
 # For Lynx
@@ -174,4 +177,4 @@ if [[ $- == *i* ]]; then
     fi
 fi
 
-. /etc/profile.d/bash_completion.sh
+[ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
