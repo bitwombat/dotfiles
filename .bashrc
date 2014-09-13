@@ -167,7 +167,7 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-. /opt/z/z.sh
+[ -e /opt/z/z.sh ] && . /opt/z/z.sh
 
 if [[ $- == *i* ]]; then
     if [ $(groups | awk '{print $1}') == www-data ]; then
