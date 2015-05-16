@@ -23,7 +23,7 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 alias lv="vim -c \"normal '0\""
 alias lx='ls -lXBoh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
-alias mountt='mount | column -t'
+alias mountt="mount | column -t | egrep '^/dev'"
 alias mv="mv -i"
 alias o="open"
 alias pg="less"
@@ -31,13 +31,20 @@ alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias vi="vim"
 alias web="newgrp www-data"
-alias wget="wget --progress=dot:mega"
+alias web2='cd "$(ls -dtr1 * | grep -v 'logs' | tail -1)" ; scr'
 
+alias naut="nautilus --no-desktop"
+
+alias en="vim +BlogList"
+alias nn="vim +BlogNew"
 
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
     xdg-open "$latest_file"
 }
+
+# For dialog box passwords
+export SSH_ASKPASS=/usr/bin/ssh-askpass
 
 # For Lynx
 export WWW_HOME=www.google.com
@@ -61,7 +68,7 @@ export CHOICESPATH=$HOME/cfg/Choices
 export KDE_DEBUG=0
 
 # For ls
-export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.v=33:*.vhd=30:*.vhdl=30:*.txt=00;33:*.md=00;33"
+export LS_COLORS="no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.txt=00;96:*.md=00;96:*.pdf=00;96:*.odt=00;96:*.doc=00;96:*.docx=00;96"
 
 # Shell settings
 export HISTCONTROL=ignoredups
@@ -78,7 +85,7 @@ function ff() {
 }
 
 function fif() {
-  find . -iname \*$1\* -exec grep -Hi $2 {} \; ;
+  find . -type f -iname \*$1\* -exec grep -Hi $2 {} \; ;
 }
 
 function catw() {
@@ -167,6 +174,7 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
+# Run/enable the 'z' directory changer
 . /opt/z/z.sh
 
 if [[ $- == *i* ]]; then
