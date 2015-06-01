@@ -101,10 +101,6 @@ function vix() {
   vim $fn
 }
 
-# Pull local settings
-[ -e ~/cfg/.bashrc ] && . ~/cfg/.bashrc
-
-
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
 
 case $TERM in
