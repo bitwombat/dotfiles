@@ -81,8 +81,6 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 " Better list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 
-call pathogen#infect()
-
 " Syntastic options
 let g:syntastic_quiet_messages = { "level" : "warnings", "type": "style"}
 let g:syntastic_python_checkers=['pyflakes', 'python']
