@@ -1,0 +1,125 @@
+
+filetype on
+filetype plugin on
+
+" Make the current directory follow us around
+autocmd BufEnter * silent! lcd %:p:h
+
+" HTML tag closing
+autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
+autocmd FileType html iabbrev </ </<C-X><C-O>
+
+" Move to match with tab
+nmap <tab> %
+vmap <tab> %
+
+" Toggle paste mode
+set pastetoggle=<F2>
+
+set showmode
+set showcmd
+set backspace=indent,eol,start
+set laststatus=2
+set scrolloff=2
+set foldmethod=indent
+
+" Without the following, folding doesn't work on php .inc files
+set nocompatible
+let g:php_folding=2
+let g:javaScript_fold=1
+
+syntax on
+hi Search ctermbg=4
+hi Search ctermfg=7
+hi Search cterm=bold
+hi IncSearch ctermbg=4
+hi IncSearch ctermfg=7
+hi IncSearch cterm=NONE
+
+set autowrite
+
+" Feature-related Variables
+set backup
+set backupdir=/tmp
+set complete+=k
+set dictionary=/usr/share/dict/words
+set noerrorbells
+set expandtab
+set fileformat=unix
+set hlsearch
+set ignorecase
+set incsearch
+set modeline
+set ruler
+set showmatch
+set tabstop=4
+:inoremap # X#
+set shiftwidth=4
+set smartcase
+set vb t_vb=
+set wrap
+set wildmenu
+set wildmode=list:longest,full
+
+" Wrapping
+set wrap
+set textwidth=79
+set formatoptions=q
+"set colorcolumn=85
+
+" Escape from insert mode with jj
+inoremap jj <ESC>
+
+" Leader
+let mapleader = " "
+nnoremap <leader>s :BlogSave publish<CR>
+nnoremap <leader>v :BlogPreview publish<CR>
+nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>p :CtrlPBuffer<CR>
+
+set tags=./tags,tags,../tags,../../tags,../../../tags
+
+" Navigate long lines by screen lines, not file lines
+"nnoremap j gj
+"nnoremap k gk
+
+" Default to regex searches (not vim expressions)
+"nnoremap / /\v
+"nnoremap / /\v
+
+syn region myFold start="{" end="}" transparent fold
+syn sync fromstart
+
+" Key mappings
+"map F !}fmt -80<CR>
+map F gq}
+map L @l
+map M nz<CR>
+map Q :w<CR>:!clear;python %<CR>
+map T :%s/  *$//g
+map U zA
+map <F1> :update<CR>
+inoremap <F1> <ESC>:update<CR>a
+map <C-s> :update<CR>
+imap <C-s> <ESC>:update<CR>a
+"map <F2> :emenu Buffers.
+map <F6> :set invnumber<CR>
+map <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
+map <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
+map <F9> :if &list <Bar> set nolist <Bar> <CR> else <Bar> set list <Bar> endif <CR>
+map <F11> :cn<CR>
+map <F10> :cN<CR>
+map n :bnext<CR>
+map p :bprevious<CR>
+map , zA
+map <C-D> :q<CR>
+
+" Close the tag under the cursor
+map <C-P> ly/>/eA</"^
+
+" Execute python on current file
+:map ;e :w<cr>:!python %<cr>
+
+" This omni completes on a ctrl-space.
+inoremap <C-space> <C-x><C-o>
+
