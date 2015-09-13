@@ -1,19 +1,16 @@
-
 filetype on
 filetype plugin on
+
+set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
+" Someday when I switch to a better terminal program, try these
+"set listchars=tab:↹·,extends:⇉,precedes:⇇,nbsp:␠,trail:␠,nbsp:␣
+
+set tags=./tags,tags
 
 " Make the current directory follow us around
 " This breaks tags looking in the cwd for the tags file.  If we start vim at
 " the top of a src hierarchy, where tags is, then the lcd breaks that.
 " autocmd BufEnter * silent! lcd %:p:h
-
-" HTML tag closing
-autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
-autocmd FileType html iabbrev </ </<C-X><C-O>
-
-" Move to match with tab
-nmap <tab> %
-vmap <tab> %
 
 " Toggle paste mode
 set pastetoggle=<F2>
@@ -30,7 +27,12 @@ set nocompatible
 let g:php_folding=1
 let g:javaScript_fold=1
 
+" More folding settings
+syn region myFold start="{" end="}" transparent fold
+syn sync fromstart
+
 syntax on
+
 hi Search ctermbg=4
 hi Search ctermfg=7
 hi Search cterm=bold
@@ -55,7 +57,6 @@ set modeline
 set ruler
 set showmatch
 set tabstop=4
-:inoremap # X#
 set shiftwidth=4
 set smartcase
 set vb t_vb=
@@ -69,17 +70,50 @@ set textwidth=79
 set formatoptions=q
 "set colorcolumn=85
 
-" Escape from insert mode with jj
-inoremap jj <ESC>
+
+" Make it obvious in gvim when we have focus
+" (unfortunately, this makes it re-fold the code on reentry)
+":au FocusLost * syntax off
+":au FocusGained * syntax on
+
+" GUI options {
+    set guioptions-=m
+    set guioptions-=T
+    "set guifont=Andale\ Mono\ 10
+    set guifont=Source\ Code\ Pro\ 11
+    set guioptions-=r
+    :amenu Edit.Paste\ from\ select  "*P
+" }
+
+" Fix error highlighting in terminal
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+
+" Ctags {
+    set tags=./tags;/,~/.vimtags
+
+    " Make tags placed in .git/tags file available in all levels of a repository
+    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+    if gitroot != ''
+        let &tags = &tags . ',' . gitroot . '/.git/tags'
+    endif
+" }
 
 " Leader
 let mapleader = " "
+
+" Keys
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>b :BufExplorer<CR><CR>
 nnoremap <leader>s :BufExplorerVerticalSplit<CR>
 
-set tags=./tags,tags
+" Move to match with tab
+nmap <tab> %
+vmap <tab> %
+
+" Escape from insert mode with jj
+inoremap jj <ESC>
 
 " Navigate long lines by screen lines, not file lines
 "nnoremap j gj
@@ -89,8 +123,8 @@ set tags=./tags,tags
 "nnoremap / /\v
 "nnoremap / /\v
 
-syn region myFold start="{" end="}" transparent fold
-syn sync fromstart
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
 
 " Fixing
 map F gq}
@@ -136,33 +170,4 @@ map , za
 " Ctrl-A copies the entire buffer to the system clipboard
 noremap <C-a> <Esc>gg"+yG
 
-    " Ctags {
-        set tags=./tags;/,~/.vimtags
 
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-    " }
-
-
-    " indent_guides {
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
-    " }
-
-    " Strip whitespace {
-    function! StripTrailingWhitespace()
-        " Preparation: save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " do the business:
-        %s/\s\+$//e
-        " clean up: restore previous search history, and cursor position
-        let @/=_s
-        call cursor(l, c)
-    endfunction
-    " }

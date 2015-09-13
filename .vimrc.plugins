@@ -1,0 +1,62 @@
+call pathogen#infect()
+
+" CtrlP Settings
+let g:ctrlp_use_caching = 1
+let g:ctrlp_working_path_mode = 0
+
+" Omnifunc
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+" Syntastic options
+let g:syntastic_quiet_messages = { "level" : "warnings", "type": "style"}
+let g:syntastic_python_checkers=['pyflakes', 'python']
+
+" If we want to hear about unused imported packages in Python, 
+" have to re-enable warnings
+autocmd FileType python unlet g:syntastic_quiet_messages
+
+let g:syntastic_css_csslint_args="--errors=known-properties,duplicate-background-images,duplicate-properties"
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Vdebug options
+let g:vdebug_options={}
+let g:vdebug_options['port']=10000
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Vmath stuff
+vmap <expr>  ++  VMATH_YankAndAnalyse()
+nmap         ++  vip++
+
+" Turn off "INSERT" text at bottom, especially since airline shows that for us
+set noshowmode
+let g:airline_theme='molokai'
+" Enable the list of buffers
+" (colour theming goes away randomly and makes the text hard to visually
+" separate)
+" let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" These don't work - space between them - which the Airline FAQ
+" says is a "complicated issue"
+"let g:airline_powerline_fonts=1
+
+    " indent_guides {
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+    " }
+
+
+" Temporary because of a bug
+let NERDTreeDirArrows=0
+

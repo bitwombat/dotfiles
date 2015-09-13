@@ -1,0 +1,52 @@
+
+augroup yml
+    autocmd BufReadPost,FileReadPost *.yml  set tabstop=2
+augroup END
+
+augroup python
+    autocmd BufReadPost,FileReadPost *.py  set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.py  set keywordprg=pydoc
+    " Make the 81st column stand out
+    autocmd BufReadPost,FileReadPost *.py  highlight ColorColumn ctermbg=yellow
+    autocmd BufReadPost,FileReadPost *.py  call matchadd('ColorColumn', '\%81v', 100)
+augroup END
+
+augroup html
+    autocmd BufReadPost,FileReadPost *.html  set foldmethod=syntax
+augroup END
+
+augroup markdown
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup END
+
+augroup css
+    autocmd BufReadPost,FileReadPost *.css  set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.css  set keywordprg=:help
+    autocmd BufReadPost,FileReadPost *.css  set iskeyword+=-
+augroup END
+
+augroup text
+    autocmd BufRead,BufNewFile       *.txt colorscheme zenburn
+augroup END
+
+augroup pptx
+    autocmd BufRead,BufNewFile       outline.txt set noexpandtab
+    autocmd BufRead,BufNewFile       outline.txt set fileformat=dos
+augroup END 
+
+augroup Obj-C
+    autocmd BufRead,BufNewFile       *.[cmh] colorscheme oceandeep
+    autocmd BufRead,BufNewFile       *.[cmh] so ~/.vim/cocoa.vim/plugin/cocoa.vim
+    " Make the 81st column stand out
+    autocmd BufRead,BufNewFile       *.[cmh] highlight ColorColumn ctermbg=yellow
+    autocmd BufRead,BufNewFile       *.[cmh] call matchadd('ColorColumn', '\%81v', 100)
+    autocmd BufRead,BufNewFile       *.[cmh] set foldmethod=syntax
+augroup END
+
+augroup cpp
+    autocmd BufReadPost,FileReadPost *.h  set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.cpp  syn region myFold start="{" end="}" transparent fold
+    autocmd BufReadPost,FileReadPost *.cpp  syn sync fromstart
+    autocmd BufReadPost,FileReadPost *.cpp  set foldmethod=syntax
+augroup END
+

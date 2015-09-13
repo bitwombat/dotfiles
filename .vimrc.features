@@ -1,0 +1,72 @@
+
+" Strip whitespace {
+function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+" }
+
+autocmd FileType c,css,cpp,java,go,php,html,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+
+" Better tabbing / completion
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-N>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+" Load matchit which makes % pay attention to HTML / XML tags
+:source $VIMRUNTIME/macros/matchit.vim
+
+" HTML tag closing
+autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
+autocmd FileType html iabbrev </ </<C-X><C-O>
+
+
+" vim -b : edit binary using xxd-format!
+augroup binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+" Transparent editing of gpg encrypted files.
+" By Wouter Hanegraaff <wouter@blub.net>
+augroup encrypted
+    au!
+    autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
+    autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
+    autocmd BufReadPre,FileReadPre      *.gpg set bin
+    autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+    autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt 2> /dev/null
+    autocmd BufReadPost,FileReadPost    *.gpg set nobin
+    autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
+    autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+    autocmd BufWritePre,FileWritePre    *.gpg set bin
+    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --symmetric 2>>/dev/null
+    autocmd BufWritePost,FileWritePost  *.gpg u
+    autocmd BufWritePost,FileWritePost  *.gpg set nobin
+augroup END
+
+
