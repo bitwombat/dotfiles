@@ -1,5 +1,9 @@
 
-so $HOME/.myconfigs/.vimrc.basics
+" Use local vimrc if available {
+    if filereadable(expand("$HOME/.myconfigs/.vimrc.basics"))
+        source $HOME/.myconfigs/.vimrc.basics
+    endif
+" }
 
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
@@ -8,6 +12,7 @@ colorscheme zenburn
 
 " CtrlP Settings
 let g:ctrlp_use_caching = 1
+let g:ctrlp_working_path_mode = 0
 
 " Omnifunc
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -15,6 +20,25 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+" Better tabbing / completion
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-N>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff <wouter@blub.net>
@@ -33,6 +57,8 @@ augroup encrypted
     autocmd BufWritePost,FileWritePost  *.gpg u
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
+
+autocmd BufReadPost,FileReadPost *.yml  set tabstop=2
 
 autocmd BufReadPost,FileReadPost *.cpp  syn region myFold start="{" end="}" transparent fold
 autocmd BufReadPost,FileReadPost *.cpp  syn sync fromstart
@@ -69,7 +95,6 @@ augroup END
 
 augroup text
     autocmd BufRead,BufNewFile       *.txt colorscheme zenburn
-    autocmd BufRead,BufNewFile       *.txt set norelativenumber
 augroup END
 
 augroup Obj-C
@@ -87,8 +112,9 @@ augroup pptx
 augroup END 
 
 " Make it obvious in gvim when we have focus
-:au FocusLost * syntax off
-:au FocusGained * syntax on
+" (unfortunately, this makes it re-fold the code on reentry)
+":au FocusLost * syntax off
+":au FocusGained * syntax on
 
 set guioptions-=m
 set guioptions-=T
@@ -104,23 +130,8 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 
 " Better list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
-
-" Better tabbing / completion
-function! SuperCleverTab()
-    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-        return "\"
-    else
-        if &omnifunc != ''
-            return "\\"
-        elseif &dictionary != ''
-            return "\"
-        else
-            return "\"
-        endif
-    endif
-endfunction
-
-inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+" Someday when I switch to a better terminal program, try these
+"set listchars=tab:↹·,extends:⇉,precedes:⇇,nbsp:␠,trail:␠,nbsp:␣
 
 call pathogen#infect()
 
@@ -150,4 +161,22 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Vmath stuff
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
+
+" Turn off "INSERT" text at bottom, especially since airline shows that for us
+set noshowmode
+let g:airline_theme='molokai'
+" Enable the list of buffers
+" (colour theming goes away randomly and makes the text hard to visually
+" separate)
+" let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" These don't work - space between them - which the Airline FAQ
+" says is a "complicated issue"
+"let g:airline_powerline_fonts=1
+
+    autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+
+" Temporary because of a bug
+let NERDTreeDirArrows=0
 
