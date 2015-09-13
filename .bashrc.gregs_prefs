@@ -9,6 +9,23 @@ alias web2='cd "$(ls -dtr1 * | grep -v 'logs' | tail -1)" ; scr'
 alias naut="nautilus --no-desktop"
 alias en="vim +BlogList"
 alias nn="vim +BlogNew"
+alias screenshot="gnome-screenshot -a"
+
+alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
+
+alias make_ctags="ctags -R --fields=+aimS --languages=php"
+
+function cdt () {
+    last=$(history | tail -2 | head -1 | awk -F' ' -e '{print $NF}')
+    if [ ! -d $last ]; then
+        last=$(dirname $last)
+    fi 
+    if [ ! -d $last ]; then
+        echo "I don't know where that is"
+        return
+    fi
+    pushd $last
+}
 
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
