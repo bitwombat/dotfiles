@@ -5,4 +5,4 @@ set show-all-if-ambiguous on
 "\e[B":history-search-forward
 "\e[1;5D":backward-kill-word
 set match-hidden-files off
-
+C-b:unix-filename-rubout
