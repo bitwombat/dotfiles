@@ -3,7 +3,9 @@ filetype on
 filetype plugin on
 
 " Make the current directory follow us around
-autocmd BufEnter * silent! lcd %:p:h
+" This breaks tags looking in the cwd for the tags file.  If we start vim at
+" the top of a src hierarchy, where tags is, then the lcd breaks that.
+" autocmd BufEnter * silent! lcd %:p:h
 
 " HTML tag closing
 autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
@@ -25,7 +27,7 @@ set foldmethod=indent
 
 " Without the following, folding doesn't work on php .inc files
 set nocompatible
-let g:php_folding=2
+let g:php_folding=1
 let g:javaScript_fold=1
 
 syntax on
@@ -72,12 +74,12 @@ inoremap jj <ESC>
 
 " Leader
 let mapleader = " "
-nnoremap <leader>s :BlogSave publish<CR>
-nnoremap <leader>v :BlogPreview publish<CR>
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
+nnoremap <leader>b :BufExplorer<CR><CR>
+nnoremap <leader>s :BufExplorerVerticalSplit<CR>
 
-set tags=./tags,tags,../tags,../../tags,../../../tags
+set tags=./tags,tags
 
 " Navigate long lines by screen lines, not file lines
 "nnoremap j gj
@@ -90,36 +92,77 @@ set tags=./tags,tags,../tags,../../tags,../../../tags
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 
-" Key mappings
-"map F !}fmt -80<CR>
+" Fixing
 map F gq}
+map T :%s/  *$//g<CR>
+
+" Macroing
 map L @l
-map M nz<CR>
+
+" IDE
 map Q :w<CR>:!clear;python %<CR>
-map T :%s/  *$//g
-map U zA
+map <F11> :cn<CR>
+map <F10> :cN<CR>
+
+" Saving/Quitting
 map <F1> :update<CR>
 inoremap <F1> <ESC>:update<CR>a
 map <C-s> :update<CR>
 imap <C-s> <ESC>:update<CR>a
-"map <F2> :emenu Buffers.
+map <C-D> :q<CR>
+
+" Viewing Modes
 map <F6> :set invnumber<CR>
 map <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
 map <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
 map <F9> :if &list <Bar> set nolist <Bar> <CR> else <Bar> set list <Bar> endif <CR>
-map <F11> :cn<CR>
-map <F10> :cN<CR>
+
+" Buffers
 map n :bnext<CR>
+map m :bprevious<CR>
+" Leftover from old muscle memory (P for previous).  Delete when untrained.
 map p :bprevious<CR>
-map , zA
-map <C-D> :q<CR>
 
-" Close the tag under the cursor
-map <C-P> ly/>/eA</"^
+" Tabs
+map k :tabnext<CR>
+map j :tabprevious<CR>
+map c :tabclose<CR>
+map t :tabnew<CR>
 
-" Execute python on current file
-:map ;e :w<cr>:!python %<cr>
+" Folding
+map U zA
+map , za
 
-" This omni completes on a ctrl-space.
-inoremap <C-space> <C-x><C-o>
+" Ctrl-A copies the entire buffer to the system clipboard
+noremap <C-a> <Esc>gg"+yG
 
+    " Ctags {
+        set tags=./tags;/,~/.vimtags
+
+        " Make tags placed in .git/tags file available in all levels of a repository
+        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        if gitroot != ''
+            let &tags = &tags . ',' . gitroot . '/.git/tags'
+        endif
+    " }
+
+
+    " indent_guides {
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+    " }
+
+    " Strip whitespace {
+    function! StripTrailingWhitespace()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " do the business:
+        %s/\s\+$//e
+        " clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+    " }
