@@ -1,5 +1,10 @@
+" VIM settings that should always be
+"
+
+" Features
 filetype on
 filetype plugin on
+syntax on
 
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 " Someday when I switch to a better terminal program, try these
@@ -12,27 +17,29 @@ set tags=./tags,tags
 " the top of a src hierarchy, where tags is, then the lcd breaks that.
 " autocmd BufEnter * silent! lcd %:p:h
 
-" Toggle paste mode
 set pastetoggle=<F2>
-
-set showmode
-set showcmd
 set backspace=indent,eol,start
+
+" Visual settings
+set hlsearch
 set laststatus=2
-set scrolloff=2
+set modeline
+set ruler
+set showcmd
+set showmatch
+set showmode
+
+" Folding settings
 set foldmethod=indent
+syn region myFold start="{" end="}" transparent fold
+syn sync fromstart
 
 " Without the following, folding doesn't work on php .inc files
 set nocompatible
 let g:php_folding=1
 let g:javaScript_fold=1
 
-" More folding settings
-syn region myFold start="{" end="}" transparent fold
-syn sync fromstart
-
-syntax on
-
+" Search settings
 hi Search ctermbg=4
 hi Search ctermfg=7
 hi Search cterm=bold
@@ -40,36 +47,31 @@ hi IncSearch ctermbg=4
 hi IncSearch ctermfg=7
 hi IncSearch cterm=NONE
 
-set autowrite
 
 " Feature-related Variables
+set autowrite
 set backup
 set backupdir=/tmp
 set complete+=k
 set dictionary=/usr/share/dict/words
 set noerrorbells
-set expandtab
 set fileformat=unix
-set hlsearch
 set ignorecase
 set incsearch
-set modeline
-set ruler
-set showmatch
-set tabstop=4
-set shiftwidth=4
+set scrolloff=2
 set smartcase
 set vb t_vb=
-set wrap
 set wildmenu
 set wildmode=list:longest,full
 
-" Wrapping
+" Editor behaviour
+set tabstop=4
+set shiftwidth=4
 set wrap
 set textwidth=79
 set formatoptions=q
+set expandtab
 "set colorcolumn=85
-
 
 " Make it obvious in gvim when we have focus
 " (unfortunately, this makes it re-fold the code on reentry)
@@ -99,10 +101,9 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
     endif
 " }
 
-" Leader
-let mapleader = " "
 
 " Keys
+let mapleader = " "
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>b :BufExplorer<CR><CR>
@@ -169,5 +170,3 @@ map , za
 
 " Ctrl-A copies the entire buffer to the system clipboard
 noremap <C-a> <Esc>gg"+yG
-
-

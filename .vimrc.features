@@ -38,7 +38,6 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
 autocmd FileType html iabbrev </ </<C-X><C-O>
 
-
 " vim -b : edit binary using xxd-format!
 augroup binary
   au!

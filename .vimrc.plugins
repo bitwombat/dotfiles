@@ -31,12 +31,16 @@ let g:syntastic_check_on_wq = 0
 let g:vdebug_options={}
 let g:vdebug_options['port']=10000
 
+" NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Temporary because of a bug
+let NERDTreeDirArrows=0
 
-" Vmath stuff
+" Vmath
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
 
+" Airline
 " Turn off "INSERT" text at bottom, especially since airline shows that for us
 set noshowmode
 let g:airline_theme='molokai'
@@ -50,13 +54,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " says is a "complicated issue"
 "let g:airline_powerline_fonts=1
 
-    " indent_guides {
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
-    " }
-
-
-" Temporary because of a bug
-let NERDTreeDirArrows=0
+" indent_guides {
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_enable_on_vim_startup = 1
+" }
 
