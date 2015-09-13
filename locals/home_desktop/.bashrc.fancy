@@ -70,6 +70,12 @@ function cdwpp() {
     ls -l
 }
 
+function wpupdate() {
+    wp core update
+    wp plugin update --all
+    wp theme update --all
+}
+
 alias plocate="locate -d /var/lib/locate/personal.db"
 
 export COURSERA_EMAIL=gbell_spamless@yahoo.com
