@@ -18,14 +18,11 @@ alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias naut="nautilus --no-desktop"
 alias screenshot="gnome-screenshot -a"
-alias vless='vim -u /usr/share/vim/vimcurrent/macros/less.vim'
-
-alias make_ctags="ctags -R --fields=+aimS --languages=php"
-
 alias truecrypt="truecrypt -t"
 alias o="xdg-open"
-
 alias aud="audacious"
+
+alias make_ctags="ctags -R --fields=+aimS --languages=php"
 
 alias term_purple='term purple'
 alias term_green='term green'
@@ -48,12 +45,6 @@ export SSH_ASKPASS=/usr/bin/ssh-askpass
 export PATH=~/bin:~/bin/bin_common:$PATH
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
-if [ $UID == 0 ]; then
-    USERSYMBOL="#"
-else
-    USERSYMBOL="\$"
-fi
 
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
