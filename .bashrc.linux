@@ -1,0 +1,67 @@
+if [ "$TERM" == "xterm" ]; then
+    TERM=xterm-256color
+fi
+
+if [ "$TERM" == "screen" ]; then
+    TERM=screen-256color
+fi
+
+alias momvnc="ssh margaret@moms -f /home/margaret/bin/vnc ; sleep 2 ; xtightvncviewer -encodings tight -compresslevel 9 -quality 1 -depth 8 :1 < /dev/null"
+alias dadvnc="ssh chris@dads -f /home/chris/bin/vnc ; sleep 2 ; xtightvncviewer -encodings tight -compresslevel 9 -quality 1 :3 < /dev/null"
+alias jillvnc="ssh jbell@jills -f /home/jbell/bin/vnc ; sleep 2 ; xtightvncviewer -encodings tight -compresslevel 9 -quality 1 :1 < /dev/null"
+alias ufvnc="vncviewer localhost::5500"
+alias macvnc="xtightvncviewer mac:0"
+
+alias lv="vim -c \"normal '0\""
+alias mountt="mount | column -t | egrep '^/dev'"
+alias ports='netstat -tulanp'
+alias rsync="rsync -a --no-inc-recursive --info=progress2 "
+alias naut="nautilus --no-desktop"
+alias screenshot="gnome-screenshot -a"
+alias vless='vim -u /usr/share/vim/vimcurrent/macros/less.vim'
+
+alias make_ctags="ctags -R --fields=+aimS --languages=php"
+
+alias truecrypt="truecrypt -t"
+alias o="xdg-open"
+
+alias aud="audacious"
+
+alias term_purple='term purple'
+alias term_green='term green'
+alias term_red='term red'
+alias term_teal='term teal'
+alias term_grey='term grey'
+alias term_blue='term blue'
+
+alias ssh='term_teal; ssh'
+alias su='term root ; su'
+
+function ol () {
+    latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
+    xdg-open "$latest_file"
+}
+
+# For dialog box passwords
+export SSH_ASKPASS=/usr/bin/ssh-askpass
+
+export PATH=~/bin:~/bin/bin_common:$PATH
+
+export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+
+if [ $UID == 0 ]; then
+    USERSYMBOL="#"
+else
+    USERSYMBOL="\$"
+fi
+
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
+# Run/enable the 'z' directory changer
+[ -e /opt/z/z.sh ] && . /opt/z/z.sh
+
+# Run/enable bash completion
+[ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
