@@ -1,0 +1,7 @@
+
+export PATH=$PATH:/opt/jre1.7.0_51/bin
+
+export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+
+
+
