@@ -50,3 +50,7 @@ augroup cpp
     autocmd BufReadPost,FileReadPost *.cpp  set foldmethod=syntax
 augroup END
 
+augroup php
+    autocmd BufReadPost,FileReadPost *.php  abbreviate sph <?php
+    autocmd BufReadPost,FileReadPost *.php  abbreviate eph ?>
+augroup END
