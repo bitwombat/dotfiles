@@ -56,10 +56,11 @@ alias cp='cp -i'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
 alias la='ls -altrh --color=yes --group-directories-first'
+alias lo='ls -alth --color=yes --group-directories-first'
+alias lr='find . -mtime -1'
 alias le='ls -XBoh --color=yes --group-directories-first'
 alias lg='ls -Blh --color=yes --group-directories-first'
 alias ll='ls -Boh --color=yes --group-directories-first'
-alias lx='ls -lXBoh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 alias mv="mv -i"
 alias vi="vim"
