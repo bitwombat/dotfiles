@@ -1,6 +1,7 @@
 
 augroup yml
     autocmd BufReadPost,FileReadPost *.yml  set tabstop=2
+    autocmd BufReadPost,FileReadPost *.yml  set nofoldenable
 augroup END
 
 augroup python
@@ -12,7 +13,9 @@ augroup python
 augroup END
 
 augroup html
-    autocmd BufReadPost,FileReadPost *.html  set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.html,*.phtml set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.html,*.phtml abbreviate sph <?php
+    autocmd BufReadPost,FileReadPost *.html,*.phtml abbreviate eph ?>
 augroup END
 
 augroup markdown
@@ -53,4 +56,9 @@ augroup END
 augroup php
     autocmd BufReadPost,FileReadPost *.php  abbreviate sph <?php
     autocmd BufReadPost,FileReadPost *.php  abbreviate eph ?>
+augroup END
+
+augroup james
+    autocmd BufReadPost,FileReadPost */deit/*.php set noexpandtab
+    autocmd BufReadPost,FileReadPost */uf_checkout/*/src/*.php set noexpandtab
 augroup END
