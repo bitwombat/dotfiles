@@ -68,4 +68,3 @@ augroup encrypted
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
 
-
