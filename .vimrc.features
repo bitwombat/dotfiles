@@ -63,7 +63,7 @@ augroup encrypted
     autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
     autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
     autocmd BufWritePre,FileWritePre    *.gpg set bin
-    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --symmetric 2>>/dev/null
+    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --encrypt --recipient "greg@bitwombat.com.au"  2>>/dev/null
     autocmd BufWritePost,FileWritePost  *.gpg u
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
