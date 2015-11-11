@@ -108,7 +108,7 @@ nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>b :BufExplorer<CR><CR>
 nnoremap <leader>s :BufExplorerVerticalSplit<CR>
-nnoremap <leader>c :cd %:h
+nnoremap <leader>c :cd %:h<CR>
 
 " Move to match with tab
 nmap <tab> %
