@@ -31,7 +31,6 @@ alias term_teal='term teal'
 alias term_grey='term grey'
 alias term_blue='term blue'
 
-alias ssh='term_teal; ssh'
 alias su='term root ; su'
 
 function ol () {
@@ -41,6 +40,15 @@ function ol () {
 
 # For dialog box passwords
 export SSH_ASKPASS=/usr/bin/ssh-askpass
+
+# GPG agent
+export GPG_TTY=$(tty)
+
+# Node
+NPM_PACKAGES="${HOME}/.npm-packages"
+NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
+export PATH=$NPM_PACKAGES/bin:$PATH
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 export PATH=~/bin:~/bin/bin_common:$PATH
 
@@ -56,3 +64,4 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
+
