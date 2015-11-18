@@ -13,31 +13,53 @@ fi
 export BASH_ENV=$HOME/.bashrc
 
 # Functions
+
+# "makedir and cd to it"
 function mcd() {
   mkdir $1;
   cd $1;
 }
 
+# "cd there"
+function cdt() {
+    lastcmd=$(history | cut -c 8- | tail -2 | head -1)
+    path=$(echo $lastcmd | awk '{ print $NF }')
+    dirname=$(dirname $path)
+    if [ -d $path ]; then
+        cd $path
+    elif [ -d $dirname ]; then
+        cd $dirname
+    else
+        echo "Can't see directory to cd to in that command."
+    fi  
+}   
+
+# find file
 function ff() {
   find . -iname \*$1\* ;
 }
 
+# find in files
 function fif() {
   find . -iname \*$1\* -exec grep -Hi $2 {} \; ;
 }
 
+# cat which
 function catw() {
   cat `which $1`;
 }
 
+# vim which
 function viw() {
   vim `which $1`;
 }
 
+# gvim which
 function gviw() {
   gvim `which $1`;
 }
 
+# vi a new executable
 function vix() {
   if [ $1 ]; then
     fn=$1
@@ -50,6 +72,7 @@ function vix() {
   chmod +x $fn
   vim $fn
 }
+
 # Aliases
 alias ..="cd .."
 alias cp='cp -i'
@@ -66,6 +89,9 @@ alias mv="mv -i"
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
 alias o="open"
+alias pwdr='pwd > ~/.pwdremember'
+alias cdr='cd $(cat ~/.pwdremember)'
+
 
 # For many programs
 export EDITOR=vim
