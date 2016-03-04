@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Poly Bridge
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/367450
+Icon=steam_icon_367450
+Terminal=false
+Type=Application
+Categories=Game;
