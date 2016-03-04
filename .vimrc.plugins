@@ -16,7 +16,7 @@ let g:syntastic_python_checkers=['pyflakes', 'python']
 
 " If we want to hear about unused imported packages in Python, 
 " have to re-enable warnings
-autocmd FileType python unlet g:syntastic_quiet_messages
+autocmd FileType python unlet! g:syntastic_quiet_messages
 
 let g:syntastic_css_csslint_args="--errors=known-properties,duplicate-background-images,duplicate-properties"
 "set statusline+=%#warningmsg#
