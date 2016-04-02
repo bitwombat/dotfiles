@@ -134,5 +134,5 @@ case $TERM in
 esac
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}\[\e[33\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 
