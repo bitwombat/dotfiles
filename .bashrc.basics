@@ -138,5 +138,5 @@ parse_git_branch() {
 }
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}[$(parse_git_branch) ${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}\[\e[33\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 
