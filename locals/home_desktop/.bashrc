@@ -1,4 +1,3 @@
-#echo "HELLO FROM HOME .bashrc"
 # Basics not needed here - system wide in /etc/.bashrc.basics 
 # (called by /etc/bash.bashrc which is called by bash)
 #
