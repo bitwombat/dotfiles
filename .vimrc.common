@@ -71,7 +71,6 @@ set wrap
 set textwidth=79
 set formatoptions=q
 set expandtab
-set iskeyword-=_
 "set colorcolumn=85
 
 " Make it obvious in gvim when we have focus
