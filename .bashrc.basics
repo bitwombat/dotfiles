@@ -133,6 +133,10 @@ case $TERM in
         ;;
 esac
 
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* (.*)/(1)/'
+}
+
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}[${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}[$(parse_git_branch) ${CURDIR}]\$ "
 
