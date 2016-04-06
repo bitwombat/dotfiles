@@ -26,10 +26,6 @@ function go_camera() {
   cd $last
 }
 
-function cdwp() {
-    [ -e public_html ] && cd public_html
-}
-
 function cdwpu() {
     [ -e public_html ] && cd public_html
     cd wp-content/uploads
@@ -58,9 +54,6 @@ function wpupdate() {
 }
 
 alias plocate="locate -d /var/lib/locate/personal.db"
-
-export COURSERA_EMAIL=gbell_spamless@yahoo.com
-export COURSERA_PASS=E3au4jUmKm
 
 alias web="newgrp www-data"
 alias web2='cd "$(ls -dtr1 * | grep -v 'logs' | tail -1)" ; scr'
