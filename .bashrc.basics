@@ -78,8 +78,8 @@ alias ..="cd .."
 alias cp='cp -i'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
-alias la='ls -altrh --color=yes --group-directories-first'
-alias lo='ls -alth --color=yes --group-directories-first'
+alias la='ls -ltrh --color=yes --group-directories-first'
+alias lo='ls -lth --color=yes --group-directories-first'
 alias lr='find . -mtime -1'
 alias le='ls -XBoh --color=yes --group-directories-first'
 alias lg='ls -Blh --color=yes --group-directories-first'
