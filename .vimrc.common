@@ -117,10 +117,6 @@ vmap <tab> %
 " Escape from insert mode with jj
 inoremap jj <ESC>
 
-" Navigate long lines by screen lines, not file lines
-"nnoremap j gj
-"nnoremap k gk
-
 " Default to regex searches (not vim expressions)
 "nnoremap / /\v
 "nnoremap / /\v
@@ -171,3 +167,6 @@ map , za
 
 " Ctrl-A copies the entire buffer to the system clipboard
 noremap <C-a> <Esc>gg"+yG
+
+" Ctrl-C opens up a line - for inside things like {}
+imap <C-c> <CR><Esc>O<Tab>
