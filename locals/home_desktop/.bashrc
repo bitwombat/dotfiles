@@ -10,5 +10,5 @@
 #. $HOME/.myconfigs/.bashrc.basics
 . $HOME/.myconfigs/.bashrc.linux
 . $HOME/.myconfigs/.bashrc.ubuntu
+. $HOME/.myconfigs/.bashrc.sensitive
 . $HOME/.myconfigs/local/.bashrc.extras
-. $HOME/.myconfigs/local/.bashrc.sensitive
