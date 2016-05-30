@@ -55,8 +55,7 @@ function wpupdate() {
 
 alias plocate="locate -d /var/lib/locate/personal.db"
 
-alias web="newgrp www-data"
-alias web2='cd "$(ls -dtr1 * | grep -v 'logs' | tail -1)" ; scr'
+alias web="cd $(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
 alias cde='cd /1_EIT/0_units/'
 alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
 
