@@ -112,6 +112,12 @@ export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
 
+if [ "$(id -u)" -eq 0 ]; then
+    PROMPT_END="#"
+else
+    PROMPT_END="\$"
+fi
+
 case $TERM in
     screen*)
         #SCREENTITLEPROGRAM='\[\ek\e\\\]'
@@ -134,5 +140,5 @@ case $TERM in
 esac
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]${PROMPT_END} "
 
