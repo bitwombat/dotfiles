@@ -6,4 +6,3 @@ source $HOME/.myconfigs/.vimrc.filetypes
 
 colorscheme zenburn
 
-
