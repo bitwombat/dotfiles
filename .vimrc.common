@@ -10,8 +10,6 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 " Someday when I switch to a better terminal program, try these
 "set listchars=tab:↹·,extends:⇉,precedes:⇇,nbsp:␠,trail:␠,nbsp:␣
 
-set tags=./tags,tags
-
 " Make the current directory follow us around
 " This breaks tags looking in the cwd for the tags file.  If we start vim at
 " the top of a src hierarchy, where tags is, then the lcd breaks that.
@@ -92,7 +90,10 @@ highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 
 " Ctags {
-    set tags=./tags;/,~/.vimtags
+    set tags=./tags,tags
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/scripts/tags'
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/admin-app/tags'
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/product-app/tags'
 
     " Make tags placed in .git/tags file available in all levels of a repository
     let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
@@ -101,6 +102,9 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
     endif
 " }
 
+" Vertical split {
+    set fillchars+=vert:│
+" }
 
 " Keys
 let mapleader = " "
@@ -166,7 +170,26 @@ map U zA
 map , za
 
 " Ctrl-A copies the entire buffer to the system clipboard
-noremap <C-a> <Esc>gg"+yG
+"noremap <C-a> <Esc>gg"+yG
+
+" Ctrl-A and Ctrl-E work as they do on the command line
+map <C-a> ^
+map <C-e> $
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+
+" Allows you to easily replace the current word and all its occurrences.
+nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rc y:%s/<C-r>"/
 
 " Ctrl-C opens up a line - for inside things like {}
 imap <C-c> <CR><Esc>O<Tab>
