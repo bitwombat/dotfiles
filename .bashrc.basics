@@ -106,17 +106,11 @@ SVN_MERGE=meld
 
 export LESS="-g -I -F -X -R"
 
-export LS_COLORS="no=00:fi=00:di=00;93:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.jpeg=00;35:*.psd=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.tiff=00;35:*.txt=00;96:*.md=00;96:*.docx=00;34:*.doc=00;34:*.xls=00;34:*.xlsx=00;34:*.odt=00;34:*.ods=00;34"
+export LS_COLORS="no=00:fi=00:di=00;93:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.cpio=00;31:*.JPG=00;35:*.jpg=00;35:*.jpeg=00;35:*.psd=00;35:*.xcf=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.svg=00;35:*.png=00;35:*.PNG=00;35:*.tif=00;35:*.tiff=00;35:*.txt=00;96:*.md=00;96:*.docx=00;96:*.doc=00;96:*.xls=00;96:*.xlsx=00;96:*.odt=00;96:*.ods=00;96"
 
 export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
-if [ "$(id -u)" -eq 0 ]; then
-    PROMPT_END="#"
-else
-    PROMPT_END="\$"
-fi
 
 case $TERM in
     screen*)
@@ -140,5 +134,5 @@ case $TERM in
 esac
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]${PROMPT_END} "
+PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 
