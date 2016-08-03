@@ -53,6 +53,17 @@ function wpupdate() {
     wp theme update --all
 }
 
+function ssh() {
+    # Detect when ssh is called by scp completion
+    if [[ "$*" == *"Batchmode"* ]]; then
+        /usr/bin/ssh "$@"
+    else
+        term teal
+        command ssh "$@"
+        term
+    fi  
+} 
+
 alias plocate="locate -d /var/lib/locate/personal.db"
 
 alias web="cd $(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
@@ -66,4 +77,5 @@ if [[ $- == *i* ]]; then
         fi
     fi
 fi
+
 

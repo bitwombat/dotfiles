@@ -22,8 +22,6 @@ alias truecrypt="truecrypt -t"
 alias o="xdg-open"
 alias aud="audacious"
 
-alias ssh="term teal ; ssh"
-
 alias make_ctags="ctags -R --fields=+aimS --languages=php"
 
 alias term_purple='term purple'
