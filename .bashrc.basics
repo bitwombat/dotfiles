@@ -91,6 +91,7 @@ alias wget="wget --progress=dot:mega"
 alias o="open"
 alias pwdr='pwd > ~/.pwdremember'
 alias cdr='cd $(cat ~/.pwdremember)'
+alias sudo='sudo '
 
 
 # For many programs
