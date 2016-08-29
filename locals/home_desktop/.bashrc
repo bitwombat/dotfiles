@@ -10,5 +10,5 @@
 #. $HOME/.myconfigs/.bashrc.basics
 . $HOME/.myconfigs/.bashrc.linux
 . $HOME/.myconfigs/.bashrc.ubuntu
-. $HOME/.myconfigs/.bashrc.sensitive
+[ -e $HOME/.myconfigs/.bashrc.sensitive ] && [ . $HOME/.myconfigs/.bashrc.sensitive ]
 . $HOME/.myconfigs/local/.bashrc.extras
