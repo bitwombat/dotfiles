@@ -135,5 +135,13 @@ case $TERM in
 esac
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
-PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+
+if [[ $EUID -eq 0 ]]; then
+    PROMPTCHAR="# "
+    USERHOST="\u@\h"
+    CURDIR="\w"
+    PS1="${ESCAPES}${USERHOST}\[\$(__git_ps1)[\w]# "
+else
+    PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+fi
 
