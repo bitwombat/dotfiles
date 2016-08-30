@@ -1,7 +1,8 @@
 # Shell settings
-export HISTCONTROL=ignoredups
-shopt -s no_empty_cmd_completion
+export HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE=1000
 shopt -s histappend
+shopt -s no_empty_cmd_completion
 ulimit -c 0
 umask 027
 
