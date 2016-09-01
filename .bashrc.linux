@@ -31,7 +31,9 @@ alias term_teal='term teal'
 alias term_grey='term grey'
 alias term_blue='term blue'
 
-alias su='term root ; su'
+if [[ $EUID -ne 0 ]]; then
+  alias su='term root ; su'
+fi
 
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
@@ -54,10 +56,12 @@ export PATH=~/bin:~/bin/bin_common:$PATH
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
 
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
+export PAGER="less -Xi"
 
 # Run/enable the 'z' directory changer
 [ -e /opt/z/z.sh ] && . /opt/z/z.sh
