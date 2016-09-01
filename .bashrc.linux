@@ -31,9 +31,7 @@ alias term_teal='term teal'
 alias term_grey='term grey'
 alias term_blue='term blue'
 
-if [[ $EUID -ne 0 ]]; then
-  alias su='term root ; su'
-fi
+alias su='term root ; su'
 
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
