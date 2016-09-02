@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Run these sequentially - didn't want to figure out how to do it in rc.lua
+# Maybe if sequential, I won't get the 'unable to grab keyboard' message.
+
+export PATH=$PATH:/home/gbell2/bin
+
+setxkbmap -option terminate:ctrl_alt_bksp
+xmodmap /home/gbell2/.myconfigs/.Xmodmap
+
+xrandr --output HDMI2 --primary &> /dev/null
+xrandr --output VGA1 --mode 1280x1024 --left-of HDMI2 &> /dev/null
+xrandr --output HDMI2 --primary &> /dev/null
+sleep 1
+redshift -l -33.86:151.21 -m randr &
+
+eval `ssh-agent` &> /dev/null
+#eval $(gpg-agent --daemon --enable-ssh-support )
+
+# Don't put ssh-add in the background so that it doesn't worry about
+# losing keyboard focus
+ps -ef | grep agent > ~xprofile_debug.txt
+ssh-add /home/gbell2/.ssh/global_key &> /dev/null
+# Delay this so that awesome's startup stuff can run
+(sleep 1 ; /home/gbell2/bin/mount.info askpass ) &
+(sleep 3 ; display -backdrop -window root /pics/misc/backgrounds/merged_background.jpg ) &
