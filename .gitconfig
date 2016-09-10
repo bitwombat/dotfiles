@@ -1,0 +1,17 @@
+[alias]
+	lg = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	email = greg@bitwombat.com.au
+	name = Greg Bell
+[merge]
+	tool = vimdiff
+[core]
+	pager = less -F -X
+	excludesfile = /home/gbell2/.gitignore
+[push]
+	default = simple

@@ -1,0 +1,72 @@
+conky.config = {
+	background = true,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = 'white',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+	use_xft = true,
+	font = 'HandelGotD:size=9',
+	xftalpha = 0.5,
+	minimum_width = 5, minimum_height = 5,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'desktop',
+	own_window_transparent = false,
+	own_window_argb_value = 255,
+	own_window_argb_visual = true,
+	own_window_hints = 'below,skip_taskbar,skip_pager',
+	stippled_borders = 0,
+	text_buffer_size = 512,
+	update_interval = 3.0,
+	uppercase = false,
+	use_spacer = 'left',
+	alignment = 'top_right',
+	gap_y = 25,
+	double_buffer = true,
+	max_text_width = 0,
+	top_cpu_separate = false,
+
+};
+
+conky.text = [[
+$alignc ${color orange}$sysname $kernel
+${color grey}$hr
+${alignc}${color orange}Hardware:
+${color grey}Load:${color white} ${loadavg 1} ${color grey}/ CPU:${color white} ${cpu}% ${color grey}/ Processes:${color white} $processes ${color grey}/ Run:${color white} $running_processes
+${color white}${cpubar 7,300}
+${color #ffffff}RAM: ${color #999999}$memperc% ${color #cccccc}
+${color white}${membar 7,300}
+${color grey}Frequency:$alignr ${color white}$freq MHz
+${color grey}Core0 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 0"}
+${color grey}Core1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 1"}
+${color grey}Core2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 2"}
+${color grey}Core3 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 3"}
+${color grey}Temp1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky SYSTIN}
+${color grey}Temp2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky CPUTIN}
+${color grey}Case fan speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2180))}%
+${color grey}CPU Fan/pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2106))}%
+${color grey}$hr
+${alignc}${color orange}Storage:
+${color grey}Data $alignr ${color white}${fs_free /data} free ${fs_bar 6,75 /data}
+${color grey}Slash $alignr ${color white}${fs_free /} free ${fs_bar 6,75 /}
+${color grey}$hr
+${alignc}${color orange}Network:${color grey}
+#${alignc}Internet IP:${color white}${exec cat /tmp/myip}
+${alignc}${color gray}Local IP:${color white}${addr enp3s0}
+${color grey}Down:${color white}${downspeed enp3s0}${color grey}${alignr}Up:${color white}${upspeed enp3s0}${color grey}
+${downspeedgraph enp3s0 25,145 800} ${alignr}${upspeedgraph enp3s0 25,145 38} ${alignr}
+${color grey}$hr
+${alignc}${color orange}${time %A, %e %B %G}${color grey}
+${font CourierNew :size=8}${execpi 60 /home/gbell2/bin/cal.conky}
+${color grey}$hr
+${font CourierNew :size=10}${color grey} ${exec /home/gbell2/bin/top.conky}
+${color grey}$hr
+]];

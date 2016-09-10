@@ -44,6 +44,10 @@ export SSH_ASKPASS=/usr/bin/ssh-askpass
 # GPG agent
 export GPG_TTY=$(tty)
 
+# Wine
+export WINEPREFIX="$HOME/.wine-32" 
+export WINEARCH=win32
+
 # Node
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
