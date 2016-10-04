@@ -50,6 +50,7 @@ nmap <silent> e[  <Plug>LocationPrevious
 nmap <silent> e]  <Plug>LocationNext
 
 " Vdebug options
+let g:vdebug_options={}
 let g:vdebug_options['port']=10000
 let g:vdebug_options['ide_key']='PHPSTORM'
 
