@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=calibre - E-book management
+Exec=env WINEPREFIX="/home/gbell2/.wine" wine C:\\\\Program\\ Files\\\\Calibre2\\\\calibre.exe 
+Type=Application
+StartupNotify=true
+Comment=Manage your e-book collection and download news
+Icon=EEF1_calibre.0
