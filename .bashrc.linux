@@ -49,7 +49,7 @@ export WINEPREFIX="$HOME/.wine-32"
 export WINEARCH=win32
 
 # Node
-NPM_PACKAGES="${HOME}/.npm-packages"
+NPM_PACKAGES="/opt/node_modules"
 NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
 export PATH=$NPM_PACKAGES/bin:$PATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
