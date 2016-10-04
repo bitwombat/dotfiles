@@ -11,16 +11,17 @@ xmodmap /home/gbell2/.myconfigs/.Xmodmap
 xrandr --output HDMI2 --primary &> /dev/null
 xrandr --output VGA1 --mode 1280x1024 --left-of HDMI2 &> /dev/null
 xrandr --output HDMI2 --primary &> /dev/null
-sleep 1
+
 redshift -l -33.86:151.21 -m randr &
 
 eval `ssh-agent` &> /dev/null
+# This guy was interacting with the keyring or something... wasn't quite working.
+# We really just wanted it for the gb_access password annoyance... which seems to
+# be working OK even without gpg agent (?)  Gnome keyring seems to cache the decoded
+# gpg key used to encrypt gb_access.gpg.
 #eval $(gpg-agent --daemon --enable-ssh-support )
 
-# Don't put ssh-add in the background so that it doesn't worry about
-# losing keyboard focus
-ps -ef | grep agent > ~xprofile_debug.txt
+/home/gbell2/bin/mount.info askpass
+
 ssh-add /home/gbell2/.ssh/global_key &> /dev/null
-# Delay this so that awesome's startup stuff can run
-(sleep 1 ; /home/gbell2/bin/mount.info askpass ) &
-(sleep 3 ; display -backdrop -window root /pics/misc/backgrounds/merged_background.jpg ) &
+
