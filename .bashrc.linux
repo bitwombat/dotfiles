@@ -33,6 +33,10 @@ alias term_blue='term blue'
 
 alias su='term root ; su'
 
+# For composer (3x speedup)
+alias xdebug_off='sudo phpdismod -s cli xdebug'
+alias xdebug_on='sudo phpenmod -s cli xdebug'
+
 function ol () {
     latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
     xdg-open "$latest_file"
