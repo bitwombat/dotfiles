@@ -12,6 +12,8 @@ xrandr --output HDMI2 --primary &> /dev/null
 xrandr --output VGA1 --mode 1280x1024 --left-of HDMI2 &> /dev/null
 xrandr --output HDMI2 --primary &> /dev/null
 
+irexec &
+
 redshift -l -33.86:151.21 -m randr &
 
 eval `ssh-agent` &> /dev/null
