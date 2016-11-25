@@ -94,6 +94,8 @@ alias pwdr='pwd > ~/.pwdremember'
 alias cdr='cd $(cat ~/.pwdremember)'
 alias sudo='sudo '
 
+# Key bindings
+bind -x '"\C-gs":"term same"'
 
 # For many programs
 export EDITOR=vim
