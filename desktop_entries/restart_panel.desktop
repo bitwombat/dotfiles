@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Restart Panel
+GenericName=Restart Panels
+Comment=
+Exec=/home/jbell/bin/xfce_restart
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=false

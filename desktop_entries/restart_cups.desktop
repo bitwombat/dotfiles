@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=restartcups
+GenericName=Restart CUPS
+Comment=
+Exec=sudo /root/restart_cups
+Terminal=true
+Type=Application
+X-GNOME-Autostart-enabled=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=closekids
+GenericName=Close Kids Processes
+Comment=
+Exec=/home/jbell/bin/killchildren
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=false

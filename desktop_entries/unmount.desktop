@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Unmount
+GenericName=Unmount
+Exec=sudo /root/unmount_nfs
+Terminal=true
+Type=Application
+X-GNOME-Autostart-enabled=true

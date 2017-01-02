@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=trackman
+GenericName=Trackman settings
+Comment=Sets up the buttons on the trackman
+Exec=/home/jbell/bin/trackman
+Terminal=true
+Type=Application
+X-GNOME-Autostart-enabled=true

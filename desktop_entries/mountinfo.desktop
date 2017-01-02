@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Mount info
+GenericName=mount info
+Comment=Mounts the encfs file system over NFS
+Exec=/home/jbell/bin/mount.info
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,8 @@
+[Desktop Entry] 
+Name=Minecraft
+Comment=
+Exec=/usr/bin/minecraft
+Icon=/usr/share/icons/minecraft.png
+Terminal=false
+Type=Application
+StartupNotify=true
