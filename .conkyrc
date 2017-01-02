@@ -49,8 +49,6 @@ ${color grey}Core0 Temperature: $alignr${color white}${exec /home/gbell2/bin/sen
 ${color grey}Core1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 1"}
 ${color grey}Core2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 2"}
 ${color grey}Core3 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 3"}
-${color grey}Temp1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky SYSTIN}
-${color grey}Temp2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky CPUTIN}
 ${color grey}Case fan speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2180))}%
 ${color grey}CPU Fan/pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2106))}%
 ${color grey}$hr
