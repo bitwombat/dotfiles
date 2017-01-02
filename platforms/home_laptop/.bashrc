@@ -2,4 +2,4 @@
 #. $HOME/.myconfigs/.bashrc.basics
 . $HOME/.myconfigs/common/.bashrc.linux
 . $HOME/.myconfigs/common/.bashrc.ubuntu
-. $HOME/.myconfigs/local/.bashrc.extras
+. $HOME/.myconfigs/this_platform/.bashrc.extras

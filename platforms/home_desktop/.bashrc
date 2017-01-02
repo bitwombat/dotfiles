@@ -3,4 +3,4 @@
 . $HOME/.myconfigs/common/.bashrc.linux
 . $HOME/.myconfigs/common/.bashrc.ubuntu
 [ -e $HOME/.myconfigs/common/.bashrc.sensitive ] && [ . $HOME/.myconfigs/common/.bashrc.sensitive ]
-. $HOME/.myconfigs/local/.bashrc.extras
+. $HOME/.myconfigs/this_platform/.bashrc.extras

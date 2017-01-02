@@ -8,7 +8,7 @@ Unix configs
 git clone http://github.com/bitwombat/unix_configs
 mv unix_configs .myconfigs
 cd .myconfigs
-ln -s locals/some_appropriate_configuration local
+ln -s platforms/some_appropriate_configuration this_platform
 . setup.sh
 sudo cp .bashrc.basics /etc
 sudo chmod 644 /etc/.bashrc.basics 
