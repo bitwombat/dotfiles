@@ -12,6 +12,9 @@ fi
 cd ~
 mv -f .bashrc dotbashrc_old
 ln -s .myconfigs/local/.bashrc
-for i in .myconfigs/.*; do
+ln -s .myconfigs/local/.vimrc
+
+find .myconfigs/ -maxdepth 1 -type f -name '.*' | while read -d $'\0' dotfile
+do
     ln -s $i
 done
