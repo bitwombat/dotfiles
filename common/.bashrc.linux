@@ -17,10 +17,10 @@ alias mountt="mount | column -t | egrep '^/dev'"
 alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias naut="nautilus --no-desktop"
-alias screenshot="gnome-screenshot -a"
-alias truecrypt="truecrypt -t"
 alias o="xdg-open"
 alias aud="audacious"
+
+alias viewjournal="journalctl | tr -cd '[:space:][:print:]' | vim -"
 
 alias make_ctags="ctags -R --fields=+aimS --languages=php"
 
