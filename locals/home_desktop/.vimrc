@@ -1,8 +1,8 @@
 
-source $HOME/.myconfigs/.vimrc.common
-source $HOME/.myconfigs/.vimrc.features
-source $HOME/.myconfigs/.vimrc.plugins
-source $HOME/.myconfigs/.vimrc.filetypes
+source $HOME/.myconfigs/common/.vimrc.common
+source $HOME/.myconfigs/common/.vimrc.features
+source $HOME/.myconfigs/common/.vimrc.plugins
+source $HOME/.myconfigs/common/.vimrc.filetypes
 
 colorscheme zenburn
 

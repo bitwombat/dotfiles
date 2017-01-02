@@ -10,7 +10,7 @@
 #. $HOME/.myconfigs/.bashrc.basics
 
 alias viewjournal="journalctl | tr -cd '[:space:][:print:]' | vim -"
-. $HOME/.myconfigs/.bashrc.linux
-. $HOME/.myconfigs/.bashrc.ubuntu
-[ -e $HOME/.myconfigs/.bashrc.sensitive ] && [ . $HOME/.myconfigs/.bashrc.sensitive ]
+. $HOME/.myconfigs/common/.bashrc.linux
+. $HOME/.myconfigs/common/.bashrc.ubuntu
+[ -e $HOME/.myconfigs/common/.bashrc.sensitive ] && [ . $HOME/.myconfigs/common/.bashrc.sensitive ]
 . $HOME/.myconfigs/local/.bashrc.extras
