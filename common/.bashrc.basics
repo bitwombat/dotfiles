@@ -119,7 +119,7 @@ export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ 
 if [ -r "$HOME/.myconfigs/this_platform/prompt_color" ]; then
   . $HOME/.myconfigs/this_platform/prompt_color
 else
-  PROMPT_COLOR=33
+  PROMPT_COLOR="33;7"
 fi
 
 case $TERM in
