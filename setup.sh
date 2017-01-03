@@ -10,8 +10,8 @@ if [ ! -e this_platform ]; then
 fi
 
 cd ~
-[ -r .bashrc ] && mv -f .bashrc dotbashrc_old
-if [ -r .bashrc ]; then
+[ -f .bashrc ] && mv -f .bashrc dotbashrc_old
+if [ -f .bashrc ]; then
     echo "WARNING: .bashrc already exists"
 else
     ln -s .myconfigs/this_platform/.bashrc
@@ -25,5 +25,5 @@ fi
 
 find .myconfigs/ -maxdepth 1 -type f -name '.*' | while read -d $'\0' dotfile
 do
-    ln -s $i
+    ln -s $dotfile
 done
