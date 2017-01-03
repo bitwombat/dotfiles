@@ -3,6 +3,7 @@ export HISTCONTROL=ignoredups:ignorespace
 export HISTSIZE=1000
 shopt -s histappend
 shopt -s no_empty_cmd_completion
+set -o emacs
 ulimit -c 0
 umask 027
 
