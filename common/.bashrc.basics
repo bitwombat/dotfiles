@@ -116,18 +116,24 @@ export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
 export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
 
+if [ -r "$HOME/.myconfigs/this_platform/prompt_color" ]; then
+  . $HOME/.myconfigs/this_platform/prompt_color
+else
+  PROMPT_COLOR=33
+fi
+
 case $TERM in
     screen*)
         #SCREENTITLEPROGRAM='\[\ek\e\\\]'
         #SCREENTITLE='\[\ek\w\e\\\]'
-        USERHOST="\[\e[32m\]\u@\h\[\e[0m\]"
+        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
         CURDIR="\$CurDir"
     ;;
     xterm*|cygwin*|rxvt*)
         TITLEBAR_START="\e]0;"
         TITLEBAR_END="\007"
         XTERM_TITLEBAR="\[${TITLEBAR_START}\$CurDir${TITLEBAR_END}\]"
-        USERHOST="\[\e[32m\]\u@\h\[\e[0m\]"
+        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
         CURDIR="\$CurDir"
         ;;
     *)
