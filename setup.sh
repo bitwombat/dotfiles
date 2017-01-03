@@ -10,9 +10,18 @@ if [ ! -e this_platform ]; then
 fi
 
 cd ~
-mv -f .bashrc dotbashrc_old
-ln -s .myconfigs/this_platform/.bashrc
-ln -s .myconfigs/this_platform/.vimrc
+[ -r .bashrc ] && mv -f .bashrc dotbashrc_old
+if [ -r .bashrc ]; then
+    echo "WARNING: .bashrc already exists"
+else
+    ln -s .myconfigs/this_platform/.bashrc
+fi
+
+if [ -r .vimrc ]; then
+    echo "WARNING: .vimrc already exists"
+else
+    ln -s .myconfigs/this_platform/.vimrc
+fi
 
 find .myconfigs/ -maxdepth 1 -type f -name '.*' | while read -d $'\0' dotfile
 do
