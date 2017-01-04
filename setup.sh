@@ -23,7 +23,7 @@ else
     ln -s .myconfigs/this_platform/.vimrc
 fi
 
-find .myconfigs/ -maxdepth 1 -type f -name '.*' | while read -d $'\0' dotfile
+find .myconfigs/ -maxdepth 1 -type f -name '.*' -print0 | while read -d $'\0' dotfile
 do
     ln -s $dotfile
 done
