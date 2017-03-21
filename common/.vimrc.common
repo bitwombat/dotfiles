@@ -4,7 +4,19 @@
 " Features
 filetype on
 filetype plugin on
-syntax on
+syntax on " Set the title of the screen window
+if &term =~ "screen"
+  set t_ts=k
+  set t_fs=\
+endif
+if &term =~ "screen" || &term == "xterm"
+  set title
+endif
+set titlestring=%{expand(\"%:t\")}
+let &titleold=getcwd()
+
+" When finding or ctrl-x, search entire tree
+set path+=**
 
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 " Someday when I switch to a better terminal program, try these
@@ -50,8 +62,8 @@ hi IncSearch cterm=NONE
 set autowrite
 set backup
 set backupdir=/tmp
-set complete+=k
-set dictionary=/usr/share/dict/words
+"set complete+=k
+"set dictionary=/usr/share/dict/words
 set noerrorbells
 set fileformat=unix
 set ignorecase
@@ -60,7 +72,7 @@ set scrolloff=2
 set smartcase
 set vb t_vb=
 set wildmenu
-set wildmode=list:longest,full
+"set wildmode=list:longest,full
 
 " Editor behaviour
 set tabstop=4
@@ -106,6 +118,12 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
     set fillchars+=vert:│
 " }
 
+" Use a cursor line when navigating around, off when in insert mode
+set cursorline
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+
 " Keys
 let mapleader = " "
 nnoremap <leader>n :NERDTree<CR>
@@ -114,6 +132,10 @@ nnoremap <leader>b :BufExplorer<CR><CR>
 nnoremap <leader>s :BufExplorerVerticalSplit<CR>
 nnoremap <leader>c :cd %:h<CR>
 
+" Allows you to easily replace the current word and all its occurrences. (Global Change)
+nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
+vnoremap <leader>gc y:%s/<C-r>"/
+
 " Move to match with tab
 nmap <tab> %
 vmap <tab> %
@@ -121,9 +143,8 @@ vmap <tab> %
 " Escape from insert mode with jj
 inoremap jj <ESC>
 
-" Default to regex searches (not vim expressions)
-"nnoremap / /\v
-"nnoremap / /\v
+" Ctrl-C opens up a line - for inside things like {}
+imap <C-c> <CR><Esc>O<Tab>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
@@ -170,8 +191,8 @@ map t :tabnew<CR>
 map U zA
 map , za
 
-" Ctrl-A copies the entire buffer to the system clipboard
-"noremap <C-a> <Esc>gg"+yG
+" Copy the entire buffer to the system clipboard (like Ctrl-A)
+noremap <leader>a <Esc>gg"+yG
 
 " Ctrl-A and Ctrl-E work as they do on the command line
 map <C-a> ^
@@ -188,9 +209,11 @@ noremap gV `[v`]
 vnoremap < <gv
 vnoremap > >gv
 
-" Allows you to easily replace the current word and all its occurrences.
-nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
-vnoremap <Leader>rc y:%s/<C-r>"/
+" Change cw and dw to know about camelCase and underscores
+" Problem with this is the hlsearch options highlights a bunch of stuff in the
+" file since we're using /.  Didn't find a "non-saved" / in vim.  
+" Installed https://github.com/chaoren/vim-wordmotion  which seems to work
+" but not with PhpStorm's Vim plugin.
+"map cw c/\u\\|[^0-9A-Za-z_]<CR>
+"map dw d/\u\\|[^0-9A-Za-z_]<CR>
 
-" Ctrl-C opens up a line - for inside things like {}
-imap <C-c> <CR><Esc>O<Tab>
