@@ -2,6 +2,8 @@
 export HISTCONTROL=ignoredups:ignorespace
 export HISTSIZE=1000
 shopt -s histappend
+shopt -s histverify
+shopt -s histreedit
 shopt -s no_empty_cmd_completion
 set -o emacs
 ulimit -c 0
@@ -97,6 +99,12 @@ alias sudo='sudo '
 
 # Key bindings
 bind -x '"\C-gs":"term same"'
+
+# xdebug from the cli won't reliably read the xdebug.ini
+# PHP 7.0, just requires this var to exist,
+# PHP 5.6, needs the settings in it
+#export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0"
+export XDEBUG_CONFIG=
 
 # For many programs
 export EDITOR=vim
