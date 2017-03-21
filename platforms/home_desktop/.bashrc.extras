@@ -13,6 +13,8 @@ function scr() {
         elif [ $scr_count -eq 0 ]; then
             echo "I see no .scr files"
         else
+            session_name=$(cat $scr_files | grep 'sessionname' | sed -e 's/sessionname//')
+            set_title $session_name
             screen -c $scr_files
         fi
     fi
