@@ -14,6 +14,9 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let g:syntastic_quiet_messages = { "level" : "warnings", "type": "style"}
 let g:syntastic_python_checkers=['pyflakes', 'python']
 
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+
 " If we want to hear about unused imported packages in Python, 
 " have to re-enable warnings
 autocmd FileType python unlet! g:syntastic_quiet_messages
@@ -91,4 +94,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
     let g:indent_guides_guide_size = 1
     let g:indent_guides_enable_on_vim_startup = 1
 " }
+
+" Tell ack.vim to use ag
+" Run with :Ack
+let g:ackprg = 'ag --vimgrep'
 
