@@ -80,24 +80,33 @@ function vix() {
 # Aliases
 alias ..="cd .."
 alias cp='cp -i'
+alias df="pydf"
+alias gst='git status'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
-alias la='ls -ltrh --color=yes --group-directories-first'
-alias lo='ls -lth --color=yes --group-directories-first'
-alias lr='find . -mtime -1'
-alias le='ls -XBoh --color=yes --group-directories-first'
-alias lg='ls -Blh --color=yes --group-directories-first'
-alias ll='ls -Boh --color=yes --group-directories-first'
-alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
+alias mkdir="mkdir -vp"
 alias mv="mv -i"
+alias o="open"
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
-alias o="open"
-alias pwdr='pwd > ~/.pwdremember'
+
 alias cdr='cd $(cat ~/.pwdremember)'
-alias sudo='sudo '
+alias pwdr='pwd > ~/.pwdremember'
+
+# (la)test
+alias la='ls -ltrh --color=yes --group-directories-first'
+# (r)ecently modified
+alias lr='find . -mtime -1'
+# sort by (e)xtension
+alias le='ls -XBoh --color=yes --group-directories-first'
+# (l)ong list
+alias ll='ls -Boh --color=yes --group-directories-first'
+# sort by si(z)e
+alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
+
 
 # Key bindings
+# Ctrl-g s will open a new terminal window in the same dir
 bind -x '"\C-gs":"term same"'
 
 # xdebug from the cli won't reliably read the xdebug.ini
