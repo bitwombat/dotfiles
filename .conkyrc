@@ -65,9 +65,9 @@ ${color grey}$hr
 ${alignc}${color orange}${time %A, %e %B %G}${color grey}
 ${font CourierNew :size=8}${execpi 60 /home/gbell2/bin/cal.conky}
 ${color grey}$hr
-${font CourierNew :size=10}${color orange}  PID USER      %CPU  COMMAND
+${font CourierNew :size=10}${color orange}  PID USER     %CPU COMMAND
 ${color grey}${exec /home/gbell2/bin/top_cpu.conky}
 ${color grey}$hr
-${color orange}  PID USER      %MEM  COMMAND
+${color orange}  PID USER      MEM COMMAND
 ${color grey}${exec /home/gbell2/bin/top_mem.conky}
 ]];
