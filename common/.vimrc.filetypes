@@ -59,7 +59,18 @@ augroup php
     autocmd BufReadPost,FileReadPost *.php  nnoremap <silent><buffer> K <Esc>:silent! call system("phpdoc " . expand('<cword>'))<CR>
 augroup END
 
+augroup js
+    autocmd BufReadPost,FileReadPost *.js set tabstop=2
+    autocmd BufReadPost,FileReadPost *.js set autoindent
+    autocmd BufReadPost,FileReadPost *.js set smartindent
+augroup END
+
 augroup james
     autocmd BufReadPost,FileReadPost */deit/*.php set noexpandtab
     autocmd BufReadPost,FileReadPost */uf_checkout/*/src/*.php set noexpandtab
 augroup END
+
+augroup bookmarks
+    autocmd VimLeavePre Bookmarks.txt call ClearRegs()
+augroup END
+

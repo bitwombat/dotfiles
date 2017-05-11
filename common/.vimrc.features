@@ -34,10 +34,6 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
 
-" HTML tag closing
-autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
-autocmd FileType html iabbrev </ </<C-X><C-O>
-
 " vim -b : edit binary using xxd-format!
 augroup binary
   au!
@@ -67,3 +63,28 @@ augroup encrypted
     autocmd BufWritePost,FileWritePost  *.gpg u
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
+
+" HTML tag closing
+autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
+autocmd FileType html iabbrev </ </<C-X><C-O>
+
+" Format HTML
+function! PrettyHTML()
+    set smartindent
+    filetype indent on
+    set sw=2 
+    set ft=html
+    %s/>/>\r/g
+    %s/<\//\r<\//g
+    g/^\s*$/d
+    normal gg=G
+endfunction
+command! PrettyHTML call PrettyHTML()
+
+function! ClearRegs()
+    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    for r in regs
+        call setreg(r, [])
+    endfor
+endfunction
+command! ClearRegs call ClearRegs()

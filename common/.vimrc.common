@@ -136,6 +136,10 @@ nnoremap <leader>c :cd %:h<CR>
 nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
 vnoremap <leader>gc y:%s/<C-r>"/
 
+" Make it easier to edit vimrc
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Move to match with tab
 nmap <tab> %
 vmap <tab> %
