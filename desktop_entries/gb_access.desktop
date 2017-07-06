@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=gb_access
+Exec="/home/gbell2/bin/gb_access"
+Categories=Utility;Security;
+Terminal=true

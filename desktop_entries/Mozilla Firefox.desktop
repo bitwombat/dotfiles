@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Mozilla Firefox (wine)
+Exec=env WINEPREFIX="/home/gbell2/.local/share/wineprefixes/firefox" wine ".local/share/wineprefixes/firefox/dosdevices/c:/Program Files/Mozilla Firefox/firefox.exe"
+Type=Application
+StartupNotify=true
+Path=/home/gbell2/.local/share/wineprefixes/firefox/dosdevices/c:/Program Files/Mozilla Firefox
+Icon=F0E6_firefox.0
+Categories=Office;Network;Utility
