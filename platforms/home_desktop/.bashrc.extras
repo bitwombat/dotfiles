@@ -6,16 +6,13 @@ function scr() {
     if [ $1 ]; then
         screen -c $1
     else
-        scr_files=$(ls -1 *.scr 2>/dev/null )
-        scr_count=$(echo $scr_files | wc -w)
-        if [ $scr_count -gt 1 ]; then
-            echo "More than 1 .scr file to choose from.  That's too many. " $scr_files
-        elif [ $scr_count -eq 0 ]; then
-            echo "I see no .scr files"
+        CONF=screen.conf
+        if [ ! -e $CONF ]; then
+            echo "ERROR: Can't find $CONF"
         else
-            session_name=$(cat $scr_files | grep 'sessionname' | sed -e 's/sessionname//')
+            session_name=$(cat $CONF | grep 'sessionname' | sed -e 's/sessionname//')
             set_title $session_name
-            screen -c $scr_files
+            screen -c $CONF
         fi
     fi
 }
@@ -69,6 +66,7 @@ function ssh() {
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
+alias aquasafe="cd /www/aquasafe; newgrp www-data; . set_path"
 alias cde='cd /1_EIT/0_units/'
 alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
 
