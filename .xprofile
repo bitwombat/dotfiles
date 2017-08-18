@@ -3,7 +3,7 @@
 # Run these sequentially - didn't want to figure out how to do it in rc.lua
 # Maybe if sequential, I won't get the 'unable to grab keyboard' message.
 
-export PATH=$PATH:/home/gbell2/bin
+export PATH=$PATH:/home/gbell2/bin:/opt/bin
 
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/.myconfigs/.Xmodmap
