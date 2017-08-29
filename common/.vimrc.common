@@ -1,20 +1,10 @@
 " VIM settings that should always be
 "
 
-" Features
+" Features {{{
 filetype on
 filetype plugin on
-syntax on " Set the title of the screen window
-if &term =~ "screen"
-  set t_ts=k
-  set t_fs=\
-endif
-if &term =~ "screen" || &term == "xterm"
-  set title
-endif
-set titlestring=%{expand(\"%:t\")}
-let &titleold=getcwd()
-
+syntax on
 " When finding or ctrl-x, search entire tree
 set path+=**
 
@@ -29,8 +19,9 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 
 set pastetoggle=<F2>
 set backspace=indent,eol,start
+" }}}
 
-" Visual settings
+" Visual settings {{{
 set hlsearch
 set laststatus=2
 set modeline
@@ -39,8 +30,33 @@ set showcmd
 set showmatch
 set showmode
 
-" Folding settings
+" Use a cursor line when navigating around, off when in insert mode
+set cursorline
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+set fillchars+=vert:│  " Vertical split 
+
+" Fix error highlighting in terminal
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+
+" Set the title of the screen window
+if &term =~ "screen"
+  set t_ts=k
+  set t_fs=\
+endif
+if &term =~ "screen" || &term == "xterm"
+  set title
+endif
+set titlestring=%{expand(\"%:t\")}
+let &titleold=getcwd()
+
+" }}}
+
+" Folding settings {{{
 set foldmethod=indent
+set foldlevelstart=1
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 
@@ -48,17 +64,9 @@ syn sync fromstart
 set nocompatible
 let g:php_folding=1
 let g:javaScript_fold=1
+" }}}
 
-" Search settings
-hi Search ctermbg=4
-hi Search ctermfg=7
-hi Search cterm=bold
-hi IncSearch ctermbg=4
-hi IncSearch ctermfg=7
-hi IncSearch cterm=NONE
-
-
-" Feature-related Variables
+" Feature-related variables {{{
 set autowrite
 set backup
 set backupdir=/tmp
@@ -73,58 +81,20 @@ set smartcase
 set vb t_vb=
 set wildmenu
 "set wildmode=list:longest,full
+" }}}
 
-" Editor behaviour
+" Editor behaviour {{{
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set wrap
 set textwidth=79
 set formatoptions=q
 set expandtab
 "set colorcolumn=85
+" }}}
 
-" Make it obvious in gvim when we have focus
-" (unfortunately, this makes it re-fold the code on reentry)
-":au FocusLost * syntax off
-":au FocusGained * syntax on
-
-" GUI options {
-    set guioptions-=m
-    set guioptions-=T
-    "set guifont=Andale\ Mono\ 10
-    set guifont=Source\ Code\ Pro\ 11
-    set guioptions-=r
-    :amenu Edit.Paste\ from\ select  "*P
-" }
-
-" Fix error highlighting in terminal
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-
-" Ctags {
-    set tags=./tags,tags
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/scripts/tags'
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/admin-app/tags'
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/product-app/tags'
-
-    " Make tags placed in .git/tags file available in all levels of a repository
-    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-    if gitroot != ''
-        let &tags = &tags . ',' . gitroot . '/.git/tags'
-    endif
-" }
-
-" Vertical split {
-    set fillchars+=vert:│
-" }
-
-" Use a cursor line when navigating around, off when in insert mode
-set cursorline
-autocmd InsertLeave,WinEnter * set cursorline
-autocmd InsertEnter,WinLeave * set nocursorline
-
-
-" Keys
+" Keys {{{
 let mapleader = " "
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
@@ -220,4 +190,19 @@ vnoremap > >gv
 " but not with PhpStorm's Vim plugin.
 "map cw c/\u\\|[^0-9A-Za-z_]<CR>
 "map dw d/\u\\|[^0-9A-Za-z_]<CR>
+" }}}
 
+" Ctags {{{
+    set tags=./tags,tags
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/scripts/tags'
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/admin-app/tags'
+    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/product-app/tags'
+
+    " Make tags placed in .git/tags file available in all levels of a repository
+    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+    if gitroot != ''
+        let &tags = &tags . ',' . gitroot . '/.git/tags'
+    endif
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0

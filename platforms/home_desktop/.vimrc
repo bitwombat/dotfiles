@@ -5,4 +5,3 @@ source $HOME/.myconfigs/common/.vimrc.plugins
 source $HOME/.myconfigs/common/.vimrc.filetypes
 
 colorscheme zenburn
-
