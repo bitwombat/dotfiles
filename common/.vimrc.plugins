@@ -1,16 +1,19 @@
 call pathogen#infect()
 
-" CtrlP Settings
+" CtrlP Settings {{{
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window = 'bottom,order:ttb'
+" }}}
 
-" Omnifunc
+" Omnifunc {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" }}}
 
-" Syntastic options
+" Syntastic options {{{
 let g:syntastic_quiet_messages = { "level" : "warnings", "type": "style"}
 let g:syntastic_python_checkers=['pyflakes', 'python']
 
@@ -51,13 +54,15 @@ nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPreviou
 nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
 nmap <silent> e[  <Plug>LocationPrevious
 nmap <silent> e]  <Plug>LocationNext
+" }}}
 
-" Vdebug options
+" Vdebug options {{{
 let g:vdebug_options={}
 let g:vdebug_options['port']=10000
 let g:vdebug_options['ide_key']='PHPSTORM'
+" }}}
 
-" NERDTree
+" NERDTree {{{
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Temporary because of a bug
 let NERDTreeDirArrows=0
@@ -69,12 +74,14 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+" }}}
 
-" Vmath
+" Vmath {{{
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
+" }}}
 
-" Airline
+" Airline {{{
 " Turn off "INSERT" text at bottom, especially since airline shows that for us
 set noshowmode
 let g:airline_theme='molokai'
@@ -92,9 +99,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
     let g:indent_guides_enable_on_vim_startup = 1
-" }
+" }}}
 
-" Tell ack.vim to use ag
+" Ack {{{
 " Run with :Ack
+" Tell it to use ag
 let g:ackprg = 'ag --vimgrep'
+" }}}
 
+" vim:foldmethod=marker:foldlevel=0
