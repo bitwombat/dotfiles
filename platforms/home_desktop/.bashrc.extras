@@ -63,6 +63,9 @@ function ssh() {
     fi  
 } 
 
+alias aedit="audacity"
+alias aplay="audacious"
+
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
