@@ -2,7 +2,23 @@ termcapinfo xterm ti@:te@
 defscrollback 99999
 startup_message off
 
-hardstatus alwayslastline '%{= wk}%?%-Lw%?%{r}(%{k}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %S'
+unsetenv s
+setenv s "$s%{=r}"   # Reverse attribute, also reset all
+setenv s "$s "       # space
+setenv s "$s%-w"     # All window names up to the current window
+setenv s "$s%{-r}"   # Remove reverse attribute
+setenv s "$s%n"      # Window number
+setenv s "$s "       # space
+setenv s "$s%t"      # Window title
+setenv s "$s%{+r}"   # Remove attribute (this appears to mean the last one)
+setenv s "$s%+w"     # All window numbers and names starting with the window after the current one
+setenv s "$s%="      # pad the string to the display width (right justify basically)
+setenv s "$s "   	 # space
+setenv s "$s%{+b}"   # Add bold
+setenv s "$s%S"      # session name
+setenv s "$s "       # space
+hardstatus alwayslastline "$s"
+
 # This messes up aptitude and any other apps that know what PgUp and PgDn are
 #bindkey "^[[5~" eval "copy" "stuff ^b"
 #bindkey "^[[6~" eval "copy" "stuff ^f"
