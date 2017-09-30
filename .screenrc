@@ -1,20 +1,17 @@
-#hardstatus alwayslastline "%{= kG}[ %{G}%H %{G}]%{g}[%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%c %{g}]"
-term screen-256color
-hardstatus alwayslastline "[%H] %-Lw%{= bw}%50>%n%f* %t%{-}%+Lw%="
+termcapinfo xterm ti@:te@
+defscrollback 99999
 startup_message off
-#shelltitle '$ |bash'
-#screen -t shell bash
 
+hardstatus alwayslastline '%{= wk}%?%-Lw%?%{r}(%{k}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %S'
+# This messes up aptitude and any other apps that know what PgUp and PgDn are
 #bindkey "^[[5~" eval "copy" "stuff ^b"
 #bindkey "^[[6~" eval "copy" "stuff ^f"
-
-# terminfo and termcap for nice 256 color terminal
-# allow bold colors - necessary for some reason
-attrcolor b ".I"
-# tell screen how to set colors. AB = background, AF=foreground
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-# erase background with current bg color
-#defbce "on" 
-
-#escape q
-#bind q other
+bindkey "\012" prev
+bindkey "\013" next
+bind j prev
+bind k next
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+termcapinfo xterm*|xs|rxvt|terminal ti@:te@
+#hardstatus string "screen %n (%t)%? [%h]%?"
+#defhstatus "screen ^E (^Et) | $USER@^EH"
+hardstatus off
