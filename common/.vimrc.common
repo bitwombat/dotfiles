@@ -9,14 +9,6 @@ syntax on
 set path+=**
 
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
-" Someday when I switch to a better terminal program, try these
-"set listchars=tab:↹·,extends:⇉,precedes:⇇,nbsp:␠,trail:␠,nbsp:␣
-
-" Make the current directory follow us around
-" This breaks tags looking in the cwd for the tags file.  If we start vim at
-" the top of a src hierarchy, where tags is, then the lcd breaks that.
-" autocmd BufEnter * silent! lcd %:p:h
-
 set pastetoggle=<F2>
 set backspace=indent,eol,start
 " }}}
@@ -50,7 +42,6 @@ if &term =~ "screen" || &term == "xterm"
   set title
 endif
 set titlestring=%{expand(\"%:t\")}
-let &titleold=getcwd()
 
 " }}}
 
