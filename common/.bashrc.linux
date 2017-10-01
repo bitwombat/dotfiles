@@ -60,8 +60,6 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 export PATH=~/bin:~/bin/bin_common:~/.local/bin:$PATH
 
-export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \

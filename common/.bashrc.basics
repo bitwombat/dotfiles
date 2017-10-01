@@ -132,7 +132,23 @@ export LS_COLORS="no=00:fi=00:di=00;93:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 
 export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
-export PROMPT_COMMAND='DIR=`pwd|sed -e "s!/data/!/!"|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+X='DIR='                       # Set temporary variable DIR to 
+X=${X}'$(pwd'                  # the output of pwd
+X=${X}'|sed -e "s!/data/!/!"'  # piped into sed to remove the data prefix
+X=${X}'|sed -e "s!$HOME!~!"'   # piped into sed to replace the home dir with tilde
+X=${X}');'                     # end command
+X=${X}'CurDir=$DIR;'           # set CurDir to this result by default
+X=${X}'if [ ${#DIR} -gt 30 ];' # or if the prompt is too long
+X=${X}'then CurDir=${DIR:0:12}...${DIR:${#DIR}-15};' # then replace the middle with dots
+X=${X}'fi;'
+
+if [ -n "$STY" ]; then  # we're inside of screen
+    X=${X}'pwd=$(pwd);' # get the pwd
+    X=${X}'LAST_COMPONENT=${pwd##*/};'  # and pull off the string after the last slash
+    X=${X}'printf "\033k%s\033\\" $LAST_COMPONENT;'  # print that out using the screen escape sequence
+fi
+export PROMPT_COMMAND=$X
+
 
 if [ -r "$HOME/.myconfigs/this_platform/prompt_color" ]; then
   . $HOME/.myconfigs/this_platform/prompt_color
@@ -168,4 +184,3 @@ if [[ $EUID -eq 0 ]]; then
 else
     PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 fi
-
