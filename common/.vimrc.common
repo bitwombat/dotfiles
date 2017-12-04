@@ -55,6 +55,10 @@ syn sync fromstart
 set nocompatible
 let g:php_folding=1
 let g:javaScript_fold=1
+
+" The markdown ftplugin is enabled with this
+let g:markdown_folding=1
+
 " }}}
 
 " Feature-related variables {{{

@@ -12,14 +12,25 @@ augroup python
     autocmd BufReadPost,FileReadPost *.py  call matchadd('ColorColumn', '\%81v', 100)
 augroup END
 
+" Without the fileytype=html, =G reformatting doesn't work, even though
+" filetype seems to get set to html without it.
 augroup html
+    autocmd BufReadPost,FileReadPost *.html,*.phtml set sw=2
     autocmd BufReadPost,FileReadPost *.html,*.phtml set foldmethod=syntax
+    autocmd BufReadPost,FileReadPost *.html,*.phtml filetype indent on
+    autocmd BufReadPost,FileReadPost *.html,*.phtml set smartindent
+    autocmd BufReadPost,FileReadPost *.html,*.phtml set filetype=html
     autocmd BufReadPost,FileReadPost *.html,*.phtml abbreviate sph <?php
     autocmd BufReadPost,FileReadPost *.html,*.phtml abbreviate eph ?>
 augroup END
 
+" /usr/share/vim/vim74/syntax/markdown.vim calls javascript.vim which sets
+" foldmethod to syntax.  Set it back to what ftplugin/markdown.vim needs to
+" work right.
 augroup markdown
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    autocmd BufNewFile,BufReadPost *.md set foldmethod=expr
+    autocmd BufNewFile,BufReadPost *.md let g:markdown_folding=1
 augroup END
 
 augroup css
@@ -73,4 +84,5 @@ augroup END
 augroup bookmarks
     autocmd VimLeavePre Bookmarks.txt call ClearRegs()
 augroup END
+
 
