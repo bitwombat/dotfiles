@@ -1,5 +1,5 @@
 conky.config = {
-	background = true,
+	background = false,
 	border_width = 1,
 	cpu_avg_samples = 2,
 	default_color = 'white',
@@ -49,8 +49,8 @@ ${color grey}Core0 Temperature: $alignr${color white}${exec /home/gbell2/bin/sen
 ${color grey}Core1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 1"}
 ${color grey}Core2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 2"}
 ${color grey}Core3 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 3"}
-${color grey}Case Fan Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2180))}%
-${color grey}CPU Fan/pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2106))}%
+${color grey}Pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2389))}%
+${color grey}Unused Speed?: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2106))}%
 ${color grey}$hr
 ${alignc}${color orange}Storage:
 ${color grey}Data $alignr ${color white}${fs_free /data} free ${fs_bar 6,75 /data}
@@ -70,7 +70,7 @@ ${color grey}${exec /home/gbell2/bin/top_cpu.conky}
 ${color grey}$hr
 ${color orange}  PID USER      MEM COMMAND
 ${color grey}${exec /home/gbell2/bin/top_mem.conky}
-#${color grey}$hr
-#${color orange}  PID USER      MEM COMMAND
-#${color grey}${exec /home/gbell2/bin/top_io.conky}
+${color grey}$hr
+${alignc}${color orange}Internet Usage:
+${color grey}${exec /home/gbell2/bin/display_internode.conky}
 ]];
