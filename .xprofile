@@ -3,14 +3,11 @@
 # Run these sequentially - didn't want to figure out how to do it in rc.lua
 # Maybe if sequential, I won't get the 'unable to grab keyboard' message.
 
-export PATH=$PATH:/home/gbell2/bin:/opt/bin
-
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/.myconfigs/.Xmodmap
 
 xrandr --output HDMI2 --primary &> /dev/null
-xrandr --output VGA1 --mode 1280x1024 --left-of HDMI2 &> /dev/null
-xrandr --output HDMI2 --primary &> /dev/null
+xrandr --output VGA1 --mode 1680x1050 --left-of HDMI2 &> /dev/null
 
 irexec &
 
