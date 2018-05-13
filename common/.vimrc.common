@@ -14,7 +14,6 @@ set backspace=indent,eol,start
 " }}}
 
 " Visual settings {{{
-set hlsearch
 set laststatus=2
 set modeline
 set ruler
@@ -69,13 +68,17 @@ set backupdir=/tmp
 "set dictionary=/usr/share/dict/words
 set noerrorbells
 set fileformat=unix
-set ignorecase
-set incsearch
 set scrolloff=2
-set smartcase
 set vb t_vb=
 set wildmenu
 "set wildmode=list:longest,full
+" }}}
+
+" Search settings {{{
+set ignorecase
+set incsearch
+set smartcase
+set hlsearch
 " }}}
 
 " Editor behaviour {{{
@@ -102,8 +105,8 @@ nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
 vnoremap <leader>gc y:%s/<C-r>"/
 
 " Make it easier to edit vimrc
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Move to match with tab
 nmap <tab> %
@@ -112,7 +115,7 @@ vmap <tab> %
 " Escape from insert mode with jj
 inoremap jj <ESC>
 
-" Ctrl-C opens up a line - for inside things like {}
+" Ctrl-C in insert mode opens up a line - for inside things like {}
 imap <C-c> <CR><Esc>O<Tab>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -131,12 +134,15 @@ map Q :w<CR>:!clear;python %<CR>
 map <F11> :cn<CR>
 map <F10> :cN<CR>
 
-" Saving/Quitting
+" Saving
 map <F1> :update<CR>
 inoremap <F1> <ESC>:update<CR>a
 map <C-s> :update<CR>
 imap <C-s> <ESC>:update<CR>a
-map <C-D> :q<CR>
+
+" Quitting
+" closes the current window.  Will exit if last window (unlike Ctrl-W C).
+nnoremap <C-d> :q<CR>
 
 " Viewing Modes
 map <F6> :set invnumber<CR>
@@ -177,6 +183,9 @@ noremap gV `[v`]
 " performing an indentation.
 vnoremap < <gv
 vnoremap > >gv
+
+" Remove the highlighting from the search
+nmap <silent> <BS>  :nohlsearch<CR>
 
 " Change cw and dw to know about camelCase and underscores
 " Problem with this is the hlsearch options highlights a bunch of stuff in the
