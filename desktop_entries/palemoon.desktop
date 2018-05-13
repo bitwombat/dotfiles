@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Palemoon
+Comment=Firefox browser fork
+Exec=/opt/bin/palemoon
+Icon=/opt/palemoon/browser/icons/mozicon128.png
+Terminal=false
+Type=Application
+Categories=Network;

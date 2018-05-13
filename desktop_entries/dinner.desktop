@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=dinner
+Exec="/usr/bin/localc" /info/body/food/dinner_plan.ods
+Categories=Office;Productivity;
+Terminal=false

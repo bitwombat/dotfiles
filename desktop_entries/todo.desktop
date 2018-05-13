@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=todo
+Exec="/usr/bin/localc" /home/gbell2/todo.ods
+Categories=Office;Productivity;
+Terminal=false
