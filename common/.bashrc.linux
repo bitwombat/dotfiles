@@ -58,7 +58,7 @@ NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
 export PATH=$NPM_PACKAGES/bin:$PATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-export PATH=~/bin:~/bin/bin_common:~/.local/bin:$PATH
+export PATH=~/bin:~/.local/bin:$PATH
 
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
