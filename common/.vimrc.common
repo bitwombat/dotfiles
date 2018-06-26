@@ -198,15 +198,7 @@ nmap <silent> <BS>  :nohlsearch<CR>
 
 " Ctags {{{
     set tags=./tags,tags
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/scripts/tags'
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/admin-app/tags'
-    let &tags = &tags . ',/www/uf/checkout/trunk/resource/platform/product-app/tags'
-
-    " Make tags placed in .git/tags file available in all levels of a repository
-    let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-    if gitroot != ''
-        let &tags = &tags . ',' . gitroot . '/.git/tags'
-    endif
+    let &tags = &tags . ',/www/aquasafe/app/.project_ctags'
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
