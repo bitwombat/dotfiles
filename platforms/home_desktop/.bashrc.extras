@@ -1,7 +1,4 @@
 
-# Higher priority paths
-export PATH=/home/gbell2/bin:$PATH
-
 function scr() {
     if [ $1 ]; then
         screen -c $1
@@ -69,7 +66,8 @@ alias aplay="audacious"
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
-alias aquasafe="cd /www/aquasafe; newgrp www-data; . set_path"
+alias aquasafe="cd /www/aquasafe ; newgrp www-data"
+alias aquasafe2=". setup.sh ; umask 022 ; cd app ; composer services-start ; cd .. ; scr"
 alias cde='cd /1_EIT/0_units/'
 alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
 
