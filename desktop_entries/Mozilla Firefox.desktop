@@ -5,4 +5,4 @@ Type=Application
 StartupNotify=true
 Path=/home/gbell2/.local/share/wineprefixes/firefox/dosdevices/c:/Program Files/Mozilla Firefox
 Icon=F0E6_firefox.0
-Categories=Office;Network;Utility
+Categories=Office;Network;Utility;
