@@ -42,6 +42,8 @@ if &term =~ "screen" || &term == "xterm"
 endif
 set titlestring=%{expand(\"%:t\")}
 
+" Make background clearing work in GNU screen
+set t_ut=
 " }}}
 
 " Folding settings {{{

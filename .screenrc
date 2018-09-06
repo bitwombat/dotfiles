@@ -1,6 +1,8 @@
-termcapinfo xterm ti@:te@
+#termcapinfo xterm ti@:te@
+term screen-256color
 defscrollback 99999
 startup_message off
+defbce "on"  # Background clear enable... makes the whole line in vim the background color, not just the text.
 
 unsetenv s
 setenv s "$s%{=r}"   # Reverse attribute, also reset all
@@ -26,8 +28,8 @@ bindkey "\012" prev
 bindkey "\013" next
 bind j prev
 bind k next
-termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
-termcapinfo xterm*|xs|rxvt|terminal ti@:te@
+#termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+#termcapinfo xterm*|xs|rxvt|terminal ti@:te@
 #hardstatus string "screen %n (%t)%? [%h]%?"
 #defhstatus "screen ^E (^Et) | $USER@^EH"
 hardstatus off
