@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Netflix
+Comment=Netflix via Chrome
+Exec=/usr/bin/google-chrome "https://www.netflix.com/SwitchProfile?tkn=GTJYQMCVFNB47CH5O7CKQTFLRA"
+Icon=/opt/palemoon/browser/icons/mozicon128.png
+Terminal=false
+Type=Application
+Categories=Network;

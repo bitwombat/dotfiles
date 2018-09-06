@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Windows
+Comment=Windows 10
+Exec=VirtualBox --startvm Win10
+Icon=/opt/share/icons/win10.png
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;
+X-Desktop-File-Install-Version=0.22
