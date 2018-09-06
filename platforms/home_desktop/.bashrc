@@ -11,3 +11,11 @@
 export FZF_DEFAULT_OPTS="--preview 'head -100 {}'"
 _fzf_compgen_path() { ag -g . "$1"; }
 complete -F _fzf_path_completion -o default -o bashdefault o
+
+if [[ $PWD == "/data/www/aquasafe/app" ]]; then
+  . ../setup.sh
+fi
+
+if [[ $PWD == "/data/www/koala/public_html" ]]; then
+  . ../setup.sh
+fi
