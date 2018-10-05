@@ -34,36 +34,6 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
 
-" vim -b : edit binary using xxd-format!
-augroup binary
-  au!
-  au BufReadPre  *.bin let &bin=1
-  au BufReadPost *.bin if &bin | %!xxd
-  au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &bin | %!xxd -r
-  au BufWritePre *.bin endif
-  au BufWritePost *.bin if &bin | %!xxd
-  au BufWritePost *.bin set nomod | endif
-augroup END
-
-" Transparent editing of gpg encrypted files.
-" By Wouter Hanegraaff <wouter@blub.net>
-augroup encrypted
-    au!
-    autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
-    autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
-    autocmd BufReadPre,FileReadPre      *.gpg set bin
-    autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
-    autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt 2> /dev/null
-    autocmd BufReadPost,FileReadPost    *.gpg set nobin
-    autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
-    autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
-    autocmd BufWritePre,FileWritePre    *.gpg set bin
-    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --encrypt --recipient "greg@bitwombat.com.au"  2>>/dev/null
-    autocmd BufWritePost,FileWritePost  *.gpg u
-    autocmd BufWritePost,FileWritePost  *.gpg set nobin
-augroup END
-
 " HTML tag closing
 autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
 autocmd FileType html iabbrev </ </<C-X><C-O>
