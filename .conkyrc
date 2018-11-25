@@ -42,7 +42,7 @@ ${color grey}$hr
 ${alignc}${color orange}Hardware:
 ${color grey}Load:${color white} ${loadavg 1} ${color grey}/ CPU:${color white} ${cpu}% ${color grey}/ Processes:${color white} $processes ${color grey}/ Run:${color white} $running_processes
 ${color white}${cpubar 7,300}
-${color #ffffff}RAM: ${color #999999}$memperc% ${color #cccccc}
+${color grey}RAM: ${color white}$memperc% ${color #cccccc}
 ${color white}${membar 7,300}
 ${color grey}Frequency:$alignr ${color white}$freq MHz
 ${color grey}Core0 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 0"}
