@@ -15,3 +15,4 @@ fi
 # Workaround for bash/readline bug. Without this, Ctrl-E doesn't work. Line has been left in .inputrc
 # for when it works someday.
 bind -m vi-command ' "\C-e": end-of-line '
+

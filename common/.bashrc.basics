@@ -9,6 +9,13 @@ shopt -s autocd
 ulimit -c 0
 umask 027
 
+# Turn on line editing, even though .inputrc does this, so later binds work
+set -o vi
+
+# Key bindings
+# Ctrl-g s will open a new terminal window in the same dir
+bind -x '"\C-gs":"term same"'
+
 if [ -n "$PS1" ]; then
     stty -ixon
 fi
@@ -104,10 +111,6 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 # sort by si(z)e
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 
-
-# Key bindings
-# Ctrl-g s will open a new terminal window in the same dir
-bind -x '"\C-gs":"term same"'
 
 # xdebug from the cli won't reliably read the xdebug.ini
 # PHP 7.0, just requires this var to exist,
