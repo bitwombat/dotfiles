@@ -2,7 +2,6 @@
 term screen-256color
 defscrollback 99999
 startup_message off
-defbce "on"  # Background clear enable... makes the whole line in vim the background color, not just the text.
 
 unsetenv s
 setenv s "$s%{=r}"   # Reverse attribute, also reset all
