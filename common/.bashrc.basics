@@ -5,7 +5,7 @@ shopt -s histappend
 shopt -s histverify
 shopt -s histreedit
 shopt -s no_empty_cmd_completion
-set -o emacs
+shopt -s autocd
 ulimit -c 0
 umask 027
 
@@ -178,6 +178,8 @@ case $TERM in
 esac
 
 ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
+
+. /etc/bash_completion.d/git-prompt
 
 if [[ $EUID -eq 0 ]]; then
     PS1="${ESCAPES}\u@\h[\w]# "
