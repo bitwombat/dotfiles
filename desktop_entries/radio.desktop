@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Radio
+Comment=Internet radio
+Exec=/usr/bin/vlc --playlist-tree /mp3/00_lists/internode.m3u
+Icon=/usr/share/icons/default.kde4/32x32/mimetypes/audio-x-wav.png
+Terminal=false
+Type=Application
+Categories=Audio;AudioVideo;

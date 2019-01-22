@@ -189,6 +189,10 @@ vnoremap > >gv
 " Remove the highlighting from the search
 nmap <silent> <BS>  :nohlsearch<CR>
 
+" Splitting
+noremap <C-w>- :split<cr>
+noremap <C-w>\| :vsplit<cr>
+
 " Change cw and dw to know about camelCase and underscores
 " Problem with this is the hlsearch options highlights a bunch of stuff in the
 " file since we're using /.  Didn't find a "non-saved" / in vim.  

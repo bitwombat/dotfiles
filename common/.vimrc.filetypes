@@ -46,6 +46,7 @@ augroup END
 augroup pptx
     autocmd BufRead,BufNewFile       outline.txt set noexpandtab
     autocmd BufRead,BufNewFile       outline.txt set fileformat=dos
+    autocmd BufRead,BufNewFile       outline.txt iunmap <Tab>
 augroup END 
 
 augroup cpp
