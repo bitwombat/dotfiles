@@ -1,0 +1,7 @@
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS="--preview 'head -100 {}'"
+_fzf_compgen_path() { ag -g . "$1"; }
+complete -F _fzf_path_completion -o default -o bashdefault o
+complete -F _fzf_path_completion -o default -o bashdefault audacious
+complete -F _fzf_path_completion -o default -o bashdefault aud
+
