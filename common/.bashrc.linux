@@ -19,6 +19,9 @@ alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias naut="nautilus --no-desktop"
 alias aud="audacious"
 alias o="xdg-open"
+alias dig="dig +nostat +nocmd +nocomments"
+
+alias switchphp="sudo update-alternatives --config php"
 
 alias viewjournal="journalctl | tr -cd '[:space:][:print:]' | vim -"
 
@@ -58,6 +61,10 @@ NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
 export PATH=$NPM_PACKAGES/bin:$PATH
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
+# Composer packages
+export PATH=~/.composer/vendor/bin:$PATH
+
+# Python packages
 export PATH=~/bin:~/.local/bin:$PATH
 
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
@@ -66,9 +73,7 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 export PAGER="less -Xi"
-
-# Run/enable the 'z' directory changer
-[ -e /opt/z/z.sh ] && . /opt/z/z.sh
+export ENSCRIPT="-d HL-2140"
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
