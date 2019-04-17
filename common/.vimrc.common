@@ -96,19 +96,18 @@ set expandtab
 
 " Keys {{{
 let mapleader = " "
-nnoremap <leader>n :NERDTree<CR>
-nnoremap <leader>p :CtrlPBuffer<CR>
-nnoremap <leader>b :BufExplorer<CR><CR>
-nnoremap <leader>s :BufExplorerVerticalSplit<CR>
-nnoremap <leader>c :cd %:h<CR>
+nnoremap <leader>nt :NERDTree<CR>
+nnoremap <leader>cp :CtrlPBuffer<CR>
+nnoremap <leader>cd :cd %:h<CR>
+vmap <leader>c "+y 
+nmap <leader>p "+p 
+nmap <leader>P "+P 
+vmap <leader>p "+p 
+vmap <leader>P "+P 
 
 " Allows you to easily replace the current word and all its occurrences. (Global Change)
 nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
 vnoremap <leader>gc y:%s/<C-r>"/
-
-" Make it easier to edit vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Move to match with tab
 nmap <tab> %
