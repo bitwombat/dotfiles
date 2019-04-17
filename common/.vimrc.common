@@ -130,7 +130,7 @@ map T :%s/  *$//g<CR>
 map L @l
 
 " IDE
-map Q :w<CR>:!clear;python %<CR>
+map Q :w<CR>:!clear;python3 %<CR>
 " map Q :w<CR>:!clear;ruby test/bottles_test.rb<CR>
 map <F11> :cn<CR>
 map <F10> :cN<CR>
