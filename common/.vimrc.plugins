@@ -14,47 +14,19 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " }}}
 
 " Syntastic options {{{
-let g:syntastic_quiet_messages = { "level" : "warnings", "type": "style"}
-let g:syntastic_python_checkers=['pyflakes', 'python']
-
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
-" If we want to hear about unused imported packages in Python, 
-" have to re-enable warnings
-autocmd FileType python unlet! g:syntastic_quiet_messages
+" W503 and W504 are mutually exclusive. We want a complaint for a newline after
+" a binary operator, not before.
+let g:syntastic_python_flake8_args="--select=E,W --ignore=W503" 
 
 let g:syntastic_css_csslint_args="--errors=known-properties,duplicate-background-images,duplicate-properties"
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" Fix syntastic error jumping
-function! <SID>LocationPrevious()
-  try
-    lprev
-  catch /^Vim\%((\a\+)\)\=:E553/
-    llast
-  endtry
-endfunction
-
-function! <SID>LocationNext()
-  try
-    lnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    lfirst
-  endtry
-endfunction
-
-nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>
-nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
-nmap <silent> e[  <Plug>LocationPrevious
-nmap <silent> e]  <Plug>LocationNext
-" }}}
 
 " Vdebug options {{{
 let g:vdebug_options={}
