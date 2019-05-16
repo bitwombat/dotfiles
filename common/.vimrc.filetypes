@@ -1,4 +1,9 @@
 
+augroup ruby
+    autocmd BufReadPost,FileReadPost *.rb  set tabstop=2
+    autocmd BufReadPost,FileReadPost *.rb  set softtabstop=2
+augroup END
+
 augroup yml
     autocmd BufReadPost,FileReadPost *.yml  set tabstop=2
     autocmd BufReadPost,FileReadPost *.yml  set nofoldenable
