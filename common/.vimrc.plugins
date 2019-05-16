@@ -84,4 +84,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ackprg = 'ag --vimgrep'
 " }}}
 
+" wordmotion {{{
+map dw de
+map cw ce
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
