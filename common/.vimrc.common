@@ -99,80 +99,80 @@ let mapleader = " "
 nnoremap <leader>nt :NERDTree<CR>
 nnoremap <leader>cp :CtrlPBuffer<CR>
 nnoremap <leader>cd :cd %:h<CR>
-vmap <leader>c "+y 
-nmap <leader>p "+p 
-nmap <leader>P "+P 
-vmap <leader>p "+p 
-vmap <leader>P "+P 
+vnoremap <leader>c "+y 
+nnoremap <leader>p "+p 
+nnoremap <leader>P "+P 
+vnoremap <leader>p "+p 
+vnoremap <leader>P "+P 
 
 " Allows you to easily replace the current word and all its occurrences. (Global Change)
 nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
 vnoremap <leader>gc y:%s/<C-r>"/
 
 " Move to match with tab
-nmap <tab> %
-vmap <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Escape from insert mode with jj
 inoremap jj <ESC>
 
 " Ctrl-C in insert mode opens up a line - for inside things like {}
-imap <C-c> <CR><Esc>O<Tab>
+inoremap <C-c> <CR><Esc>O<Tab>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
 " Fixing
-map F gq}
-map T :%s/  *$//g<CR>
+nnoremap F gq}
+nnoremap T :%s/  *$//g<CR>
 
 " Macroing
-map L @l
+nnoremap L @l
 
 " IDE
-map Q :w<CR>:!clear;python3 %<CR>
+nnoremap Q :w<CR>:!clear;python3 %<CR>
 " map Q :w<CR>:!clear;ruby test/bottles_test.rb<CR>
-map <F11> :cn<CR>
-map <F10> :cN<CR>
+nnoremap <F11> :cn<CR>
+nnoremap <F10> :cN<CR>
 
 " Saving
-map <F1> :update<CR>
+noremap <F1> :update<CR>
 inoremap <F1> <ESC>:update<CR>a
-map <C-s> :update<CR>
-imap <C-s> <ESC>:update<CR>a
+noremap <C-s> :update<CR>
+inoremap <C-s> <ESC>:update<CR>a
 
 " Quitting
 " closes the current window.  Will exit if last window (unlike Ctrl-W C).
 nnoremap <C-d> :q<CR>
 
 " Viewing Modes
-map <F6> :set invnumber<CR>
-map <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
-map <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
-map <F9> :if &list <Bar> set nolist <Bar> <CR> else <Bar> set list <Bar> endif <CR>
+noremap <F6> :set invnumber<CR>
+noremap <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
+noremap <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
+noremap <F9> :if &list <Bar> set nolist <Bar> <CR> else <Bar> set list <Bar> endif <CR>
 
 " Buffers
-map n :bnext<CR>
-map m :bprevious<CR>
+noremap n :bnext<CR>
+noremap m :bprevious<CR>
 " Leftover from old muscle memory (P for previous).  Delete when untrained.
-map p :bprevious<CR>
+noremap p :bprevious<CR>
 
 " Tabs
-map k :tabnext<CR>
-map j :tabprevious<CR>
-map c :tabclose<CR>
-map t :tabnew<CR>
+noremap k :tabnext<CR>
+noremap j :tabprevious<CR>
+noremap c :tabclose<CR>
+noremap t :tabnew<CR>
 
 " Folding
-map U zA
-map , za
+noremap U zA
+noremap , za
 
 " Copy the entire buffer to the system clipboard (like Ctrl-A)
 noremap <leader>a <Esc>gg"+yG
 
 " Ctrl-A and Ctrl-E work as they do on the command line
-map <C-a> ^
-map <C-e> $
+noremap <C-a> ^
+noremap <C-e> $
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
@@ -186,7 +186,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Remove the highlighting from the search
-nmap <silent> <BS>  :nohlsearch<CR>
+nnoremap <silent> <BS>  :nohlsearch<CR>
 
 " Splitting
 noremap <C-w>- :split<cr>

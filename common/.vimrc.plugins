@@ -54,8 +54,8 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " }}}
 
 " Vmath {{{
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++
+vnoremap <expr>  ++  VMATH_YankAndAnalyse()
+nnoremap         ++  vip++
 " }}}
 
 " Airline {{{
@@ -85,8 +85,8 @@ let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " wordmotion {{{
-map dw de
-map cw ce
+nnoremap dw de
+nnoremap cw ce
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
