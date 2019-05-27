@@ -111,6 +111,9 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 # sort by si(z)e
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 
+# Current EIT assignment and answer
+alias assignment='o /1_EIT/0_units/1_circuits/Assignment2/7.2_my_edits/E125A_Assignment2_STUDENTS_v7.2.pdf'
+alias answers='o /1_EIT/0_units/1_circuits/Assignment2/7.2_my_edits/E125A_Assignment2_ANSWERS_v7.2.pdf'
 
 # xdebug from the cli won't reliably read the xdebug.ini
 # PHP 7.0, just requires this var to exist,
