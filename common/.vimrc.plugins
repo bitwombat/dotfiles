@@ -21,7 +21,7 @@ let g:syntastic_javascript_checkers=['eslint']
 
 " W503 and W504 are mutually exclusive. We want a complaint for a newline after
 " a binary operator, not before.
-let g:syntastic_python_flake8_args="--select=E,W --ignore=W503" 
+let g:syntastic_python_flake8_args="--select=E,W --ignore=W503"
 
 let g:syntastic_css_csslint_args="--errors=known-properties,duplicate-background-images,duplicate-properties"
 
@@ -82,11 +82,16 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Run with :Ack
 " Tell it to use ag
 let g:ackprg = 'ag --vimgrep'
+cnoreabbrev ag Ack
 " }}}
 
 " wordmotion {{{
 nnoremap dw de
 nnoremap cw ce
+" }}}
+
+" vim-closetag  {{{
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

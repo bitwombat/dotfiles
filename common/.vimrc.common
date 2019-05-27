@@ -3,7 +3,7 @@
 
 " Features {{{
 filetype on
-filetype plugin on
+filetype plugin indent on
 syntax on
 " When finding or ctrl-x, search entire tree
 set path+=**
@@ -73,7 +73,6 @@ set fileformat=unix
 set scrolloff=2
 set vb t_vb=
 set wildmenu
-"set wildmode=list:longest,full
 " }}}
 
 " Search settings {{{
@@ -89,7 +88,7 @@ set softtabstop=4
 set shiftwidth=4
 set wrap
 set textwidth=79
-set formatoptions=q
+set formatoptions=jqrocb
 set expandtab
 "set colorcolumn=85
 " }}}
@@ -119,6 +118,9 @@ inoremap jj <ESC>
 " Ctrl-C in insert mode opens up a line - for inside things like {}
 inoremap <C-c> <CR><Esc>O<Tab>
 
+" Replace the next space with a newline
+nnoremap <leader>J f xi<CR><Esc>
+
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
@@ -146,10 +148,20 @@ inoremap <C-s> <ESC>:update<CR>a
 nnoremap <C-d> :q<CR>
 
 " Viewing Modes
-noremap <F6> :set invnumber<CR>
+noremap <F5> :set invrelativenumber<CR>
+noremap <F6> :set invnumber<CR>:set invrelativenumber<CR>
 noremap <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
 noremap <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
 noremap <F9> :if &list <Bar> set nolist <Bar> <CR> else <Bar> set list <Bar> endif <CR>
+
+" Relative numbers
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Buffers
 noremap n :bnext<CR>

@@ -1,3 +1,6 @@
+" Close all other buffers {
+command! BufOnly silent! execute "%bd|e#|bd#"
+" }
 
 " Strip whitespace {
 function! StripTrailingWhitespace()
