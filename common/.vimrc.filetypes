@@ -44,10 +44,6 @@ augroup css
     autocmd BufReadPost,FileReadPost *.css  set iskeyword+=-
 augroup END
 
-augroup text
-    autocmd BufRead,BufNewFile       *.txt colorscheme zenburn
-augroup END
-
 augroup pptx
     autocmd BufRead,BufNewFile       outline.txt set noexpandtab
     autocmd BufRead,BufNewFile       outline.txt set fileformat=dos
