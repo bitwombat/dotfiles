@@ -116,4 +116,10 @@ function! LightlineFileformat()
 endfunction
 " }}}
 
+" gutentags {{{
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_ctags_exclude=['node_modules','vendor']
+let g:gutentags_exclude_project_root=['/home/gbell2']
+" }}}
+"
 " vim:foldmethod=marker:foldlevel=0
