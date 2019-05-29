@@ -115,6 +115,10 @@ vnoremap <tab> %
 " Escape from insert mode with jj
 inoremap jj <ESC>
 
+" Move screen line instead of buffer line
+nnoremap <C-J> gj
+nnoremap <C-K> gk
+
 " Ctrl-C in insert mode opens up a line - for inside things like {}
 inoremap <C-c> <CR><Esc>O<Tab>
 
