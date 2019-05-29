@@ -1,6 +1,6 @@
 call pathogen#infect()
 
-" CtrlP Settings {{{
+" CtrlP {{{
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
@@ -13,7 +13,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " }}}
 
-" Syntastic options {{{
+" Syntastic {{{
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
@@ -31,7 +31,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " }}}
 
-" Vdebug options {{{
+" Vdebug  {{{
 let g:vdebug_options={}
 let g:vdebug_options['port']=10000
 let g:vdebug_options['ide_key']='PHPSTORM'
@@ -51,11 +51,6 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-" }}}
-
-" Vmath {{{
-vnoremap <expr>  ++  VMATH_YankAndAnalyse()
-nnoremap         ++  vip++
 " }}}
 
 " Ack {{{
