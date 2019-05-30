@@ -98,11 +98,11 @@ let mapleader = " "
 nnoremap <leader>nt :NERDTree<CR>
 nnoremap <leader>cp :CtrlPBuffer<CR>
 nnoremap <leader>cd :cd %:h<CR>
-vnoremap <leader>c "+y 
-nnoremap <leader>p "+p 
-nnoremap <leader>P "+P 
-vnoremap <leader>p "+p 
-vnoremap <leader>P "+P 
+vnoremap <leader>c "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Allows you to easily replace the current word and all its occurrences. (Global Change)
 nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
@@ -168,16 +168,14 @@ augroup numbertoggle
 augroup END
 
 " Buffers
-noremap n :bnext<CR>
-noremap m :bprevious<CR>
-" Leftover from old muscle memory (P for previous).  Delete when untrained.
-noremap p :bprevious<CR>
+nnoremap <leader>k :bnext<CR>
+nnoremap <leader>j :bprevious<CR>
 
 " Tabs
-noremap k :tabnext<CR>
-noremap j :tabprevious<CR>
-noremap c :tabclose<CR>
-noremap t :tabnew<CR>
+nnoremap <leader>tk :tabnext<CR>
+nnoremap <leader>tj :tabprevious<CR>
+nnoremap <leader>tc :tabclose<CR>
+nnoremap <leader>tn :tabnew<CR>
 
 " Folding
 noremap U zA
