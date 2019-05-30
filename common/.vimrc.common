@@ -220,4 +220,4 @@ noremap <C-w>\| :vsplit<cr>
     let &tags = &tags . ',/www/aquasafe/app/.project_ctags'
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker
