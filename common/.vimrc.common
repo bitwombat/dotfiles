@@ -26,7 +26,7 @@ set cursorline
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
-set fillchars+=vert:│  " Vertical split 
+set fillchars+=vert:│  " Vertical split
 
 " Fix error highlighting in terminal
 highlight clear SpellBad
@@ -208,7 +208,7 @@ noremap <C-w>\| :vsplit<cr>
 
 " Change cw and dw to know about camelCase and underscores
 " Problem with this is the hlsearch options highlights a bunch of stuff in the
-" file since we're using /.  Didn't find a "non-saved" / in vim.  
+" file since we're using /.  Didn't find a "non-saved" / in vim.
 " Installed https://github.com/chaoren/vim-wordmotion  which seems to work
 " but not with PhpStorm's Vim plugin.
 "map cw c/\u\\|[^0-9A-Za-z_]<CR>
