@@ -80,6 +80,7 @@ let g:lightline = {
     \   'right': [
     \             [ 'percent' ],
     \             [ 'lineinfo' ],
+    \             [ 'fileformat', 'fileencoding' ],
     \            ],
     \ },
     \ 'component_function': {
