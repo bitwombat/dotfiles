@@ -16,8 +16,6 @@ function! StripTrailingWhitespace()
 endfunction
 " }
 
-autocmd FileType c,css,cpp,java,go,php,html,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-
 " Better tabbing / completion
 function! SuperCleverTab()
     if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'

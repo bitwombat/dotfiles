@@ -1,3 +1,6 @@
+augroup c,css,cpp,haskell,java,html,javascript,markdown,php,python,ruby,text,twig,xml,yml
+    autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+augroup END
 
 augroup ruby
     autocmd BufReadPost,FileReadPost *.rb  set tabstop=2
@@ -48,7 +51,7 @@ augroup pptx
     autocmd BufRead,BufNewFile       outline.txt set noexpandtab
     autocmd BufRead,BufNewFile       outline.txt set fileformat=dos
     autocmd BufRead,BufNewFile       outline.txt iunmap <Tab>
-augroup END 
+augroup END
 
 augroup cpp
     autocmd BufReadPost,FileReadPost *.h  set foldmethod=syntax
