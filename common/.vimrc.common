@@ -2,9 +2,15 @@
 "
 
 " Features {{{
+set nocompatible
 filetype on
 filetype plugin indent on
 syntax on
+" make vim pop out of Insert mode immediately, without waiting for more keypresses. Breaks arrow keys in insert mode.
+"set noesckeys
+"inoremap <C-p> <up>
+"inoremap <C-n> <down>
+
 " When finding or ctrl-x, search entire tree
 set path+=**
 
@@ -19,7 +25,7 @@ set modeline
 set ruler
 set showcmd
 set showmatch
-set showmode
+set noshowmode
 
 " Use a cursor line when navigating around, off when in insert mode
 set cursorline
@@ -53,7 +59,6 @@ syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 
 " Without the following, folding doesn't work on php .inc files
-set nocompatible
 let g:php_folding=1
 let g:javaScript_fold=1
 
@@ -94,19 +99,35 @@ set expandtab
 " }}}
 
 " Keys {{{
-let mapleader = " "
-nnoremap <leader>nt :NERDTree<CR>
-nnoremap <leader>cp :CtrlPBuffer<CR>
-nnoremap <leader>cd :cd %:h<CR>
-vnoremap <leader>c "+y
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+" Access plugins
+nnoremap ,nt :NERDTree<CR>
+nnoremap ,cp :CtrlPBuffer<CR>
 
-" Allows you to easily replace the current word and all its occurrences. (Global Change)
-nnoremap <leader>gc :%s/\<<C-r><C-w>\>/
-vnoremap <leader>gc y:%s/<C-r>"/
+nnoremap ,cd :cd %:h<CR>:pwd<CR>
+
+" Buffers
+nnoremap ,k :bnext<CR>
+nnoremap ,j :bprevious<CR>
+nnoremap ,b :ls<CR>:b<space>
+" tabbable list of buffers
+set wildcharm=<C-z>
+nnoremap ,B :buffer <C-z><S-Tab>
+nnoremap ,B :sbuffer <C-z><S-Tab>
+
+" Tabs
+nnoremap ,tk :tabnext<CR>
+nnoremap ,tj :tabprevious<CR>
+nnoremap ,tc :tabclose<CR>
+nnoremap ,tn :tabnew<CR>
+
+" Clipboard
+noremap ,c "+y
+noremap ,p "+p
+noremap ,P "+P
+
+" Replace the current word and all its occurrences. (Global Change)
+nnoremap ,gc :%s/\<<C-r><C-w>\>/
+vnoremap ,gc y:%s/<C-r>"/
 
 " Move to match with tab
 nnoremap <tab> %
@@ -123,7 +144,7 @@ nnoremap <C-K> gk
 inoremap <C-c> <CR><Esc>O<Tab>
 
 " Replace the next space with a newline
-nnoremap <leader>J f xi<CR><Esc>
+nnoremap ,J f xi<CR><Esc>
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
@@ -167,22 +188,12 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" Buffers
-nnoremap <leader>k :bnext<CR>
-nnoremap <leader>j :bprevious<CR>
-
-" Tabs
-nnoremap <leader>tk :tabnext<CR>
-nnoremap <leader>tj :tabprevious<CR>
-nnoremap <leader>tc :tabclose<CR>
-nnoremap <leader>tn :tabnew<CR>
-
 " Folding
 noremap U zA
-noremap , za
+"noremap , za
 
 " Copy the entire buffer to the system clipboard (like Ctrl-A)
-noremap <leader>a <Esc>gg"+yG
+noremap ,a <Esc>gg"+yG
 
 " Ctrl-A and Ctrl-E work as they do on the command line
 noremap <C-a> ^
