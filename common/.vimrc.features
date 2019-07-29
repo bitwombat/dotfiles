@@ -2,6 +2,13 @@
 command! BufOnly silent! execute "%bd|e#|bd#"
 " }
 
+
+" Much faster past from selection clipboard {
+function! PasteSel()
+    .!xclip -o -selection p
+endfunction
+" }
+
 " Strip whitespace {
 function! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
