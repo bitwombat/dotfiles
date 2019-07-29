@@ -60,11 +60,6 @@ let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack
 " }}}
 
-" wordmotion {{{
-nnoremap dw de
-nnoremap cw ce
-" }}}
-
 " vim-closetag  {{{
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 " }}}
@@ -74,13 +69,14 @@ let g:lightline = {
     \ 'colorscheme': 'bitwombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'filename', 'readonly', 'modified' ],
     \             [ 'gitbranch' ],
+    \             ['filename', 'readonly', 'modified' ],
     \           ],
     \   'right': [
     \             [ 'percent' ],
     \             [ 'lineinfo' ],
-    \             [ 'fileformat', 'fileencoding' ],
+    \             [ 'fileformat', 'fileencoding', 'trailing' ],
+    \             [ 'gutentags'],
     \            ],
     \ },
     \ 'component_function': {
@@ -89,6 +85,7 @@ let g:lightline = {
     \   'gitbranch': 'fugitive#head',
     \   'fileformat': 'LightlineFileformat',
     \   'fileencoding': 'LightlineFileencoding',
+    \   'gutentags': 'gutentags#statusline',
     \ },
     \ }
 
@@ -97,7 +94,7 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineFilename()
-  let fname = expand('%:t')
+  let fname = expand('%:.')
   let ftype =  &filetype !=# '' ? &filetype : 'no ft'
   return fname . ' (' . ftype . ')'
 endfunction
@@ -110,12 +107,22 @@ endfunction
 function! LightlineFileformat()
   return &fileformat !=# 'unix' ? &fileformat : ''
 endfunction
+let g:lightline.component_expand = {'trailing': 'lightline#trailing_whitespace#component'}
+let g:lightline.component_type = {'trailing': 'error'}
+
 " }}}
 
 " gutentags {{{
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude=['node_modules','vendor']
-let g:gutentags_exclude_project_root=['/home/gbell2']
+let g:gutentags_ctags_exclude=['node_modules','vendor','content']
+let g:gutentags_exclude_project_root=['/home/gbell2', '/home/gbell2/.config']
+"let g:gutentags_define_advanced_commands=1
+"let g:gutentags_trace=1
+"let g:gutentags_add_default_project_roots=0
+augroup MyGutentagsStatusLineRefresher
+            autocmd!
+            autocmd User GutentagsUpdating call lightline#update()
+            autocmd User GutentagsUpdated call lightline#update()
+augroup END
 " }}}
 
 " csv {{{
@@ -124,4 +131,4 @@ autocmd BufReadPost,FileReadPost *.csv  set syntax=off
 " }}}
 
 "
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker
