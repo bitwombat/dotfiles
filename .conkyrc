@@ -50,7 +50,6 @@ ${color grey}Core1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sen
 ${color grey}Core2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 2"}
 ${color grey}Core3 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 3"}
 ${color grey}Pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2389))}%
-${color grey}Unused Speed?: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2106))}%
 ${color grey}$hr
 ${alignc}${color orange}Storage:
 ${color grey}Data $alignr ${color white}${fs_free /data} free ${fs_bar 6,75 /data}
