@@ -1,18 +1,28 @@
-augroup c,css,cpp,haskell,java,html,javascript,markdown,php,python,ruby,text,twig,xml,yml
-    autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+augroup haskell
+    au!
+    autocmd BufReadPost,FileReadPost *.hs  set tabstop=2
+    autocmd BufReadPost,FileReadPost *.hs  set softtabstop=2
+    autocmd BufReadPost,FileReadPost *.hs  set shiftwidth=2
+    autocmd BufReadPost,FileReadPost *.hs  set smartindent
+    autocmd BufReadPost,FileReadPost *.hs  set autoindent
 augroup END
 
 augroup ruby
+    au!
     autocmd BufReadPost,FileReadPost *.rb  set tabstop=2
     autocmd BufReadPost,FileReadPost *.rb  set softtabstop=2
 augroup END
 
 augroup yml
-    autocmd BufReadPost,FileReadPost *.yml  set tabstop=2
-    autocmd BufReadPost,FileReadPost *.yml  set nofoldenable
+    au!
+    autocmd BufReadPost,FileReadPost *.yml,*.cabal  set tabstop=2
+    autocmd BufReadPost,FileReadPost *.yml,*.cabal  set shiftwidth=2
+    autocmd BufReadPost,FileReadPost *.yml,*.cabal  set softtabstop=2
+    autocmd BufReadPost,FileReadPost *.yml,*.cabal  set nofoldenable
 augroup END
 
 augroup python
+    au!
     autocmd BufReadPost,FileReadPost *.py  set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.py  set keywordprg=pydoc
     " Make the 81st column stand out
@@ -23,6 +33,7 @@ augroup END
 " Without the fileytype=html, =G reformatting doesn't work, even though
 " filetype seems to get set to html without it.
 augroup html
+    au!
     autocmd BufReadPost,FileReadPost *.html,*.phtml set sw=2
     autocmd BufReadPost,FileReadPost *.html,*.phtml set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.html,*.phtml filetype indent on
@@ -36,24 +47,28 @@ augroup END
 " foldmethod to syntax.  Set it back to what ftplugin/markdown.vim needs to
 " work right.
 augroup markdown
+    au!
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.md set foldmethod=expr
     autocmd BufNewFile,BufReadPost *.md let g:markdown_folding=1
 augroup END
 
 augroup css
+    au!
     autocmd BufReadPost,FileReadPost *.css  set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.css  set keywordprg=:help
     autocmd BufReadPost,FileReadPost *.css  set iskeyword+=-
 augroup END
 
 augroup pptx
+    au!
     autocmd BufRead,BufNewFile       outline.txt set noexpandtab
     autocmd BufRead,BufNewFile       outline.txt set fileformat=dos
     autocmd BufRead,BufNewFile       outline.txt iunmap <Tab>
 augroup END
 
 augroup cpp
+    au!
     autocmd BufReadPost,FileReadPost *.h  set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.cpp  syn region myFold start="{" end="}" transparent fold
     autocmd BufReadPost,FileReadPost *.cpp  syn sync fromstart
@@ -61,36 +76,40 @@ augroup cpp
 augroup END
 
 augroup php
+    au!
     autocmd BufReadPost,FileReadPost *.php  abbreviate sph <?php
     autocmd BufReadPost,FileReadPost *.php  abbreviate eph ?>
     autocmd BufReadPost,FileReadPost *.php  nnoremap <silent><buffer> K <Esc>:silent! call system("phpdoc " . expand('<cword>'))<CR>
 augroup END
 
 augroup js
+    au!
     autocmd BufReadPost,FileReadPost *.js set tabstop=2
     autocmd BufReadPost,FileReadPost *.js set autoindent
     autocmd BufReadPost,FileReadPost *.js set smartindent
 augroup END
 
 augroup james
+    au!
     autocmd BufReadPost,FileReadPost */deit/*.php set noexpandtab
     autocmd BufReadPost,FileReadPost */uf_checkout/*/src/*.php set noexpandtab
 augroup END
 
 augroup bookmarks
+    au!
     autocmd VimLeavePre Bookmarks.txt call ClearRegs()
 augroup END
 
 " vim -b : edit binary using xxd-format!
 augroup binary
-  au!
-  au BufReadPre  *.bin let &bin=1
-  au BufReadPost *.bin if &bin | %!xxd
-  au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &bin | %!xxd -r
-  au BufWritePre *.bin endif
-  au BufWritePost *.bin if &bin | %!xxd
-  au BufWritePost *.bin set nomod | endif
+    au!
+    au BufReadPre  *.bin let &bin=1
+    au BufReadPost *.bin if &bin | %!xxd
+    au BufReadPost *.bin set ft=xxd | endif
+    au BufWritePre *.bin if &bin | %!xxd -r
+    au BufWritePre *.bin endif
+    au BufWritePost *.bin if &bin | %!xxd
+    au BufWritePost *.bin set nomod | endif
 augroup END
 
 " Transparent editing of gpg encrypted files.
@@ -106,9 +125,18 @@ augroup encrypted
     autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
     autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
     autocmd BufWritePre,FileWritePre    *.gpg set bin
-    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --encrypt --recipient "greg@bitwombat.com.au"  2>>/dev/null
+    autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --symmetric 2>>/dev/null
     autocmd BufWritePost,FileWritePost  *.gpg u
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
 
+augroup LastFileMark
+  autocmd!
+  autocmd BufLeave *.css  normal! mC
+  autocmd BufLeave *.hs   normal! mH
+  autocmd BufLeave *.js   normal! mJ
+  autocmd BufLeave *.php  normal! mP
+  autocmd BufLeave *.py   normal! mN
+augroup END
 
+autocmd BufWritePre * call StripTrailingWhitespace()
