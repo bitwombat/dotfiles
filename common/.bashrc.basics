@@ -33,8 +33,7 @@ function mcd() {
 
 # "cd there"
 function cdt() {
-    lastcmd=$(history | cut -c 8- | tail -2 | head -1)
-    path=$(echo $lastcmd | awk '{ print $NF }')
+    path=$_
     dirname=$(dirname $path)
     if [ -d $path ]; then
         cd $path
@@ -82,6 +81,11 @@ function vix() {
   fi
   chmod +x $fn
   vim $fn
+}
+
+# cd down
+function cdd() {
+    cd "$(find . -name $1 -type d)"
 }
 
 # Aliases
@@ -189,6 +193,8 @@ ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
 
 if [[ $EUID -eq 0 ]]; then
     PS1="${ESCAPES}\u@\h[\w]# "
+elif [[ $(hostname) == 'server' ]]; then
+    PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 else
     PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 fi
