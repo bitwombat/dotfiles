@@ -34,10 +34,11 @@ conky.config = {
 	max_text_width = 0,
 	top_cpu_separate = false,
     border_inner_margin = 20,
+    lua_load = '/home/gbell2/bin/internet.conky',
 };
 
 conky.text = [[
-${font CourierNew :size=8}${execpi 60 /home/gbell2/bin/cal.conky}
+${font DejaVu Sans Mono:size=8}${execpi 60 /home/gbell2/bin/cal.conky}
 ${font HandelGotD :size=10}
 ${color DarkSlateGray}$hr
 ${color grey}Load:${color white} ${loadavg 1} ${color grey}/ CPU:${color white} ${cpu}% ${color grey}/ Processes:${color white} $processes ${color grey}/ Run:${color white} $running_processes
@@ -60,12 +61,14 @@ ${alignc}${color gray}Local IP:${color white}${addr enp3s0}
 ${color grey}Down:${color white}${downspeed enp3s0}${color grey}${alignr}Up:${color white}${upspeed enp3s0}${color grey}
 ${downspeedgraph enp3s0 25,145 800} ${alignr}${upspeedgraph enp3s0 25,145 38} ${alignr}
 ${color DarkSlateGray}$hr${font DejaVu Sans Mono :size=10}
-${color orange}  PID USER     %CPU COMMAND
+${color orange}PID   USER     %CPU COMMAND
 ${color grey}${exec /home/gbell2/bin/top_cpu.conky}
 ${color DarkSlateGray}$hr
-${color orange}  PID USER      MEM COMMAND
+${color orange}PID   USER      MEM COMMAND
 ${color grey}${exec /home/gbell2/bin/top_mem.conky}
 ${color DarkSlateGray}$hr
 ${color orange}Internet Usage
 ${color grey}${exec /home/gbell2/bin/display_internode.conky}
+${lua progress_v}
+${execbar /home/gbell2/bin/internode_usage.conky}
 ]];
