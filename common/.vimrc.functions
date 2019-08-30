@@ -3,9 +3,16 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 " }
 
 
-" Much faster past from selection clipboard {
+" Much faster paste from selection clipboard {
 function! PasteSel()
     .!xclip -o -selection p
+endfunction
+" }
+
+" Clean up paste from Slack {
+function! SlackClean()
+    %s/\%ufffc//g
+    %s/(edited)//g
 endfunction
 " }
 
@@ -39,18 +46,11 @@ function! SuperCleverTab()
 endfunction
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
-" Load matchit which makes % pay attention to HTML / XML tags
-:source $VIMRUNTIME/macros/matchit.vim
-
-" HTML tag closing
-autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
-autocmd FileType html iabbrev </ </<C-X><C-O>
-
 " Format HTML
 function! PrettyHTML()
     set smartindent
     filetype indent on
-    set sw=2 
+    set sw=2
     set ft=html
     %s/>/>\r/g
     %s/<\//\r<\//g

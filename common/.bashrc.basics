@@ -31,6 +31,16 @@ function mcd() {
   cd $1;
 }
 
+function cl() {
+    DIR="$*";
+        # if no DIR given, go home
+        if [ $# -lt 1 ]; then
+                DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+		ls -Boh --color=yes --group-directories-first
+}
+
 # "cd there"
 function cdt() {
     path=$_
@@ -41,8 +51,8 @@ function cdt() {
         cd $dirname
     else
         echo "Can't see directory to cd to in that command."
-    fi  
-}   
+    fi
+}
 
 # find file
 function ff() {
@@ -73,7 +83,7 @@ function gviw() {
 function vix() {
   if [ $1 ]; then
     fn=$1
-  else 
+  else
    fn=tmp.$$
   fi
   if [ ! -e $fn ]; then
@@ -89,8 +99,10 @@ function cdd() {
 }
 
 # Aliases
-alias ..="cd .."
+alias ..="cd .. ; ls -Boh --color=yes --group-directories-first"
+alias cg='cd `git rev-parse --show-toplevel`'
 alias cp='cp -i'
+alias cpv='rsync -ah --info=progress2'
 alias df="pydf"
 alias gst='git status'
 alias gv="gvim -geometry 98x24"
@@ -142,7 +154,7 @@ export LS_COLORS="no=00:fi=00:di=00;93:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 
 export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
-X='DIR='                       # Set temporary variable DIR to 
+X='DIR='                       # Set temporary variable DIR to
 X=${X}'$(pwd'                  # the output of pwd
 X=${X}'|sed -e "s!/data/!/!"'  # piped into sed to remove the data prefix
 X=${X}'|sed -e "s!$HOME!~!"'   # piped into sed to replace the home dir with tilde
@@ -183,7 +195,7 @@ case $TERM in
     *)
         USERHOST="\u@\h"
         CURDIR="\w"
-        
+
         ;;
 esac
 

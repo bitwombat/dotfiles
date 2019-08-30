@@ -52,7 +52,7 @@ export SSH_ASKPASS=/usr/bin/ssh-askpass
 export GPG_TTY=$(tty)
 
 # Wine
-export WINEPREFIX="$HOME/.wine-32" 
+export WINEPREFIX="$HOME/.wine-32"
 export WINEARCH=win32
 
 # Node
@@ -72,7 +72,7 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 export PAGER="less -Xi"
-export ENSCRIPT="-d HL-2140"
+export ENSCRIPT="-d HL-L2375DW"
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh

@@ -3,6 +3,7 @@
 
 " Features {{{
 set nocompatible
+set hidden
 filetype on
 filetype plugin indent on
 syntax on
@@ -37,6 +38,9 @@ set fillchars+=vert:│  " Vertical split
 " Fix error highlighting in terminal
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+
+" Warn if file changes on disk
+au CursorHold * checktime
 
 " Set the title of the screen window
 if &term =~ "screen"
@@ -99,6 +103,10 @@ set expandtab
 " }}}
 
 " Keys {{{
+" Navigate Syntastic errors (location list, not quickfix!)
+nnoremap } :<C-R>=len(getloclist(0))==1?"cl":"lnext"<CR><CR>
+nnoremap { :<C-R>=len(getloclist(0))==1?"cl":"lprevious"<CR><CR>
+
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
 nnoremap ,cp :CtrlPBuffer<CR>
@@ -109,6 +117,7 @@ nnoremap ,cd :cd %:h<CR>:pwd<CR>
 nnoremap ,k :bnext<CR>
 nnoremap ,j :bprevious<CR>
 nnoremap ,b :ls<CR>:b<space>
+
 " tabbable list of buffers
 set wildcharm=<C-z>
 nnoremap ,B :buffer <C-z><S-Tab>
@@ -126,8 +135,9 @@ noremap ,p "+p
 noremap ,P "+P
 
 " Replace the current word and all its occurrences. (Global Change)
-nnoremap ,gc :%s/\<<C-r><C-w>\>/
-vnoremap ,gc y:%s/<C-r>"/
+"nnoremap ,gc :%s/\<<C-r><C-w>\>/
+"vnoremap ,gc y:%s/<C-r>"/
+nnoremap ,gc :'<,'>s/\<<C-r><C-w>\>/
 
 " Move to match with tab
 nnoremap <tab> %
@@ -157,8 +167,6 @@ nnoremap T :%s/  *$//g<CR>
 nnoremap L @l
 
 " IDE
-nnoremap Q :w<CR>:!clear;python3 %<CR>
-" map Q :w<CR>:!clear;ruby test/bottles_test.rb<CR>
 nnoremap <F11> :cn<CR>
 nnoremap <F10> :cN<CR>
 

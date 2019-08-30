@@ -11,6 +11,7 @@ augroup ruby
     au!
     autocmd BufReadPost,FileReadPost *.rb  set tabstop=2
     autocmd BufReadPost,FileReadPost *.rb  set softtabstop=2
+    autocmd BufReadPost,FileReadPost *.rb  map Q :w<CR>:!clear;ruby %<CR>
 augroup END
 
 augroup yml
@@ -25,15 +26,21 @@ augroup python
     au!
     autocmd BufReadPost,FileReadPost *.py  set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.py  set keywordprg=pydoc
+    autocmd BufReadPost,FileReadPost *.py  nnoremap Q :w<CR>:!clear;python -m pytest<CR>
+    autocmd BufReadPost,FileReadPost *.py  nnoremap W :w<CR>:!clear;python %<CR>
     " Make the 81st column stand out
     autocmd BufReadPost,FileReadPost *.py  highlight ColorColumn ctermbg=yellow
-    autocmd BufReadPost,FileReadPost *.py  call matchadd('ColorColumn', '\%81v', 100)
+    autocmd BufReadPost,FileReadPost *.py  call matchadd('ColorColumn', '\%88v', 100)
 augroup END
 
+" HTML tag closing
+autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
+autocmd FileType html iabbrev </ </<C-X><C-O>
 " Without the fileytype=html, =G reformatting doesn't work, even though
 " filetype seems to get set to html without it.
 augroup html
     au!
+
     autocmd BufReadPost,FileReadPost *.html,*.phtml set sw=2
     autocmd BufReadPost,FileReadPost *.html,*.phtml set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.html,*.phtml filetype indent on
