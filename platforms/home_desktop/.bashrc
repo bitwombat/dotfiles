@@ -6,9 +6,6 @@
 [ -e $HOME/.myconfigs/common/.bashrc.sensitive ] && . $HOME/.myconfigs/common/.bashrc.sensitive
 . $HOME/.myconfigs/this_platform/.bashrc.extras
 [ -e $HOME/.bashrc.overrides ] && . $HOME/.bashrc.overrides
-if [[ $PWD == "/data/www/aquasafe/app" ]]; then
-  . ../setup.sh
-fi
 
 . /usr/share/autojump/autojump.bash
 
