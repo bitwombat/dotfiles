@@ -12,7 +12,8 @@ C-b:unix-filename-rubout
 
 	$if mode=vi
 		set show-mode-in-prompt on
-
+        set vi-cmd-mode-string "(c)"
+        set vi-ins-mode-string "(i)"
 		set keymap vi-insert
 		"\C-a": beginning-of-line
 		"\C-e": end-of-line
@@ -22,8 +23,8 @@ C-b:unix-filename-rubout
 		set keymap vi-command
 		"\C-a": beginning-of-line
 		"\C-e": end-of-line
-# NOTE! C-e doesn't actually work. Bash/readline bug. 
-# Use bind -m vi-command ' # "\C-e": end-of-line ' as a workaround 
+# NOTE! C-e doesn't actually work. Bash/readline bug.
+# Use bind -m vi-command ' # "\C-e": end-of-line ' as a workaround
 # (https://stackoverflow.com/questions/54300220/)
 # Which has been placed in the top-level ~/.bashrc
 	$endif
