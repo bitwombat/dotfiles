@@ -3,6 +3,10 @@ call pathogen#infect()
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
 
+" MiniSnip {{{
+let g:minisnip_trigger = '**'
+" }}}
+
 " CtrlP {{{
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 0
