@@ -117,6 +117,7 @@ nnoremap ,cd :cd %:h<CR>:pwd<CR>
 nnoremap ,k :bnext<CR>
 nnoremap ,j :bprevious<CR>
 nnoremap ,b :ls<CR>:b<space>
+nnoremap ,, :e #<CR>
 
 " tabbable list of buffers
 set wildcharm=<C-z>
