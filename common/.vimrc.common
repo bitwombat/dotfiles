@@ -104,8 +104,8 @@ set expandtab
 
 " Keys {{{
 " Navigate Syntastic errors (location list, not quickfix!)
-nnoremap } :<C-R>=len(getloclist(0))==1?"cl":"lnext"<CR><CR>
-nnoremap { :<C-R>=len(getloclist(0))==1?"cl":"lprevious"<CR><CR>
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprevious<CR>
 
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
