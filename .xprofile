@@ -9,8 +9,6 @@ xmodmap /home/gbell2/.myconfigs/.Xmodmap
 xrandr --output HDMI-2 --primary &> /dev/null
 xrandr --output VGA-1 --mode 1680x1050 --left-of HDMI2 &> /dev/null
 
-irexec &
-
 redshift -l -33.86:151.21 -m randr &
 
 eval `ssh-agent` &> /dev/null
