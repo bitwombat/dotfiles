@@ -54,11 +54,11 @@ function ssh() {
     if [[ "$*" == *"Batchmode"* ]]; then
         /usr/bin/ssh "$@"
     else
-        term teal
+        term ssh
         command ssh "$@"
         term
-    fi  
-} 
+    fi
+}
 
 alias aedit="audacity"
 alias aplay="audacious"
@@ -73,7 +73,7 @@ alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
 
 if [[ $- == *i* ]]; then
     if [ $(groups | awk '{print $1}') == www-data ]; then
-        if ! pwd | grep 'www' &> /dev/null ; then 
+        if ! pwd | grep 'www' &> /dev/null ; then
             cd /www
         fi
     fi
