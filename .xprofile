@@ -18,6 +18,8 @@ eval `ssh-agent` &> /dev/null
 # gpg key used to encrypt gb_access.gpg.
 #eval $(gpg-agent --daemon --enable-ssh-support )
 
+xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
+
 /home/gbell2/bin/mount.info askpass
 
 ssh-add /home/gbell2/.ssh/global_key &> /dev/null
