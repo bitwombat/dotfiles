@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=OB-Studio
-Icon=/usr/share/icons/hicolor/256x256/apps/obs.png
-Exec="/usr/bin/obs"
-Comment=Open Broadcaster Studio
-Categories=Development;IDE;
-Terminal=false

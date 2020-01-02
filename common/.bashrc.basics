@@ -128,9 +128,8 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 
 # Current EIT assignment and answer
-alias assignment='o /1_EIT/0_units/5_reports/assignment/E124A_SummativeAssessment_V6_YOURNAMEHERE.docx'
-alias answers1='o /1_EIT/0_units/5_reports/assignment/E124A_SummativeAssessment_V6_Marking_guide.docx'
-alias answers2='o /1_EIT/0_units/5_reports/assignment/E124A_SummativeAssessment_V6_Marking_guide.xlsx'
+alias assignment='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_YOURNAMEHERE.docx'
+alias answers='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_model_answer.docx'
 
 # xdebug from the cli won't reliably read the xdebug.ini
 # PHP 7.0, just requires this var to exist,
@@ -206,7 +205,7 @@ ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
 if [[ $EUID -eq 0 ]]; then
     PS1="${ESCAPES}\u@\h[\w]# "
 elif [[ $(hostname) == 'server' ]]; then
-    PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+    PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][\[\e[38;5;202m\]${CURDIR}\[\e[0m\]]\$ "
 else
     PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 fi
