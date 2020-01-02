@@ -19,7 +19,7 @@ setenv s "$s%{+b}"   # Add bold
 setenv s "$s%S"      # session name
 setenv s "$s "       # space
 hardstatus alwayslastline "$s"
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+
 # This messes up aptitude and any other apps that know what PgUp and PgDn are
 #bindkey "^[[5~" eval "copy" "stuff ^b"
 #bindkey "^[[6~" eval "copy" "stuff ^f"
