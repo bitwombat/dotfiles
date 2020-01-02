@@ -9,8 +9,6 @@ fi
 alias momvnc="remote_vnc margaret moms"
 alias dadvnc="remote_vnc chris dads"
 alias jillvnc="remote_vnc jbell jills"
-alias ufvnc="vncviewer localhost::5500"
-alias macvnc="xtightvncviewer mac:0"
 
 alias lv="vim -c \"normal '0\""
 alias mountt="mount | column -t | egrep '^/dev'"
@@ -26,13 +24,6 @@ alias switchphp="sudo update-alternatives --config php"
 alias viewjournal="journalctl | tr -cd '[:space:][:print:]' | vim -"
 
 alias make_ctags="ctags -R --fields=+aimS --languages=php"
-
-alias term_purple='term purple'
-alias term_green='term green'
-alias term_red='term red'
-alias term_teal='term teal'
-alias term_grey='term grey'
-alias term_blue='term blue'
 
 alias su='term root ; su'
 
