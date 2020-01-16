@@ -6,10 +6,10 @@
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/.myconfigs/.Xmodmap
 
-xrandr --output HDMI-2 --primary &> /dev/null
-xrandr --output VGA-1 --mode 1680x1050 --left-of HDMI2 &> /dev/null
+#xrandr --output HDMI-2 --primary &> /dev/null
+#xrandr --output VGA-1 --mode 1680x1050 --left-of HDMI2 &> /dev/null
 
-redshift -l -33.86:151.21 -m randr &
+#redshift -l -33.86:151.21 -m randr &
 
 eval `ssh-agent` &> /dev/null
 # This guy was interacting with the keyring or something... wasn't quite working.
@@ -18,9 +18,10 @@ eval `ssh-agent` &> /dev/null
 # gpg key used to encrypt gb_access.gpg.
 #eval $(gpg-agent --daemon --enable-ssh-support )
 
-xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
+#xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
 
-/home/gbell2/bin/mount.info askpass
+#/home/gbell2/bin/mount.info askpass
 
-ssh-add /home/gbell2/.ssh/global_key &> /dev/null
+#ssh-add /home/gbell2/.ssh/global_key &> /dev/null
 
+xinput set-prop 11 284 1

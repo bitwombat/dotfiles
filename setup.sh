@@ -10,20 +10,19 @@ if [ ! -e this_platform ]; then
 fi
 
 cd ~
-[ -f .bashrc ] && mv -f .bashrc dotbashrc_old
-if [ -f .bashrc ]; then
-    echo "WARNING: .bashrc already exists"
-else
-    ln -s .myconfigs/this_platform/.bashrc
-fi
 
-if [ -r .vimrc ]; then
-    echo "WARNING: .vimrc already exists"
-else
-    ln -s .myconfigs/this_platform/.vimrc
-fi
-
+# Symlink to all .rc files right under .myconfigs to ~
 find .myconfigs/ -maxdepth 1 -type f -name '.*' -print0 | while read -d $'\0' dotfile
 do
     ln -s $dotfile
+done
+
+# Symlink to all .rc files under 'this_platform' to ~
+find .myconfigs/this_platform/ -maxdepth 1 -type f -name '.*' -print0 | while read -d $'\0' dotfile
+do
+    if [ -f "$dotfile" ]; then
+        echo "WARNING: $dotfile already exists. Not linking to it from ~."
+    else
+        ln -s $dotfile
+    fi
 done

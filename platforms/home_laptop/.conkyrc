@@ -1,0 +1,56 @@
+conky.config = {
+	background = false,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = 'white',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+	use_xft = true,
+	font = 'HandelGotD:size=9',
+	xftalpha = 0.5,
+	minimum_width = 5, minimum_height = 5,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	own_window = true,
+	own_window_colour = '181818',
+	own_window_class = 'Conky',
+	own_window_type = 'desktop',
+	own_window_transparent = false,
+	own_window_argb_visual = false,
+	own_window_hints = 'below,skip_taskbar,skip_pager',
+	stippled_borders = 0,
+	text_buffer_size = 512,
+	update_interval = 0.25,
+	uppercase = false,
+	alignment = 'top_right',
+	double_buffer = true,
+	max_text_width = 0,
+	top_cpu_separate = false,
+    border_inner_margin = 20,
+};
+
+conky.text = [[
+${color grey}Load:${color white} ${loadavg 1} ${color grey}/ CPU:${color white} ${cpu}% ${color grey}/ Processes:${color white} $processes ${color grey}/ Run:${color white} $running_processes
+${color white}${cpubar 7,300}
+${color grey}RAM: ${color white}$memperc% ${color #cccccc}
+${color white}${membar 7,300}
+${color DarkSlateGray}$hr
+${color grey}Frequency:$alignr ${color white}$freq MHz
+${color grey}Slash $alignr ${color white}${fs_free /} free ${fs_bar 6,75 /}
+${color DarkSlateGray}$hr
+#${alignc}Internet IP:${color white}${exec cat /tmp/myip}
+${alignc}${color gray}Local IP:${color white}${addr wlo1}
+${color grey}Down:${color white}${downspeed wlo1}${color grey}${alignr}Up:${color white}${upspeed wlo1}${color grey}
+${downspeedgraph wlo1 25,145 800} ${alignr}${upspeedgraph wlo1 25,145 38} ${alignr}
+${color DarkSlateGray}$hr${font DejaVu Sans Mono :size=9}
+${color orange}PID   USER     %CPU COMMAND
+${color grey}${exec /home/gbell2/bin/top_cpu.conky}
+${color DarkSlateGray}$hr
+${color orange}PID   USER      MEM COMMAND
+${color grey}${exec /home/gbell2/bin/top_mem.conky}
+]];
