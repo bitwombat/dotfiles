@@ -32,7 +32,7 @@ conky.config = {
 	max_text_width = 0,
 	top_cpu_separate = false,
     border_inner_margin = 20,
-    lua_load = '/home/gbell2/bin/internet.conky',
+    lua_load = '/home/gbell2/bin/lib/internode_progress_bar.lua',
 };
 
 conky.text = [[
@@ -67,6 +67,6 @@ ${color grey}${exec /home/gbell2/bin/top_mem.conky}
 ${color DarkSlateGray}$hr
 ${color orange}Internet Usage
 ${color grey}${exec /home/gbell2/bin/display_internode.conky}
-${lua progress_v}
+${lua internode_progress}
 ${execbar /home/gbell2/bin/internode_usage.conky}
 ]];
