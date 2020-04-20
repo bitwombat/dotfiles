@@ -113,7 +113,7 @@ alias o="open"
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
 
-alias cdr='cd $(cat ~/.pwdremember)'
+alias cdr='cd "$(cat ~/.pwdremember)"'
 alias pwdr='pwd > ~/.pwdremember'
 
 # (la)test
