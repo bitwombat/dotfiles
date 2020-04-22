@@ -40,7 +40,6 @@ autocmd FileType html iabbrev </ </<C-X><C-O>
 " filetype seems to get set to html without it.
 augroup html
     au!
-
     autocmd BufReadPost,FileReadPost *.html,*.phtml set sw=2
     autocmd BufReadPost,FileReadPost *.html,*.phtml set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.html,*.phtml filetype indent on
@@ -53,6 +52,7 @@ augroup END
 " /usr/share/vim/vim74/syntax/markdown.vim calls javascript.vim which sets
 " foldmethod to syntax.  Set it back to what ftplugin/markdown.vim needs to
 " work right.
+let g:markdown_folding=1
 augroup markdown
     au!
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -82,6 +82,7 @@ augroup cpp
     autocmd BufReadPost,FileReadPost *.cpp  set foldmethod=syntax
 augroup END
 
+let g:php_folding=1
 augroup php
     au!
     autocmd BufReadPost,FileReadPost *.php  abbreviate sph <?php
@@ -89,11 +90,14 @@ augroup php
     autocmd BufReadPost,FileReadPost *.php  nnoremap <silent><buffer> K <Esc>:silent! call system("phpdoc " . expand('<cword>'))<CR>
 augroup END
 
+let g:javaScript_fold=1
 augroup js
     au!
+    autocmd BufReadPost,FileReadPost *.js set foldmethod=syntax
     autocmd BufReadPost,FileReadPost *.js set tabstop=2
     autocmd BufReadPost,FileReadPost *.js set autoindent
     autocmd BufReadPost,FileReadPost *.js set smartindent
+    autocmd BufReadPost,FileReadPost *.js syn sync fromstart
 augroup END
 
 augroup james
@@ -137,6 +141,9 @@ augroup encrypted
     autocmd BufWritePost,FileWritePost  *.gpg set nobin
 augroup END
 
+" Leave a mark when you leave the buffer.
+" So, you navigate away from the css, and can
+" get back to it with 'C
 augroup LastFileMark
   autocmd!
   autocmd BufLeave *.css  normal! mC

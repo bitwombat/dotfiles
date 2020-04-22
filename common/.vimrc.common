@@ -56,19 +56,10 @@ set titlestring=%{expand(\"%:t\")}
 set t_ut=
 " }}}
 
-" Folding settings {{{
+" Default folding settings {{{
 set foldmethod=indent
-set foldlevelstart=1
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
-
-" Without the following, folding doesn't work on php .inc files
-let g:php_folding=1
-let g:javaScript_fold=1
-
-" The markdown ftplugin is enabled with this
-let g:markdown_folding=1
-
 " }}}
 
 " Feature-related variables {{{
