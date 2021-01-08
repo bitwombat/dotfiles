@@ -25,3 +25,6 @@ eval `ssh-agent` &> /dev/null
 ssh-add /home/gbell2/.ssh/global_key &> /dev/null
 nm-applet &
 /opt/pa-applet/src/pa-applet &
+
+# For laptop. Split this .xprofile into platform-specific ones.
+xinput set-prop 11 284 1
