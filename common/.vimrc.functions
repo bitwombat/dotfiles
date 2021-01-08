@@ -66,3 +66,16 @@ function! ClearRegs()
     endfor
 endfunction
 command! ClearRegs call ClearRegs()
+
+" This was originally made for use by a command to create a new Hugo blog post
+" I decided expand("<cword>") was more useful, but leaving this function here
+" because it was a bit of work and should come in handy in the future.
+" Based on the multi-line supporting function at
+" https://stackoverflow.com/a/6271254/3713234
+"
+function! GetVisualSelection()
+    let column_start = getpos("'<")[2]
+    let column_end = getpos("'>")[2]
+    let line = getline(".")
+    return line[column_start - 1 : column_end - 2]
+endfunction

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Chromium
+Exec=chromium %U
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/chromium-latest-linux/latest/product_logo_48.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+StartupWMClass=chromium
+Actions=NewWindow;Incognito;TempProfile;
+X-AppInstall-Package=chromium-browser

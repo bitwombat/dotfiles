@@ -4,6 +4,8 @@
 " Features {{{
 set nocompatible
 set hidden
+set lazyredraw
+set smartindent
 filetype on
 filetype plugin indent on
 syntax on
@@ -66,13 +68,15 @@ syn sync fromstart
 set autowrite
 set backup
 set backupdir=/tmp
-"set complete+=k
+set complete=.,w,b,t
 "set dictionary=/usr/share/dict/words
 set noerrorbells
 set fileformat=unix
 set scrolloff=2
 set vb t_vb=
 set wildmenu
+set wildignore+=*/node_modules/*
+set wildignore+=*/site-packages/*
 " }}}
 
 " Search settings {{{
@@ -174,7 +178,7 @@ nnoremap <C-d> :q<CR>
 
 " Viewing Modes
 noremap <F5> :set relativenumber!<CR>
-noremap <F6> :set number!<Bar>:set relativenumber!<CR>
+noremap <F6> :set number!<Bar>:set norelativenumber<CR>
 noremap <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
 noremap <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
 noremap <F9> :set list!<Bar>set list?<CR>
@@ -184,8 +188,8 @@ set number relativenumber
 
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * if &number | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter   * if &number | set norelativenumber | endif
 augroup END
 
 " Folding
@@ -227,8 +231,7 @@ noremap <C-w>\| :vsplit<cr>
 " }}}
 
 " Ctags {{{
-    set tags=./tags,tags
-    let &tags = &tags . ',/www/aquasafe/app/.project_ctags'
+set tags=./tags,tags
 " }}}
 
 " vim:foldmethod=marker

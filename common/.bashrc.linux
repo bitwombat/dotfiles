@@ -11,7 +11,7 @@ alias dadvnc="remote_vnc chris dads"
 alias jillvnc="remote_vnc jbell jills"
 
 alias lv="vim -c \"normal '0\""
-alias mountt="mount | column -t | egrep '^/dev'"
+alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias naut="nautilus --no-desktop"
@@ -32,7 +32,7 @@ alias xdebug_off='sudo phpdismod -v ALL -s cli xdebug'
 alias xdebug_on='sudo phpenmod -v ALL -s cli xdebug'
 
 function ol () {
-    latest_file="$(ls -atr | egrep -v '^\.' | tail -1)"
+    latest_file="$(ls -atr $1 | egrep -v '^\.' | tail -1)"
     xdg-open "$latest_file"
 }
 
@@ -48,14 +48,14 @@ export WINEARCH=win32
 
 # Node
 NODE_MODULES="/opt/node_modules"
-export PATH=$NODE_MODULES/.bin:$PATH
+export PATH=$PATH:$NODE_MODULES/.bin
 MANPATH="$NODE_MODULES/share/man:$(manpath)"
 
 # Composer packages
 export PATH=~/.composer/vendor/bin:$PATH
 
-# Python packages
-export PATH=~/bin:~/.local/bin:$PATH
+# Haskell tools
+export PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
 
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod norelativenumber nonumber nolist' -c 'map q :q<CR>' \

@@ -15,11 +15,7 @@ function scr() {
 }
 
 function go_camera() {
-  cd /pics
-  last_dir=$(ls -lvd camera/20* | sed -s 's/camera.*\///' | cut -c 48- | sort | tail -1)
-  last_dir_lineno=$(ls -ld camera/20* | grep -Tn $last_dir | cut -f 1 | sed -e 's/ *//g')
-  last=$(ls -ld camera/20* | sed -n ${last_dir_lineno}p | cut -c 47-)
-  cd $last
+    cd $(find /pics/camera -maxdepth 1 -type d -name '20*' | sort | tail -1)
 }
 
 function cdwpu() {

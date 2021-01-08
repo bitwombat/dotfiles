@@ -9,11 +9,13 @@
 	email = greg@bitwombat.com.au
 	name = Greg Bell
 [merge]
-	tool = vimdiff
+	tool = meld
 [core]
 	pager = less -F -X
-	excludesfile = /home/gbell2/.gitignore
+	excludesfile = /home/gbell2/.gitignore_global
 [push]
 	default = simple
 [credential]
-	helper = cache --timeout=360000
+	helper = store
+[cola]
+	spellcheck = false

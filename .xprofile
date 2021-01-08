@@ -5,22 +5,23 @@
 
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/.myconfigs/.Xmodmap
+xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
 
-xrandr --output HDMI-2 --primary &> /dev/null
-xrandr --output VGA-1 --mode 1680x1050 --left-of HDMI2 &> /dev/null
+xrandr --output DP-0 --primary &> /dev/null
+xrandr --output DVI-I-0 --mode 1680x1050 --left-of DP-0 &> /dev/null
+nvidia-settings --assign CurrentMetaMode="DP-0: nvidia-auto-select +1680+0 { ForceFullCompositionPipeline = On }, DVI-I-0: nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
-redshift -l -33.86:151.21 -m randr &
+redshift -l -33.86:151.21 -m randr &> /dev/null &
 
 eval `ssh-agent` &> /dev/null
+
 # This guy was interacting with the keyring or something... wasn't quite working.
 # We really just wanted it for the gb_access password annoyance... which seems to
 # be working OK even without gpg agent (?)  Gnome keyring seems to cache the decoded
 # gpg key used to encrypt gb_access.gpg.
 #eval $(gpg-agent --daemon --enable-ssh-support )
 
-xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
-
-/home/gbell2/bin/mount.info askpass
-
+#/home/gbell2/bin/mount.info askpass
 ssh-add /home/gbell2/.ssh/global_key &> /dev/null
-
+nm-applet &
+/opt/pa-applet/src/pa-applet &

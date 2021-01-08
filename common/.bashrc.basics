@@ -154,14 +154,24 @@ eval $(dircolors -b /opt/dircolors-zenburn/dircolors)
 
 export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
+# Bash now has PROMPT_DIRTRIM which trims \w to that many path elements,
+# But then we couldn't do the $HOME and /data/ substitions.
+# SO, do it The hard way still:
 X='DIR='                       # Set temporary variable DIR to
 X=${X}'$(pwd'                  # the output of pwd
 X=${X}'|sed -e "s!/data/!/!"'  # piped into sed to remove the data prefix
 X=${X}'|sed -e "s!$HOME!~!"'   # piped into sed to replace the home dir with tilde
 X=${X}');'                     # end command
-X=${X}'CurDir=$DIR;'           # set CurDir to this result by default
-X=${X}'if [ ${#DIR} -gt 30 ];' # or if the prompt is too long
-X=${X}'then CurDir=${DIR:0:12}...${DIR:${#DIR}-15};' # then replace the middle with dots
+# Create the alternate path, to compare lengths and maybe use
+X=${X}'IFS="/" read -ra PathElements <<< "${DIR}";'
+X=${X}'LEN=${#PathElements};'
+X=${X}'AltDir="/${PathElements[1]}/${PathElements[2]}/…/${PathElements[LEN-2]}/${PathElements[LEN-1]}";'
+X=${X}'Alt2Dir="${PathElements[LEN-2]}/${PathElements[LEN-1]}";'
+# See if we really want to use it
+X=${X}'if [[ ${#DIR} -lt 30 || ${#AltDir} > ${#DIR} ]]; ' # if the original dir was short enough, or the new one is longer
+X=${X}'then '
+X=${X}'  AltDir=$DIR; '        # use the original
+X=${X}'  Alt2Dir=$DIR; '       # use the original
 X=${X}'fi;'
 
 if [ -n "$STY" ]; then  # we're inside of screen
@@ -182,14 +192,14 @@ case $TERM in
         #SCREENTITLEPROGRAM='\[\ek\e\\\]'
         #SCREENTITLE='\[\ek\w\e\\\]'
         USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
-        CURDIR="\$CurDir"
+        CURDIR="\$AltDir"
     ;;
     xterm*|cygwin*|rxvt*)
         TITLEBAR_START="\e]0;"
         TITLEBAR_END="\007"
-        XTERM_TITLEBAR="\[${TITLEBAR_START}\$CurDir${TITLEBAR_END}\]"
+        XTERM_TITLEBAR="\[${TITLEBAR_START}\$Alt2Dir${TITLEBAR_END}\]"
         USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
-        CURDIR="\$CurDir"
+        CURDIR="\$AltDir"
         ;;
     *)
         USERHOST="\u@\h"
