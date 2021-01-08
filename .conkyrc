@@ -10,7 +10,7 @@ conky.config = {
 	draw_outline = false,
 	draw_shades = false,
 	use_xft = true,
-	font = 'HandelGotD:size=9',
+	font = 'HandelGotD:size=12',
 	xftalpha = 0.5,
 	minimum_width = 5, minimum_height = 5,
 	net_avg_samples = 2,
@@ -27,12 +27,13 @@ conky.config = {
 	text_buffer_size = 512,
 	update_interval = 1.0,
 	uppercase = false,
-	alignment = 'bottom_right',
+	alignment = 'top_right',
 	double_buffer = true,
 	max_text_width = 0,
 	top_cpu_separate = false,
     border_inner_margin = 20,
     lua_load = '/home/gbell2/bin/lib/internode_progress_bar.lua',
+    gap_x = 100,
 };
 
 conky.text = [[
@@ -49,7 +50,7 @@ ${color grey}Core0 Temperature: $alignr${color white}${exec /home/gbell2/bin/sen
 ${color grey}Core1 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 1" -u} °C
 ${color grey}Core2 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 2" -u} °C
 ${color grey}Core3 Temperature: $alignr${color white}${exec /home/gbell2/bin/sensors.conky "Core 3" -u} °C
-${color grey}Pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan1) * 100 / 2389))}%
+${color grey}Pump Speed: $alignr${color white}${exec echo $(($(/home/gbell2/bin/sensors.conky fan2) * 100 / 2389))}%
 ${color DarkSlateGray}$hr
 ${color grey}Data $alignr ${color white}${fs_free /data} free ${fs_bar 6,75 /data}
 ${color grey}Slash $alignr ${color white}${fs_free /} free ${fs_bar 6,75 /}
