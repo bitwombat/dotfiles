@@ -46,16 +46,21 @@ export GPG_TTY=$(tty)
 export WINEPREFIX="$HOME/.wine-32"
 export WINEARCH=win32
 
+# Pip
+PATH=$PATH:$HOME/.local/bin
+
 # Node
 NODE_MODULES="/opt/node_modules"
-export PATH=$PATH:$NODE_MODULES/.bin
+PATH=$PATH:$NODE_MODULES/.bin
 MANPATH="$NODE_MODULES/share/man:$(manpath)"
 
 # Composer packages
-export PATH=~/.composer/vendor/bin:$PATH
+PATH=~/.composer/vendor/bin:$PATH
 
 # Haskell tools
-export PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
+PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
+
+export PATH
 
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     vim -R -c 'set ft=man nomod norelativenumber nonumber nolist' -c 'map q :q<CR>' \
