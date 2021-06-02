@@ -62,8 +62,6 @@ alias aplay="audacious"
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
-alias aquasafe="cd /www/aquasafe ; newgrp www-data"
-alias aquasafe2=". setup.sh ; umask 022 ; cd app ; composer services-start ; cd .. ; scr"
 alias cde='cd /1_EIT/0_units/'
 alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
 
@@ -76,3 +74,82 @@ if [[ $- == *i* ]]; then
 fi
 
 
+# Current EIT assignment and answer
+alias assignment='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_YOURNAMEHERE.docx'
+alias answers='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_model_answer.docx'
+
+# xdebug from the cli won't reliably read the xdebug.ini
+# PHP 7.0, just requires this var to exist,
+# PHP 5.6, needs the settings in it
+#export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0"
+export XDEBUG_CONFIG=
+
+eval $(dircolors -b /opt/dircolors-zenburn/dircolors)
+
+export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
+
+# Bash now has PROMPT_DIRTRIM which trims \w to that many path elements,
+# But then we couldn't do the $HOME and /data/ substitions.
+# SO, do it The hard way still:
+X='DIR='                       # Set temporary variable DIR to
+X=${X}'$(pwd'                  # the output of pwd
+X=${X}'|sed -e "s!/data/!/!"'  # piped into sed to remove the data prefix
+X=${X}'|sed -e "s!$HOME!~!"'   # piped into sed to replace the home dir with tilde
+X=${X}');'                     # end command
+# Create the alternate path, to compare lengths and maybe use
+X=${X}'IFS="/" read -ra PathElements <<< "${DIR}";'
+X=${X}'LEN=${#PathElements};'
+X=${X}'AltDir="/${PathElements[1]}/${PathElements[2]}/…/${PathElements[LEN-2]}/${PathElements[LEN-1]}";'
+X=${X}'Alt2Dir="${PathElements[LEN-2]}/${PathElements[LEN-1]}";'
+# See if we really want to use it
+X=${X}'if [[ ${#DIR} -lt 30 || ${#AltDir} > ${#DIR} ]]; ' # if the original dir was short enough, or the new one is longer
+X=${X}'then '
+X=${X}'  AltDir=$DIR; '        # use the original
+X=${X}'  Alt2Dir=$DIR; '       # use the original
+X=${X}'fi;'
+
+if [ -n "$STY" ]; then  # we're inside of screen
+    X=${X}'pwd=$(pwd);' # get the pwd
+    X=${X}'LAST_COMPONENT=${pwd##*/};'  # and pull off the string after the last slash
+    X=${X}'printf "\033k%s\033\\" $LAST_COMPONENT;'  # print that out using the screen escape sequence
+fi
+export PROMPT_COMMAND=$X
+
+if [ -r "$HOME/.myconfigs/this_platform/prompt_color" ]; then
+  . $HOME/.myconfigs/this_platform/prompt_color
+else
+  PROMPT_COLOR="33;7"
+fi
+
+case $TERM in
+    screen*)
+        #SCREENTITLEPROGRAM='\[\ek\e\\\]'
+        #SCREENTITLE='\[\ek\w\e\\\]'
+        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
+        CURDIR="\$AltDir"
+    ;;
+    xterm*|cygwin*|rxvt*)
+        TITLEBAR_START="\e]0;"
+        TITLEBAR_END="\007"
+        XTERM_TITLEBAR="\[${TITLEBAR_START}\$Alt2Dir${TITLEBAR_END}\]"
+        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
+        CURDIR="\$AltDir"
+        ;;
+    *)
+        USERHOST="\u@\h"
+        CURDIR="\w"
+
+        ;;
+esac
+
+ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
+
+. /etc/bash_completion.d/git-prompt
+
+if [[ $EUID -eq 0 ]]; then
+    PS1="${ESCAPES}\u@\h[\w]# "
+elif [[ $(hostname) == 'server' ]]; then
+    PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][\[\e[38;5;202m\]${CURDIR}\[\e[0m\]]\$ "
+else
+    PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
+fi
