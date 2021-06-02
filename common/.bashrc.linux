@@ -68,7 +68,8 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 export PAGER="less -Xi"
-export ENSCRIPT="-d HL-L2375DW"
+#export ENSCRIPT="-d Brother-HLL2375DW-series"
+export ENSCRIPT="-d HLL2375DW_jills"
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh

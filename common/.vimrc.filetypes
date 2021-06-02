@@ -5,8 +5,6 @@ augroup haskell
     autocmd BufNewFile,BufReadPost *.hs  set shiftwidth=2
     autocmd BufNewFile,BufReadPost *.hs  set smartindent
     autocmd BufNewFile,BufReadPost *.hs  set autoindent
-
-
 augroup END
 
 augroup ruby
@@ -18,9 +16,9 @@ augroup END
 
 augroup yml
     au!
-    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set tabstop=2
-    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set shiftwidth=2
-    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set softtabstop=2
+    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set tabstop=4
+    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set shiftwidth=4
+    autocmd BufNewFile,BufReadPost *.yml,*.cabal  set softtabstop=4
     autocmd BufNewFile,BufReadPost *.yml,*.cabal  set nofoldenable
 augroup END
 
@@ -36,9 +34,9 @@ augroup python
     " Make the 88st column stand out - matches Black's default.
     autocmd BufNewFile,BufReadPost *.py  highlight ColorColumn ctermbg=yellow
     autocmd BufNewFile,BufReadPost *.py  call matchadd('ColorColumn', '\%88v', 100)
-    autocmd BufNewFile,BufReadPost *.py  let g:ctrlp_custom_ignore='\v\/(lib|lib64|include|share)\/'
-    autocmd BufNewFile,BufReadPost *.py  set equalprg=black\ --quiet\ 2>/dev/null\ -
+    autocmd BufNewFile,BufReadPost *.py  let g:ctrlp_custom_ignore='\v\/(env|lib|lib64|include|share)\/'
     autocmd BufNewFile,BufReadPost *.py  let g:syntastic_mode_map['mode']='active'
+    autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " HTML tag closing
@@ -67,7 +65,8 @@ augroup markdown
     autocmd BufNewFile,BufReadPost *.md set foldmethod=expr
     autocmd BufNewFile,BufReadPost *.md let g:markdown_folding=1
     "autocmd BufNewFile,BufReadPost *.md iab `h <Left>```haskell<CR>```<Up><End><CR>
-    autocmd BufNewFile,BufReadPost *.md inoremap <buffer> `h ```haskell<CR>```<Esc>dd
+    autocmd BufNewFile,BufReadPost *.md inoremap <buffer> `h ```haskell<CR>```<Esc><Up>A<CR>
+    autocmd BufNewFile,BufReadPost *.md iab `l λ>
 augroup END
 
 augroup css

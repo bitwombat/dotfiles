@@ -2,8 +2,8 @@
 Name=Anki
 Comment=An intelligent spaced-repetition memory training program
 GenericName=Flashcards
-Exec=anki --base=/info/anki
-TryExec=anki --base=/info/anki
+Exec=/home/gbell2/bin/anki
+TryExec=anki --base=/info/mind/anki
 Icon=anki
 Categories=Education;Languages;KDE;Qt;
 Terminal=false

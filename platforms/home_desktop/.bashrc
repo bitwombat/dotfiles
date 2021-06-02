@@ -13,9 +13,7 @@
 # for when it works someday.
 bind -m vi-command ' "\C-e": end-of-line '
 
-
-source /home/gbell2/.config/broot/launcher/bash/br
+export PATH=/root/bin:$PATH
 
 export XAUTHORITY=/run/user/1000/gdm/Xauthority
 export DISPLAY=:0
-

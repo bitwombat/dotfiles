@@ -7,7 +7,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/.myconfigs/.Xmodmap
 xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
 
-xrandr --output DP-0 --primary &> /dev/null
+xrandr --output DP-0 --mode 1920x1080 --primary &> /dev/null
 xrandr --output DVI-I-0 --mode 1680x1050 --left-of DP-0 &> /dev/null
 nvidia-settings --assign CurrentMetaMode="DP-0: nvidia-auto-select +1680+0 { ForceFullCompositionPipeline = On }, DVI-I-0: nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
@@ -27,4 +27,11 @@ nm-applet &
 /opt/pa-applet/src/pa-applet &
 
 # For laptop. Split this .xprofile into platform-specific ones.
-xinput set-prop 11 284 1
+#xinput set-prop 11 284 1
+
+sudo g610-led -fx color all 10 50
+sudo g610-led -k  printscreen 80
+sudo g610-led -k  scrollock 80
+sudo g610-led -k  pause 80
+
+pulseaudio &

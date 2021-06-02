@@ -20,6 +20,20 @@ set path+=**
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 set pastetoggle=<F2>
 set backspace=indent,eol,start
+
+set autowrite
+set backup
+set noerrorbells
+set backupdir=/tmp
+set complete=.,w,b,t
+"set dictionary=/usr/share/dict/words
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+set fileformat=unix
+set scrolloff=2
+set vb t_vb=
+set wildmenu
+set wildignore+=*/node_modules/*
+set wildignore+=*/site-packages/*
 " }}}
 
 " Visual settings {{{
@@ -29,6 +43,7 @@ set ruler
 set showcmd
 set showmatch
 set noshowmode
+set conceallevel=2
 
 " Use a cursor line when navigating around, off when in insert mode
 set cursorline
@@ -49,7 +64,7 @@ if &term =~ "screen"
   set t_ts=k
   set t_fs=\
 endif
-if &term =~ "screen" || &term == "xterm"
+if &term =~ "screen" || &term == "xterm" || &term == "xterm-256color"
   set title
 endif
 set titlestring=%{expand(\"%:t\")}
@@ -62,21 +77,6 @@ set t_ut=
 set foldmethod=indent
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
-" }}}
-
-" Feature-related variables {{{
-set autowrite
-set backup
-set backupdir=/tmp
-set complete=.,w,b,t
-"set dictionary=/usr/share/dict/words
-set noerrorbells
-set fileformat=unix
-set scrolloff=2
-set vb t_vb=
-set wildmenu
-set wildignore+=*/node_modules/*
-set wildignore+=*/site-packages/*
 " }}}
 
 " Search settings {{{
@@ -126,14 +126,13 @@ nnoremap ,tc :tabclose<CR>
 nnoremap ,tn :tabnew<CR>
 
 " Clipboard
+set clipboard=unnamedplus
 noremap ,c "+y
 noremap ,p "+p
 noremap ,P "+P
 
 " Replace the current word and all its occurrences. (Global Change)
-"nnoremap ,gc :%s/\<<C-r><C-w>\>/
-"vnoremap ,gc y:%s/<C-r>"/
-nnoremap ,gc :'<,'>s/\<<C-r><C-w>\>/
+nnoremap ,c :%s///g<Left><Left>
 
 " Move to match with tab
 nnoremap <tab> %

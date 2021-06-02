@@ -13,6 +13,8 @@ endfunction
 function! SlackClean()
     %s/\%ufffc//g
     %s/(edited)//g
+    g/^\d\+:\d\+$/d
+    %s/\d\+:\d\+ [AP]M$//g
 endfunction
 " }
 
