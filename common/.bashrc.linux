@@ -19,12 +19,6 @@ alias aud="audacious"
 alias o="xdg-open"
 alias dig="dig +nostat +nocmd +nocomments"
 
-alias switchphp="sudo update-alternatives --config php"
-
-alias viewjournal="journalctl | tr -cd '[:space:][:print:]' | vim -"
-
-alias make_ctags="ctags -R --fields=+aimS --languages=php"
-
 alias su='term root ; su'
 
 # For composer (3x speedup)

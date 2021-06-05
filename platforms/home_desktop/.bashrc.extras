@@ -62,8 +62,8 @@ alias aplay="audacious"
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
-alias cde='cd /1_EIT/0_units/'
-alias cduf="cd /www/uf/uf_checkout/trunk/resource/platform"
+alias cde='cl /1_EIT/0_units/'
+alias cduf="cl /www/uf/checkout/trunk/resource/platform"
 
 if [[ $- == *i* ]]; then
     if [ $(groups | awk '{print $1}') == www-data ]; then
