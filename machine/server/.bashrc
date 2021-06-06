@@ -1,3 +1,4 @@
+# Fuzzy find
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_DEFAULT_OPS="--extended"
@@ -7,13 +8,9 @@ complete -F _fzf_path_completion -o default -o bashdefault o
 complete -F _fzf_path_completion -o default -o bashdefault audacious
 complete -F _fzf_path_completion -o default -o bashdefault aud
 
-# Workaround for bash/readline bug. Without this, Ctrl-E doesn't work. Line has been left in .inputrc
-# for when it works someday.
-bind -m vi-command ' "\C-e": end-of-line '
+export PATH=/root/bin:/opt/bin:/sbin:/usr/sbin:$PATH
 
-export PATH=/root/bin:$PATH
-
-export XAUTHORITY=/run/user/1000/gdm/Xauthority
+export XAUTHORITY=/run/user/$(id -u)/gdm/Xauthority
 export DISPLAY=:0
 
 if [ "$TERM" == "xterm" ]; then
@@ -28,9 +25,14 @@ alias momvnc="remote_vnc margaret moms"
 alias dadvnc="remote_vnc chris dads"
 alias jillvnc="remote_vnc jbell jills"
 
-alias lv="vim -c \"normal '0\""
+# vim last
+alias vl="vim -c \"normal '0\""
+
+# abbreviations for apps and preferred apps
 alias naut="nautilus --no-desktop"
 alias aud="audacious"
+alias aedit="audacity"
+alias aplay="audacious"
 
 alias su='term root ; su'
 
@@ -62,28 +64,8 @@ PATH=~/.composer/vendor/bin:$PATH
 # Haskell tools
 PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
 
-export PATH
-
-export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-    vim -R -c 'set ft=man nomod norelativenumber nonumber nolist' -c 'map q :q<CR>' \
-    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-
 #export ENSCRIPT="-d Brother-HLL2375DW-series"
 export ENSCRIPT="-d HLL2375DW_jills"
-
-. /usr/share/autojump/autojump.bash
-
-# Workaround for bash/readline bug. Without this, Ctrl-E doesn't work. Line has been left in .inputrc
-# for when it works someday.
-bind -m vi-command ' "\C-e": end-of-line '
-
-export PATH=/root/bin:$PATH
-
-export XAUTHORITY=/run/user/1000/gdm/Xauthority
-export DISPLAY=:0
-
-
 
 function scr() {
     if [ $1 ]; then
@@ -142,37 +124,24 @@ function ssh() {
     fi
 }
 
-alias aedit="audacity"
-alias aplay="audacious"
-
 alias plocate="locate -d /var/lib/mlocate/personal.db"
 
-alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
-alias cde='cl /1_EIT/0_units/'
 alias cduf="cl /www/uf/checkout/trunk/resource/platform"
 
-if [[ $- == *i* ]]; then
-    if [ $(groups | awk '{print $1}') == www-data ]; then
-        if ! pwd | grep 'www' &> /dev/null ; then
-            cd /www
-        fi
-    fi
-fi
+alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
 
-
-# Current EIT assignment and answer
+# EIT
+alias cde='cl /1_EIT/0_units/'
+# current assignment and answer
 alias assignment='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_YOURNAMEHERE.docx'
 alias answers='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_model_answer.docx'
 
+
 # xdebug from the cli won't reliably read the xdebug.ini
 # PHP 7.0, just requires this var to exist,
-# PHP 5.6, needs the settings in it
-#export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0"
 export XDEBUG_CONFIG=
 
 eval $(dircolors -b /opt/dircolors-zenburn/dircolors)
-
-export PATH=/opt/bin:/sbin:/usr/sbin:$PATH
 
 # Bash now has PROMPT_DIRTRIM which trims \w to that many path elements,
 # But then we couldn't do the $HOME and /data/ substitions.
@@ -239,3 +208,6 @@ elif [[ $(hostname) == 'server' ]]; then
 else
     PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
 fi
+
+. /usr/share/autojump/autojump.bash
+

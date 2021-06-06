@@ -1,4 +1,5 @@
 # Shell settings
+# ##############
 export HISTCONTROL=ignoredups:ignorespace
 export HISTSIZE=1000
 shopt -s histappend
@@ -23,7 +24,9 @@ fi
 # Tell non-interactive shells where to go
 export BASH_ENV=$HOME/.bashrc
 
-# Functions
+
+# Functions and aliases
+#######################
 
 # "makedir and cd to it"
 function mcd() {
@@ -31,6 +34,12 @@ function mcd() {
   cd $1;
 }
 
+# cd down
+function cdd() {
+    cd "$(find . -name $1 -type d)"
+}
+
+# cd and list
 function cl() {
     DIR="$*";
         # if no DIR given, go home
@@ -93,9 +102,10 @@ function vix() {
   vim $fn
 }
 
-# cd down
-function cdd() {
-    cd "$(find . -name $1 -type d)"
+# open latest modified file
+function ol () {
+    latest_file="$(ls -atr $1 | egrep -v '^\.' | tail -1)"
+    xdg-open "$latest_file"
 }
 
 # Aliases
@@ -104,27 +114,31 @@ alias cg='cd `git rev-parse --show-toplevel`'
 alias cp='cp -i'
 alias cpv='rsync -ah --info=progress2'
 alias df="pydf"
+alias dig="dig +nostat +nocmd +nocomments"
 alias gst='git status'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
 alias mkdir="mkdir -vp"
+alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias mv="mv -i"
-alias o="open"
+alias o="xdg-open"
+alias ports='netstat -tulanp'
+alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
 
 alias cdr='cd "$(cat ~/.pwdremember)"'
 alias pwdr='pwd > ~/.pwdremember'
 
-# (la)test
+# list l(a)test
 alias la='ls -ltrh --color=yes --group-directories-first'
-# (r)ecently modified
+# list (r)ecently modified
 alias lr='find . -mtime -1'
-# sort by (e)xtension
+# list by (e)xtension
 alias le='ls -XBoh --color=yes --group-directories-first'
-# (l)ong list
+# list (l)ong
 alias ll='ls -Boh --color=yes --group-directories-first'
-# sort by si(z)e
+# list by si(z)e
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 
 # For many apps
@@ -137,18 +151,11 @@ export ACK_PAGER=less
 export SVN_MERGE=meld
 export LESS="-g -I -F -X -R"
 export PAGER="less -Xi"
+export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    vim -R -c 'set ft=man nomod norelativenumber nonumber nolist' -c 'map q :q<CR>' \
+    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-alias mountt="mount | column -t | sort | egrep '^/dev'"
-alias ports='netstat -tulanp'
-alias rsync="rsync -a --no-inc-recursive --info=progress2 "
-alias o="xdg-open"
-alias dig="dig +nostat +nocmd +nocomments"
-
-function ol () {
-    latest_file="$(ls -atr $1 | egrep -v '^\.' | tail -1)"
-    xdg-open "$latest_file"
-}
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
-
