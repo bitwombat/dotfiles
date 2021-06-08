@@ -2,6 +2,6 @@
 Version=1.0
 Type=Application
 Name=invest
-Exec="/usr/bin/localc" /info/money/investing/Invest.xlsx
+Exec="/usr/bin/localc" /info/provinces/money/investing/3_transactions/data/transactions.csv
 Categories=Office;
 Terminal=false
