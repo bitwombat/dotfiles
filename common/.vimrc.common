@@ -126,7 +126,7 @@ nnoremap ,tc :tabclose<CR>
 nnoremap ,tn :tabnew<CR>
 
 " Clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 noremap ,c "+y
 noremap ,p "+p
 noremap ,P "+P
