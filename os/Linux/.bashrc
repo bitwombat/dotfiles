@@ -36,7 +36,7 @@ function mcd() {
 
 # cd down
 function cdd() {
-    cd "$(find . -name "*$1*" -type d)"
+    cd "$(find . -name "*$1*" -type d -print -quit)"
 }
 
 # cd and list
