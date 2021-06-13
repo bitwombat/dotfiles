@@ -55,6 +55,11 @@ augroup html
     autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate eph ?>
 augroup END
 
+augroup svelte
+    au!
+    au! BufNewFile,BufRead *.svelte set ft=html
+augroup END
+
 " /usr/share/vim/vim74/syntax/markdown.vim calls javascript.vim which sets
 " foldmethod to syntax.  Set it back to what ftplugin/markdown.vim needs to
 " work right.
