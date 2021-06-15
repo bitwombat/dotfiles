@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Use this to hardcode OS, distro, and machine values into a copy of the
+# template/.bashrc. This is nice for jumping into the various files in a text
+# editor, from the top level ~/.bashrc
+
+THIS_OS=$(uname -s)
+THIS_DISTRO=$(lsb_release -i -s)
+THIS_MACHINE=$(uname -n)
+
+cat $1 | sed -e '/^THIS\|^RC_HOME/d' \
+    | sed -e "s/\$THIS_OS/$THIS_OS/g" \
+    | sed -e "s/\$THIS_DISTRO/$THIS_DISTRO/g" \
+    | sed -e "s/\$THIS_MACHINE/$THIS_MACHINE/g" \
+    | sed -e "s/\$RC_HOME/\$HOME\/.myconfigs/g"
