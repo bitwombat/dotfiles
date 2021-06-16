@@ -14,7 +14,6 @@ syntax on
 set path+=**
 
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
-set pastetoggle=<F2>
 set backspace=indent,eol,start
 
 set autowrite
@@ -28,7 +27,10 @@ set fileformat=unix
 set scrolloff=2
 set vb t_vb=
 set wildmenu
+set wildmode=longest:full,full
 set wildignore+=*/node_modules/*
+set wildignore+=*/vendor/*
+set wildignore+=*/__pycache__/*
 set wildignore+=*/site-packages/*
 " }}}
 
@@ -40,6 +42,15 @@ set showcmd
 set showmatch
 set noshowmode
 set conceallevel=2
+
+" Line numbers
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * if &number | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter   * if &number | set norelativenumber | endif
+augroup END
 
 " Use a cursor line when navigating around, off when in insert mode
 set cursorline
@@ -94,9 +105,15 @@ set expandtab
 " }}}
 
 " Keys {{{
-" Navigate Syntastic errors (location list, not quickfix!)
-nnoremap ]l :lnext<CR>
-nnoremap [l :lprevious<CR>
+set pastetoggle=<F2>
+
+" Navigate location list
+nnoremap ]j :lnext<CR>
+nnoremap ]k :lprevious<CR>
+
+" Navigate quickfix list
+nnoremap [j :cn<CR>
+nnoremap [k :cN<CR>
 
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
@@ -110,7 +127,7 @@ nnoremap ,j :bprevious<CR>
 nnoremap ,b :ls<CR>:b<space>
 nnoremap ,, :e #<CR>
 
-" tabbable list of buffers
+" tabbable list of buffers - needed when Ctrl-P is installed?
 set wildcharm=<C-z>
 nnoremap ,B :buffer <C-z><S-Tab>
 nnoremap ,B :sbuffer <C-z><S-Tab>
@@ -125,6 +142,8 @@ nnoremap ,tn :tabnew<CR>
 noremap ,c "+y
 noremap ,p "+p
 noremap ,P "+P
+" Copy the entire buffer to the system clipboard (like Ctrl-A)
+noremap ,a <Esc>gg"+yG
 
 " Replace the current word and all its occurrences. (Global Change)
 nnoremap ,c :%s///g<Left><Left>
@@ -156,10 +175,6 @@ nnoremap T :%s/  *$//g<CR>
 " Macroing
 nnoremap L @l
 
-" IDE
-nnoremap <F11> :cn<CR>
-nnoremap <F10> :cN<CR>
-
 " Saving
 noremap <F1> :update<CR>
 inoremap <F1> <ESC>:update<CR>a
@@ -167,7 +182,7 @@ noremap <C-s> :update<CR>
 inoremap <C-s> <ESC>:update<CR>a
 
 " Quitting
-" closes the current window.  Will exit if last window (unlike Ctrl-W C).
+" closes current window and exit if last window (unlike Ctrl-W C).
 nnoremap <C-d> :q<CR>
 
 " Viewing Modes
@@ -177,21 +192,9 @@ noremap <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> synt
 noremap <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
 noremap <F9> :set list!<Bar>set list?<CR>
 
-" Relative numbers
-set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * if &number | set relativenumber | endif
-  autocmd BufLeave,FocusLost,InsertEnter   * if &number | set norelativenumber | endif
-augroup END
-
 " Folding
 noremap U zA
 "noremap , za
-
-" Copy the entire buffer to the system clipboard (like Ctrl-A)
-noremap ,a <Esc>gg"+yG
 
 " Ctrl-A and Ctrl-E work as they do on the command line
 noremap <C-a> ^
