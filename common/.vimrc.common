@@ -9,10 +9,6 @@ set smartindent
 filetype on
 filetype plugin indent on
 syntax on
-" make vim pop out of Insert mode immediately, without waiting for more keypresses. Breaks arrow keys in insert mode.
-"set noesckeys
-"inoremap <C-p> <up>
-"inoremap <C-n> <down>
 
 " When finding or ctrl-x, search entire tree
 set path+=**
@@ -126,7 +122,6 @@ nnoremap ,tc :tabclose<CR>
 nnoremap ,tn :tabnew<CR>
 
 " Clipboard
-"set clipboard=unnamedplus
 noremap ,c "+y
 noremap ,p "+p
 noremap ,P "+P
