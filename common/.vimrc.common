@@ -231,4 +231,10 @@ noremap <C-w>\| :vsplit<cr>
 set tags=./tags,tags
 " }}}
 
+" Tmux {{{
+if exists('$TMUX')
+    autocmd BufEnter,BufWrite * call system("tmux rename-window '" . expand("%:t") . "'")
+    autocmd VimLeave * call system("tmux set-option -w automatic-rename on")
+endif
+" }}}
 " vim:foldmethod=marker
