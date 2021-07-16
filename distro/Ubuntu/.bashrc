@@ -13,3 +13,11 @@ function dpkgwi() {
 function dpkgwl() {
   dpkg-query -L $(dpkgw $1);
 }
+
+function dpkgwhy() {
+    apt-cache rdepends --installed $1
+}
+
+function dpkgwwhy() {
+    apt-cache rdepends --installed $(dpkgw $1)
+}
