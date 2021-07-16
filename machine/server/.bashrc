@@ -13,13 +13,13 @@ export PATH=/root/bin:/opt/bin:/sbin:/usr/sbin:$PATH
 export XAUTHORITY=/run/user/$(id -u)/gdm/Xauthority
 export DISPLAY=:0
 
-if [ "$TERM" == "xterm" ]; then
-    TERM=xterm-256color
-fi
+#if [ "$TERM" == "xterm" ]; then
+#    TERM=xterm-256color
+#fi
 
-if [ "$TERM" == "screen" ]; then
-    TERM=screen-256color
-fi
+#if [ "$TERM" == "screen" ]; then
+#    TERM=screen-256color
+#fi
 
 alias momvnc="remote_vnc margaret moms"
 alias dadvnc="remote_vnc chris dads"
