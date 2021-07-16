@@ -28,6 +28,12 @@ alias jillvnc="remote_vnc jbell jills"
 # vim last
 alias vl="vim -c \"normal '0\""
 
+# fuzzy find with preview then open vim
+function fvim() {
+    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim $FILE
+}
+
+
 # abbreviations for apps and preferred apps
 alias naut="nautilus --no-desktop"
 alias aud="audacious"
