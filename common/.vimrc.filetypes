@@ -171,9 +171,17 @@ augroup END
 
 au FileType mail call FT_mail()
 
-augroup EnglishFiles
-    autocmd!
-    autocmd BufNewFile,BufReadPost *notes/* call FT_english()
+" With this enabled, for some reason /usr/share/vim/vim81/syntax/javascript.vim
+" gets called, which sets foldmethod=syntax, which hoses markdown folding
+" (which must be foldmethod=expr)
+"
+" Perhaps this could be at the top of the file and prevent problems, or perhaps
+" I just spent an hour and a half trying to figure out why the exact same file
+" folded when it was located in some dirs, but not others.
+"
+"augroup EnglishFiles
+"    autocmd!
+"    autocmd BufNewFile,BufReadPost *notes/* call FT_english()
 
 augroup WATFiles
     autocmd!
