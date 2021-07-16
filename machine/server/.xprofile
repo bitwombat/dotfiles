@@ -4,7 +4,7 @@
 # Maybe if sequential, I won't get the 'unable to grab keyboard' message.
 
 setxkbmap -option terminate:ctrl_alt_bksp
-xmodmap /home/gbell2/.myconfigs/.Xmodmap
+xmodmap /home/gbell2/.myconfigs/common/.Xmodmap
 xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
 
 xrandr --output DP-0 --mode 1920x1080 --primary &> /dev/null
