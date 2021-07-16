@@ -26,7 +26,9 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " Ack {{{
 " Run with :Ack
 " Tell it to use ag
-let g:ackprg = 'ag --vimgrep'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 cnoreabbrev ag Ack
 " }}}
 
