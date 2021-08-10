@@ -53,6 +53,7 @@ augroup html
     autocmd BufNewFile,BufReadPost *.html,*.phtml set filetype=html
     autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate sph <?php
     autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate eph ?>
+    autocmd BufNewFile,BufReadPost *.html,*.phtml set equalprg=js-beautify\ --type=html
 augroup END
 
 augroup svelte
