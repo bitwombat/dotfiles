@@ -156,7 +156,12 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+if [ "$(id -u)" -eq 0 ]; then
+    PS1="\u@\h:[\w] # "
+else
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+fi
+
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
