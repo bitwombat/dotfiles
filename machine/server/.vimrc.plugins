@@ -1,6 +1,10 @@
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
 
+" Fzf {{{
+set rtp+=~/.fzf
+" }}}
+
 " MiniSnip {{{
 let g:minisnip_trigger = '**'
 " }}}

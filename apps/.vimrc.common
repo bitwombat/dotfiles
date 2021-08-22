@@ -117,17 +117,18 @@ nnoremap [k :cN<CR>
 
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
-nnoremap ,cp :CtrlPBuffer<CR>
+nnoremap ,f :Files<CR>
+nnoremap ,b :Buffers<CR>
 
 nnoremap ,cd :cd %:h<CR>:pwd<CR>
 
 " Buffers
 nnoremap ,k :bnext<CR>
 nnoremap ,j :bprevious<CR>
-nnoremap ,b :ls<CR>:b<space>
+"nnoremap ,b :ls<CR>:b<space>
 nnoremap ,, :e #<CR>
 
-" tabbable list of buffers - needed when Ctrl-P is installed?
+" tabbable list of buffers
 set wildcharm=<C-z>
 nnoremap ,B :buffer <C-z><S-Tab>
 nnoremap ,B :sbuffer <C-z><S-Tab>

@@ -1,12 +1,6 @@
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
 
-" CtrlP {{{
-let g:ctrlp_use_caching = 1
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-" }}}
-
 " NERDTree {{{
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Temporary because of a bug
