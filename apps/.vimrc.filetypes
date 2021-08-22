@@ -73,6 +73,8 @@ augroup markdown
     "autocmd BufNewFile,BufReadPost *.md iab `h <Left>```haskell<CR>```<Up><End><CR>
     autocmd BufNewFile,BufReadPost *.md inoremap <buffer> `h ```haskell<CR>```<Esc><Up>A<CR>
     autocmd BufNewFile,BufReadPost *.md iab `l λ>
+    autocmd BufNewFile,BufReadPost *.md hi clear SpellBad
+    autocmd BufNewFile,BufReadPost *.md hi SpellBad ctermbg=Red
 augroup END
 
 augroup css
@@ -186,7 +188,7 @@ au FileType mail call FT_mail()
 
 augroup WATFiles
     autocmd!
-    autocmd BufNew,VimEnter,BufNewFile,BufReadPost */wat-play/* set noexpandtab
+    autocmd BufNew,VimEnter,BufNewFile,BufReadPost */wat/* set noexpandtab
 
 augroup HugoFiles
     autocmd!
