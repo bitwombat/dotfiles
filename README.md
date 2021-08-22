@@ -6,8 +6,8 @@ Unix configs
 # Setup
 
 git clone http://github.com/bitwombat/unix_configs
-mv unix_configs .myconfigs
-cd .myconfigs
+mv unix_configs dotfiles
+cd dotfiles
 ln -s platforms/some_appropriate_configuration this_platform
 . setup.sh
 sudo cp .bashrc.basics /etc

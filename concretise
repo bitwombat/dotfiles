@@ -12,4 +12,4 @@ cat $1 | sed -e '/^THIS\|^RC_HOME/d' \
     | sed -e "s/\$THIS_OS/$THIS_OS/g" \
     | sed -e "s/\$THIS_DISTRO/$THIS_DISTRO/g" \
     | sed -e "s/\$THIS_MACHINE/$THIS_MACHINE/g" \
-    | sed -e "s/\$RC_HOME/\$HOME\/.myconfigs/g"
+    | sed -e "s/\$RC_HOME/\$HOME\/dotfiles/g"
