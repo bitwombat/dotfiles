@@ -1,28 +1,28 @@
 #!/bin/bash
 
-cd $(dirname $0)
+cd
+git clone https://github.com/bitwombat/dotfiles.git
+cp dotfiles/templates/.vimrc .
+cp dotfiles/templates/.bashrc .
 
-echo $PWD
+ln -s dotfiles/apps/.inputrc
+ln -s dotfiles/apps/.tmux.conf
+ln -s dotfiles/apps/.gitconfig
+ln -s dotfiles/apps/.fzf
+ln -s dotfiles/apps/.toprc
 
-if [ ! -e this_platform ]; then
-    echo "ERROR: Make a symlink from $PWD/platforms/{platform} to $PWD/this_platform first"
-    exit 1
+
+PACKAGES="fd-find silversearcher-ag autojump git bat"
+
+local ANS
+read -r -p "Install ${PACKAGES} [y/N]?: " ANS
+if [[ "$ANS" == 'y' || "$ANS" == 'Y' ]]; then
+    sudo apt update
+    sudo apt install -y fd-find silversearcher-ag autojump git bat
+    sudo ln -s /usr/bin/fdfind /usr/bin/fd
+    sudo ln -s /usr/bin/batcat /usr/bin/bat
 fi
 
-cd ~
-
-# Symlink to all .rc files right under .myconfigs to ~
-find .myconfigs/ -maxdepth 1 -type f -name '.*' -print0 | while read -d $'\0' dotfile
-do
-    ln -s $dotfile
-done
-
-# Symlink to all .rc files under 'this_platform' to ~
-find .myconfigs/this_platform/ -maxdepth 1 -type f -name '.*' -print0 | while read -d $'\0' dotfile
-do
-    if [ -f "$dotfile" ]; then
-        echo "WARNING: $dotfile already exists. Not linking to it from ~."
-    else
-        ln -s $dotfile
-    fi
-done
+mkdir dotfiles/machines/$(uname -n)
+echo "Done."
+echo "Reminder: Make a file dotfiles/machines/$(uname -n) for settings specific to this machine"
