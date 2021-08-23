@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 cd
 git clone https://github.com/bitwombat/dotfiles.git
 cp dotfiles/templates/.vimrc .
