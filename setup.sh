@@ -14,8 +14,8 @@ ln -s dotfiles/apps/.toprc
 
 PACKAGES="fd-find silversearcher-ag autojump git bat"
 
-local ANS
 read -r -p "Install ${PACKAGES} [y/N]?: " ANS
+
 if [[ "$ANS" == 'y' || "$ANS" == 'Y' ]]; then
     sudo apt update
     sudo apt install -y fd-find silversearcher-ag autojump git bat
