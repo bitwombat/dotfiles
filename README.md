@@ -1,25 +1,12 @@
-unix_configs
+Greg's dotfiles
 ============
 
-Unix configs
+* Fully customisable per OS, machine, and user
+* Easy to deploy and set up
 
 # Setup
 
-git clone http://github.com/bitwombat/unix_configs
-mv unix_configs dotfiles
-cd dotfiles
-ln -s platforms/some_appropriate_configuration this_platform
-. setup.sh
-sudo cp .bashrc.basics /etc
-sudo chmod 644 /etc/.bashrc.basics 
-sudo vi /etc/bash.bashrc 
-add . /etc/.bashrc.basics as the last line
-
-## Goals
-
-* Uncomplicated - easy to understand in 6 months.  Easy control flow.
-* Fully customisable per machine and per user (e.g. gbell2, root)
-  (or logic inside can make choices)
-* Easy to deploy and set up
-* Support for just the basics (for all the shell accounts)
+```sh
+$ wget -O - https://raw.githubusercontent.com/bitwombat/dotfiles/master/setup.sh 2>/dev/null
+```
 
