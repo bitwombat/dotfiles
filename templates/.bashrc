@@ -1,4 +1,4 @@
-RC_HOME=$HOME/.myconfigs
+RC_HOME=$HOME/dotfiles
 
 THIS_OS=$(uname -s)
 THIS_DISTRO=$(lsb_release -i -s)

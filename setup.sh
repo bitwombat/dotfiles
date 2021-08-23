@@ -25,4 +25,4 @@ fi
 
 mkdir dotfiles/machines/$(uname -n)
 echo "Done."
-echo "Reminder: Make a file dotfiles/machines/$(uname -n) for settings specific to this machine"
+echo "Reminder: Make .bashrc (or .vimrc) files in dotfiles/machines/$(uname -n) for settings specific to this machine"
