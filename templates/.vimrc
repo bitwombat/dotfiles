@@ -1,8 +1,8 @@
 colorscheme zenburn
-source $HOME/.myconfigs/apps/.vimrc.common
-source $HOME/.myconfigs/apps/.vimrc.functions
-source $HOME/.myconfigs/apps/.vimrc.plugins
-source $HOME/.myconfigs/apps/.vimrc.filetypes
+source $HOME/dotfiles/apps/.vimrc.common
+source $HOME/dotfiles/apps/.vimrc.functions
+source $HOME/dotfiles/apps/.vimrc.plugins
+source $HOME/dotfiles/apps/.vimrc.filetypes
 
 " Fix theme's colour for the matching parens
 hi MatchParen ctermbg=52
