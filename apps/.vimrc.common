@@ -118,7 +118,15 @@ nnoremap [k :cN<CR>
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
 nnoremap ,f :Files<CR>
-noremap ,b :if exists(":Buffers") <Bar> :Buffers <Bar> <CR> else <Bar> :ls<CR>:b<space> <Bar> endif <CR>
+noremap ,b :call MyBuffersList()<CR>
+function MyBuffersList()
+if exists("g:loaded_fzf")
+    :Buffers
+else
+    call feedkeys(":ls\<CR>:b\<SPACE>")
+endif
+endfunction
+
 
 nnoremap ,cd :cd %:h<CR>:pwd<CR>
 
