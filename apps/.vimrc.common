@@ -118,7 +118,7 @@ nnoremap [k :cN<CR>
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
 nnoremap ,f :Files<CR>
-nnoremap ,b :Buffers<CR>
+noremap ,b :if exists(":Buffers") <Bar> :Buffers <Bar> <CR> else <Bar> :ls<CR>:b<space> <Bar> endif <CR>
 
 nnoremap ,cd :cd %:h<CR>:pwd<CR>
 
