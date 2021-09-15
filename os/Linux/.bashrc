@@ -113,7 +113,7 @@ alias ..="cd .. ; ls -Boh --color=yes --group-directories-first"
 alias cg='cd `git rev-parse --show-toplevel`'
 alias cp='cp -i'
 alias cpv='rsync -ah --info=progress2'
-alias df="pydf"
+alias df="df -h --exclude=tmpfs --exclude=devtmpfs --exclude=overlay -T"
 alias dig="dig +nostat +nocmd +nocomments"
 alias gst='git status'
 alias gv="gvim -geometry 98x24"
