@@ -23,6 +23,6 @@ if [[ "$ANS" == 'y' || "$ANS" == 'Y' ]]; then
     sudo ln -s /usr/bin/batcat /usr/bin/bat
 fi
 
-mkdir dotfiles/machines/$(uname -n)
+mkdir dotfiles/machine/$(uname -n)
 echo "Done."
-echo "Reminder: Make .bashrc (or .vimrc) files in dotfiles/machines/$(uname -n) for settings specific to this machine"
+echo "Reminder: Make .bashrc (or .vimrc) files in dotfiles/machine/$(uname -n) for settings specific to this machine"
