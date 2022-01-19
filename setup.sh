@@ -5,11 +5,11 @@ git clone https://github.com/bitwombat/dotfiles.git
 cp dotfiles/templates/.vimrc .
 cp dotfiles/templates/.bashrc .
 
-ln -s dotfiles/apps/.inputrc
-ln -s dotfiles/apps/.tmux.conf
-ln -s dotfiles/apps/.gitconfig
-ln -s dotfiles/apps/.fzf
-ln -s dotfiles/apps/.toprc
+[ -f .inputrc ] || ln -s dotfiles/apps/.inputrc
+[ -f .tmux.conf ] || ln -s dotfiles/apps/.tmux.conf
+[ -f .gitconfig ] || ln -s dotfiles/apps/.gitconfig
+[ -f .fzf ] || ln -s dotfiles/apps/.fzf
+[ -f .toprc ] || ln -s dotfiles/apps/.toprc
 
 
 PACKAGES="fd-find silversearcher-ag autojump git bat"
