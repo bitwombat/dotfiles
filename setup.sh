@@ -18,7 +18,7 @@ read -r -p "Install ${PACKAGES} [y/N]?: " ANS
 
 if [[ "$ANS" == 'y' || "$ANS" == 'Y' ]]; then
     sudo apt update
-    sudo apt install -y fd-find silversearcher-ag autojump git bat
+    sudo apt install -y fd-find silversearcher-ag autojump git bat vim
     sudo ln -s /usr/bin/fdfind /usr/bin/fd
     sudo ln -s /usr/bin/batcat /usr/bin/bat
 fi
