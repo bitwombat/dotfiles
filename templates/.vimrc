@@ -1,4 +1,5 @@
-colorscheme zenburn
+silent! colorscheme darkblue
+silent! colorscheme zenburn
 source $HOME/dotfiles/apps/.vimrc.common
 source $HOME/dotfiles/apps/.vimrc.functions
 source $HOME/dotfiles/apps/.vimrc.plugins
