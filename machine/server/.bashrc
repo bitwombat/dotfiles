@@ -1,3 +1,9 @@
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
+
 # Fuzzy find
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="fd --type f"
@@ -8,7 +14,8 @@ complete -F _fzf_path_completion -o default -o bashdefault o
 complete -F _fzf_path_completion -o default -o bashdefault audacious
 complete -F _fzf_path_completion -o default -o bashdefault aud
 
-export PATH=/root/bin:/opt/bin:/sbin:/usr/sbin:$PATH
+export PATH
+pathadd /root/bin
 
 export XAUTHORITY=/run/user/$(id -u)/gdm/Xauthority
 export DISPLAY=:0
@@ -25,11 +32,13 @@ alias momvnc="remote_vnc margaret moms"
 alias dadvnc="remote_vnc chris dads"
 alias jillvnc="remote_vnc jbell jills"
 
+alias editfeed="vi scp://bitwomba@bitwombat.com.au/public_html/pods/feed.xml"
+
 # vim last
 alias vl="vim -c \"normal '0\""
 
 # fuzzy find with preview then open vim
-function fvim() {
+function vif() {
     FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim $FILE
 }
 
@@ -57,21 +66,23 @@ export WINEPREFIX="$HOME/.wine-32"
 export WINEARCH=win32
 
 # Pip
-PATH=$PATH:$HOME/.local/bin
+pathadd $HOME/.local/bin
 
 # Node
-NODE_MODULES="/opt/node_modules"
-PATH=$PATH:$NODE_MODULES/.bin
-MANPATH="$NODE_MODULES/share/man:$(manpath)"
+pathadd /opt/node/bin
+MANPATH="/opt/node/share/man:$(manpath)"
 
 # Composer packages
-PATH=~/.composer/vendor/bin:$PATH
+pathadd $HOME/.composer/vendor/bin
 
 # Haskell tools
-PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
+#PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
+pathadd $HOME/.cabal
+pathadd $HOME/.ghcup/bin
+
 
 #export ENSCRIPT="-d Brother-HLL2375DW-series"
-export ENSCRIPT="-d HLL2375DW_jills"
+export ENSCRIPT="-d HLL2375DW-Try3"
 
 function scr() {
     if [ $1 ]; then
@@ -92,33 +103,6 @@ function go_camera() {
     cd $(find /pics/camera -maxdepth 1 -type d -name '20*' | sort | tail -1)
 }
 
-function cdwpu() {
-    [ -e public_html ] && cd public_html
-    cd wp-content/uploads
-}
-
-function cdwpt() {
-    [ -e public_html ] && cd public_html
-    cd wp-content/themes
-    project=$(pwd | awk -F'/' '{print $(NF-3)}')
-    if [ -e $project ]; then
-        cd $project
-    fi
-    ls -l
-}
-
-function cdwpp() {
-    [ -e public_html ] && cd public_html
-    cd wp-content/plugins
-    ls -l
-}
-
-function wpupdate() {
-    wp core update
-    wp plugin update --all
-    wp theme update --all
-}
-
 function ssh() {
     # Detect when ssh is called by scp completion
     if [[ "$*" == *"Batchmode"* ]]; then
@@ -134,15 +118,6 @@ alias plocate="locate -d /var/lib/mlocate/personal.db"
 
 alias cduf="cl /www/uf/checkout/trunk/resource/platform"
 
-alias web="cd \$(ls -1atrd /www/* | grep -v '*logs*' | tail -1) ; newgrp www-data"
-
-# EIT
-alias cde='cl /1_EIT/0_units/'
-# current assignment and answer
-alias assignment='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_YOURNAMEHERE.docx'
-alias answers='o /1_EIT/0_units/0_maths/assignment1/v9/ESI_E126_Assignment1_V9_model_answer.docx'
-
-
 # xdebug from the cli won't reliably read the xdebug.ini
 # PHP 7.0, just requires this var to exist,
 export XDEBUG_CONFIG=
@@ -150,8 +125,8 @@ export XDEBUG_CONFIG=
 eval $(dircolors -b /opt/dircolors-zenburn/dircolors)
 
 # Bash now has PROMPT_DIRTRIM which trims \w to that many path elements,
-# But then we couldn't do the $HOME and /data/ substitions.
-# SO, do it The hard way still:
+# But then we couldn't do the $HOME and /data/ substitutions.
+# SO, do it The Hard Way still:
 X='DIR='                       # Set temporary variable DIR to
 X=${X}'$(pwd'                  # the output of pwd
 X=${X}'|sed -e "s!/data/!/!"'  # piped into sed to remove the data prefix
@@ -176,44 +151,25 @@ if [ -n "$STY" ]; then  # we're inside of screen
 fi
 export PROMPT_COMMAND=$X
 
-if [ -r "$HOME/.myconfigs/this_platform/prompt_color" ]; then
-  . $HOME/.myconfigs/this_platform/prompt_color
-else
-  PROMPT_COLOR="33;7"
-fi
-
 case $TERM in
     screen*)
-        #SCREENTITLEPROGRAM='\[\ek\e\\\]'
-        #SCREENTITLE='\[\ek\w\e\\\]'
-        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
         CURDIR="\$AltDir"
     ;;
     xterm*|cygwin*|rxvt*)
         TITLEBAR_START="\e]0;"
         TITLEBAR_END="\007"
         XTERM_TITLEBAR="\[${TITLEBAR_START}\$Alt2Dir${TITLEBAR_END}\]"
-        USERHOST="\[\e[${PROMPT_COLOR}m\]\u@\h\[\e[0m\]"
         CURDIR="\$AltDir"
         ;;
     *)
-        USERHOST="\u@\h"
         CURDIR="\w"
-
         ;;
 esac
 
-ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
 
 . /etc/bash_completion.d/git-prompt
-
-if [[ $EUID -eq 0 ]]; then
-    PS1="${ESCAPES}\u@\h[\w]# "
-elif [[ $(hostname) == 'server' ]]; then
-    PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][\[\e[38;5;202m\]${CURDIR}\[\e[0m\]]\$ "
-else
-    PS1="${ESCAPES}${USERHOST}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][${CURDIR}]\$ "
-fi
-
 . /usr/share/autojump/autojump.bash
+. $HOME/.config/exercism/exercism_completion.bash
 
+ESCAPES="${XTERM_TITLEBAR}${SCREENTITLE}${SCREENTITLEPROGRAM}"
+PS1="${ESCAPES}\[\e[33m\e[31m\]\$(__git_ps1)\[\e[0m\][\[\e[38;5;202m\]${CURDIR}\[\e[0m\]]\$ "
