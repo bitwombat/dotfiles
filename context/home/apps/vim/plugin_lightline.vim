@@ -45,6 +45,3 @@ let g:lightline.component_expand = {'trailing': 'lightline#trailing_whitespace#c
 let g:lightline.component_type = {'trailing': 'error'}
 
 " }}}
-
-
-" vim:foldmethod=marker

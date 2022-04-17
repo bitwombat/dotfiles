@@ -25,6 +25,3 @@ let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_css_csslint_args="--errors=known-properties,duplicate-background-images,duplicate-properties"
 
 " }}}
-
-
-" vim:foldmethod=marker

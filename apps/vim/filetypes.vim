@@ -42,19 +42,18 @@ augroup END
 
 " HTML tag closing
 autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
-autocmd FileType html iabbrev </ </<C-X><C-O>
+autocmd FileType html inoremap <lt>/ </<C-x><C-o><Esc>==gi
 " Without the fileytype=html, =G reformatting doesn't work, even though
 " filetype seems to get set to html without it.
 augroup html
     au!
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set sw=2
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set foldmethod=syntax
-    autocmd BufNewFile,BufReadPost *.html,*.phtml filetype indent on
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set smartindent
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set filetype=html
-    autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate sph <?php
-    autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate eph ?>
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set equalprg=js-beautify\ --type=html
+    autocmd BufNewFile,BufReadPost *.html,*.phtml
+        \ set sw=2 |
+        \ set foldmethod=syntax |
+        \ set filetype=html |
+        \ let g:indentLine_enabled=1 |
+        \ abbreviate sph <?php |
+        \ abbreviate eph ?>
 augroup END
 
 augroup svelte

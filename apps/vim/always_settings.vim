@@ -50,10 +50,6 @@ set smartcase
 set hlsearch
 " }}}
 
-" Ctags {{{
-set tags=./tags,tags
-" }}}
-
 " Visual settings {{{
 set listchars=tab:>.,trail:.,extends:#,nbsp:.,eol:$
 set scrolloff=2
@@ -76,6 +72,10 @@ silent! colorscheme darkblue
 silent! colorscheme gruvbox
 set background=dark
 " }}}
+
+" Don't save options and mappings with the session. This allows changes to
+" .vimrc to show through when the session is next loaded.
+set sessionoptions-=options
 
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim

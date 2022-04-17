@@ -5,6 +5,3 @@ augroup illuminate_augroup
     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
     augroup END
 " }}}
-
-
-" vim:foldmethod=marker

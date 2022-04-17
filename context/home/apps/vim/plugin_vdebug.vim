@@ -6,6 +6,3 @@ let g:vdebug_keymap={}
 let g:vdebug_keymap['run'] = ',v'
 let g:vdebug_keymap['close'] = ',s'
 " }}}
-
-
-" vim:foldmethod=marker

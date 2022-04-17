@@ -6,6 +6,3 @@ if executable('ag')
 endif
 cnoreabbrev ag Ack
 " }}}
-
-
-" vim:foldmethod=marker

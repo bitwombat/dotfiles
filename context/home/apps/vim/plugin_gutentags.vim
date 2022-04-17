@@ -23,6 +23,3 @@ augroup MyGutentagsStatusLineRefresher
             autocmd User GutentagsUpdated call lightline#update()
 augroup END
 " }}}
-
-
-" vim:foldmethod=marker
