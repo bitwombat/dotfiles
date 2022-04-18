@@ -32,15 +32,34 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'chaoren/vim-wordmotion'
+Plug 'chrisbra/csv.vim'
 Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+Plug 'fruit-in/elm-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'joonty/vdebug'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'morhetz/gruvbox'
 Plug 'powerline/powerline-fonts'
+Plug 'RRethy/vim-illuminate'
+Plug 'scrooloose/nerdtree'
+Plug 'TaDaa/vimade'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'tpope/vim-surround'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/DrawIt'
+Plug 'Yggdroot/indentLine'
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -51,25 +70,6 @@ else
 endif
 
 
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'chaoren/vim-wordmotion'
-Plug 'chrisbra/csv.vim'
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
-Plug 'fruit-in/elm-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'joonty/vdebug'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'maximbaz/lightline-trailing-whitespace'
-Plug 'RRethy/vim-illuminate'
-Plug 'TaDaa/vimade'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/tpope-vim-abolish'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/DrawIt'
-Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 call plug#end()

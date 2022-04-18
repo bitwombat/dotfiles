@@ -10,7 +10,6 @@ let g:lightline = {
     \             [ 'percent' ],
     \             [ 'lineinfo' ],
     \             [ 'fileformat', 'fileencoding', 'trailing' ],
-    \             [ 'gutentags'],
     \            ],
     \ },
     \ 'component_function': {
@@ -19,7 +18,6 @@ let g:lightline = {
     \   'gitbranch': 'fugitive#head',
     \   'fileformat': 'LightlineFileformat',
     \   'fileencoding': 'LightlineFileencoding',
-    \   'gutentags': 'gutentags#statusline',
     \ },
     \ }
 
