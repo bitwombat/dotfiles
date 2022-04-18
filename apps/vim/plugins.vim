@@ -51,24 +51,25 @@ else
 endif
 
 
-Plug 'chrisbra/csv.vim'
-Plug 'vim-scripts/DrawIt'
-Plug 'fruit-in/elm-vim'
-Plug 'Yggdroot/indentLine'
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'chaoren/vim-wordmotion'
+Plug 'chrisbra/csv.vim'
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+Plug 'fruit-in/elm-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'joonty/vdebug'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'maximbaz/lightline-trailing-whitespace'
+Plug 'RRethy/vim-illuminate'
+Plug 'TaDaa/vimade'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/tpope-vim-abolish'
-Plug 'joonty/vdebug'
-Plug 'TaDaa/vimade'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'RRethy/vim-illuminate'
 Plug 'tpope/vim-repeat'
-Plug 'chaoren/vim-wordmotion'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/DrawIt'
+Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 call plug#end()
