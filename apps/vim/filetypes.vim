@@ -36,8 +36,6 @@ augroup python
     " Make the 88st column stand out - matches Black's default.
     autocmd BufNewFile,BufReadPost *.py  highlight ColorColumn ctermbg=yellow
     autocmd BufNewFile,BufReadPost *.py  call matchadd('ColorColumn', '\%88v', 100)
-    autocmd BufNewFile,BufReadPost *.py  let g:syntastic_mode_map['mode']='active'
-    autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " HTML tag closing
