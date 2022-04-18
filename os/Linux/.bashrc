@@ -22,7 +22,7 @@ if [ -n "$PS1" ]; then
 fi
 
 # Tell non-interactive shells where to go
-export BASH_ENV=$HOME/.bashrc
+#export BASH_ENV=$HOME/.bashrc
 
 
 # Functions and aliases
@@ -165,3 +165,6 @@ fi
 
 # Run/enable bash completion
 [ -e /etc/profile.d/bash_completion.sh ] && . /etc/profile.d/bash_completion.sh
+
+# Enable stack completion
+#eval "$(stack --bash-completion-script stack)"

@@ -1,6 +1,3 @@
-" Load matchit which makes % pay attention to HTML / XML tags
-:source $VIMRUNTIME/macros/matchit.vim
-
 " NERDTree {{{
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Temporary because of a bug
@@ -16,22 +13,3 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 " }}}
-
-" Ack {{{
-" Run with :Ack
-" Tell it to use ag
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev ag Ack
-" }}}
-
-" vim-illuminate {{{
-" make the highlighted word underlined - much easier to see
-augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
-    augroup END
-" }}}
-"
-" vim:foldmethod=marker

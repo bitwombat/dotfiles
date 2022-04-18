@@ -22,6 +22,8 @@ augroup yml
     autocmd BufNewFile,BufReadPost *.yml,*.cabal  set nofoldenable
 augroup END
 
+"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 augroup python
     au!
     autocmd BufNewFile,BufReadPost *.py  set foldmethod=syntax
@@ -34,26 +36,22 @@ augroup python
     " Make the 88st column stand out - matches Black's default.
     autocmd BufNewFile,BufReadPost *.py  highlight ColorColumn ctermbg=yellow
     autocmd BufNewFile,BufReadPost *.py  call matchadd('ColorColumn', '\%88v', 100)
-    autocmd BufNewFile,BufReadPost *.py  let g:ctrlp_custom_ignore='\v\/(env|lib|lib64|include|share)\/'
-    autocmd BufNewFile,BufReadPost *.py  let g:syntastic_mode_map['mode']='active'
-    autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " HTML tag closing
 autocmd FileType html inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Space>
-autocmd FileType html iabbrev </ </<C-X><C-O>
+autocmd FileType html inoremap <lt>/ </<C-x><C-o><Esc>==gi
 " Without the fileytype=html, =G reformatting doesn't work, even though
 " filetype seems to get set to html without it.
 augroup html
     au!
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set sw=2
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set foldmethod=syntax
-    autocmd BufNewFile,BufReadPost *.html,*.phtml filetype indent on
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set smartindent
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set filetype=html
-    autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate sph <?php
-    autocmd BufNewFile,BufReadPost *.html,*.phtml abbreviate eph ?>
-    autocmd BufNewFile,BufReadPost *.html,*.phtml set equalprg=js-beautify\ --type=html
+    autocmd BufNewFile,BufReadPost *.html,*.phtml
+        \ set sw=2 |
+        \ set foldmethod=syntax |
+        \ set filetype=html |
+        \ let g:indentLine_enabled=1 |
+        \ abbreviate sph <?php |
+        \ abbreviate eph ?>
 augroup END
 
 augroup svelte
@@ -185,10 +183,6 @@ au FileType mail call FT_mail()
 "augroup EnglishFiles
 "    autocmd!
 "    autocmd BufNewFile,BufReadPost *notes/* call FT_english()
-
-augroup WATFiles
-    autocmd!
-    autocmd BufNew,VimEnter,BufNewFile,BufReadPost */wat/* set noexpandtab
 
 augroup HugoFiles
     autocmd!

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LTspice XVII
+Exec=env WINEPREFIX="/home/gbell2/.wine-32" wine-stable C:\\\\Program\\ Files\\\\LTC\\\\LTspiceXVII\\\\XVIIx86.exe 
+Type=Application
+StartupNotify=true
+Comment=Analog Devices's LTspice XVII
+Path=/home/gbell2/.wine-32/dosdevices/c:/Program Files/LTC/LTspiceXVII
+Icon=3540_XVIIx86.0
+StartupWMClass=xviix86.exe

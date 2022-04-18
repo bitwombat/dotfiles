@@ -1,0 +1,1 @@
+for i in /home/gbell2/dotfiles/desktop_entries/*; do ln -s /home/gbell2/dotfiles/desktop_entries/windows.desktop windows.desktop ; done
