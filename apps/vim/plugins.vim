@@ -41,7 +41,6 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'fruit-in/elm-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'joonty/vdebug'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'morhetz/gruvbox'
 Plug 'powerline/powerline-fonts'
