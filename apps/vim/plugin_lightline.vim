@@ -1,6 +1,6 @@
 " lightline  {{{
 let g:lightline = {
-    \ 'colorscheme': 'bitwombat',
+    \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch' ],
