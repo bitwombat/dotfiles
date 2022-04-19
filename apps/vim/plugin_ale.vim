@@ -23,8 +23,8 @@ augroup ale_hover_cursor
         autocmd CursorHold * ALEHover
 augroup END
 
-map <C-]> :ALEGoToDefinition<cr>
 " Keymaps
+nnoremap <silent> ,ld :ALEGoToDefinition<cr>
 nnoremap <silent> ,le <Cmd>lopen<CR>
 nnoremap <silent> ,lr <Cmd>ALERename<CR>
 nnoremap <silent> ,la <Cmd>ALECodeAction<CR>
