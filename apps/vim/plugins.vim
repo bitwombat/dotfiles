@@ -41,9 +41,11 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'fruit-in/elm-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'joonty/vdebug'
+Plug 'junegunn/vim-plug'  " to get help files
 Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'morhetz/gruvbox'
 Plug 'powerline/powerline-fonts'
+Plug 'preservim/vim-markdown'
 Plug 'RRethy/vim-illuminate'
 Plug 'scrooloose/nerdtree'
 Plug 'TaDaa/vimade'
@@ -59,7 +61,6 @@ Plug 'tpope/vim-surround'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/DrawIt'
 Plug 'Yggdroot/indentLine'
-
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
