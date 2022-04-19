@@ -3,7 +3,7 @@
 # go completely breaks :GoPath and :GoInstallBinaries in vim/vim-go.
 #PATH=/opt/homebrew/bin:$PATH
 
-alias tmux="TERM=screen-256color tmux"
+alias tmux="TERM=xterm-256color tmux"
 
 alias edgenode="sudo /Library/PaperCut\ Hive/pc-edgenode-service"
 alias ag="ag --color"

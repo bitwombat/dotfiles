@@ -67,6 +67,8 @@ autocmd InsertEnter,WinLeave * set nocursorline
 
 set fillchars+=vert:│  " Vertical split
 
+set t_Co=256
+set termguicolors
 let g:gruvbox_italic=1
 silent! colorscheme darkblue
 silent! colorscheme gruvbox
