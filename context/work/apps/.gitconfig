@@ -1,0 +1,50 @@
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+[alias]
+	lg = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	email = greg.bell@papercut.com
+	name = Greg Bell
+[merge]
+	tool = meld
+[core]
+	pager = less -F -X
+	excludesfile = /Users/gregb/.gitignore
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[cola]
+    spellcheck = false
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+	side-by-side = true
+	syntax-theme = GitHub
+    light
+    
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
