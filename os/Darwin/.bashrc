@@ -143,6 +143,7 @@ alias le='gls -XBoh --color=yes'
 alias ll='gls -Boh --color=yes --group-directories-first'
 # list by si(z)e
 alias lz='gls -Boh --reverse --sort=size --color=yes'
+alias filemerge='/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge'
 
 alias listpath="echo $PATH | sed -e 's/:/\n/g'"
 alias flatpath=listpath
