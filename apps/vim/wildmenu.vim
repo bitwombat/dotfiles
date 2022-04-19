@@ -12,9 +12,8 @@ au CursorHold * checktime
 " Note the version numbering is weird. 802 is indeed 8.2
 if v:version >= 802
     set wildoptions=pum
-fi
-
 endif
+
 set wildignore+=*/node_modules/*
 set wildignore+=*/vendor/*
 set wildignore+=*/__pycache__/*
