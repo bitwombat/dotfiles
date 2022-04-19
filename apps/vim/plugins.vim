@@ -33,6 +33,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/tagalong.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'chrisbra/csv.vim'
