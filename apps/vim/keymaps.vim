@@ -16,8 +16,9 @@ nnoremap [k :cN<CR>
 
 " Access plugins
 nnoremap ,nt :NERDTree<CR>
-nnoremap ,f :Files<CR>
-noremap ,b :call MyBuffersList()<CR>
+nnoremap ,f  :Files<CR>
+nnoremap ,A  :Ag<CR>
+noremap  ,b  :call MyBuffersList()<CR>
 function MyBuffersList()
 if exists("g:loaded_fzf")
     Buffers
@@ -71,7 +72,7 @@ noremap ,c "+y
 noremap ,p "+p
 noremap ,P "+P
 " Copy the entire buffer to the system clipboard (like Ctrl-A)
-noremap ,a <Esc>gg"+yG
+noremap ,a <Esc>mkgg"+yG`k
 
 " Replace the current word and all its occurrences. (Global Change)
 nnoremap ,C :%s/<C-r>0//g<Left><Left>
