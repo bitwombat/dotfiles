@@ -9,6 +9,8 @@ set smartindent
 filetype on
 filetype plugin indent on
 syntax on
+au CursorHold * checktime
+
 " }}}
 
 " Editor behaviour {{{
