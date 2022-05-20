@@ -9,6 +9,8 @@ set smartindent
 filetype on
 filetype plugin indent on
 syntax on
+set mouse=a
+set clipboard+=autoselect
 " }}}
 
 " Editor behaviour {{{
