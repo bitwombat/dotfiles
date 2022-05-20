@@ -11,6 +11,7 @@ filetype plugin indent on
 syntax on
 set mouse=a
 set clipboard+=autoselect
+au CursorHold * checktime
 " }}}
 
 " Editor behaviour {{{

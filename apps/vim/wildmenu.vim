@@ -2,9 +2,6 @@
 
 set wildmenu
 set wildmode=longest:full,full
-" Warn if file changes on disk
-au CursorHold * checktime
-
 
 " If we've managed to upgrade to v8.2, enable the pop-up menu for
 " completion on the vim command line (this has been what C-X C-F has done for a
