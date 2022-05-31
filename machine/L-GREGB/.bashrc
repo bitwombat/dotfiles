@@ -6,10 +6,19 @@
 alias tmux="TERM=xterm-256color tmux"
 
 alias edgenode="sudo /Library/PaperCut\ Hive/pc-edgenode-service"
-alias ag="ag --color"
+alias ag="ag --skip-vcs-ignores --color"
 alias cdc="cd ~/code/pmitc/coordinator"
 alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 alias kube="kubectl"
+alias fd="fd --no-ignore-vcs"
+alias watchtest='find . -name "*.go" | entr -s "clear ; go test -v"'
+alias myip="ifconfig | grep 'inet '"
+
+# This one is common to server - what to do? Is the app "fzf" or bash? How do we compose?
+# fuzzy find with preview then open vim
+function fvi() {
+    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim $FILE
+}
 
 __git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
