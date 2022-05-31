@@ -53,11 +53,11 @@ function cl() {
 # "cd there"
 function cdt() {
     path=$_
-    dirname=$(dirname $path)
-    if [ -d $path ]; then
-        cd $path
-    elif [ -d $dirname ]; then
-        cd $dirname
+    dirname=$(dirname "$path")
+    if [ -d "$path" ]; then
+        cd "$path"
+    elif [ -d "$dirname" ]; then
+        cd "$dirname"
     else
         echo "Can't see directory to cd to in that command."
     fi

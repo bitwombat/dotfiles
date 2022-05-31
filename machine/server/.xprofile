@@ -26,7 +26,6 @@ eval `ssh-agent` &> /dev/null
 
 #/home/gbell2/bin/mount.info askpass
 ssh-add /home/gbell2/.ssh/global_key &> /dev/null
-nm-applet &
 /opt/pa-applet/src/pa-applet &
 
 # For laptop. Split this .xprofile into platform-specific ones.

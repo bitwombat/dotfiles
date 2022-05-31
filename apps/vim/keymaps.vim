@@ -2,6 +2,8 @@
 
 set pastetoggle=<F2>
 
+noremap <F5> :set relativenumber!<CR>
+noremap <F6> :set number!<Bar>:set norelativenumber<CR>
 noremap <F7> :if exists("syntax_on") <Bar> syntax off <Bar> <CR> else <Bar> syntax on <Bar> endif <CR>
 noremap <F8> :if &ignorecase <Bar> set noic <Bar> <CR> else <Bar> set ic <Bar> endif <CR>
 noremap <F9> :set list!<Bar>set list?<CR>

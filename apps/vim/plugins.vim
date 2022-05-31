@@ -70,7 +70,5 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
-
-
 " Initialize plugin system
 call plug#end()

@@ -1,3 +1,11 @@
+let g:go_gopls_enabled = 1
+let g:go_auto_type_info = 1
+
+" Don't forget about ]] and [[
+" :GoReferrers
+" :GoDecls
+" :GoDeclsDir
+
 
 
 " function! s:build_go_files()
