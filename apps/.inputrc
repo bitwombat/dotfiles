@@ -2,6 +2,7 @@ set completion-ignore-case on
 set bell-style visible
 set show-all-if-ambiguous on
 set match-hidden-files off
+set completion-query-items 150
 
 "\e[A": history-search-backward
 "\e[B": history-search-forward

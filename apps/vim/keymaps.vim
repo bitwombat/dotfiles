@@ -54,8 +54,8 @@ endfunction
 nnoremap ,cd :cd %:h<CR>:pwd<CR>
 
 " Buffers
-nnoremap ,k :bnext<CR>
-nnoremap ,j :bprevious<CR>
+nnoremap ,j :bnext<CR>
+nnoremap ,k :bprevious<CR>
 nnoremap ,, :e #<CR>
 
 " tabbable list of buffers

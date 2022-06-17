@@ -7,12 +7,15 @@ alias tmux="TERM=xterm-256color tmux"
 
 alias edgenode="sudo /Library/PaperCut\ Hive/pc-edgenode-service"
 alias ag="ag --skip-vcs-ignores --color"
+alias fd="fd --no-ignore"
 alias cdc="cd ~/code/pmitc/coordinator"
 alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 alias kube="kubectl"
 alias fd="fd --no-ignore-vcs"
 alias watchtest='find . -name "*.go" | entr -s "clear ; go test -v"'
 alias myip="ifconfig | grep 'inet '"
+
+export DIRENV_LOG_FORMAT=''
 
 # This one is common to server - what to do? Is the app "fzf" or bash? How do we compose?
 # fuzzy find with preview then open vim
