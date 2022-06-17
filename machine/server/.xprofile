@@ -2,17 +2,17 @@
 
 # Run these sequentially - didn't want to figure out how to do it in rc.lua
 # Maybe if sequential, I won't get the 'unable to grab keyboard' message.
-
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap /home/gbell2/dotfiles/apps/.Xmodmap
 xrdb -merge /usr/share/doc/ssh-askpass/examples/SshAskpass-NeXTish.ad
 
-xrandr --output DP-0    --mode 1920x1080 --primary &> /dev/null
-xrandr --output DVI-I-0 --mode 1280x1024           --left-of DP-0 &> /dev/null
+# Setup monitors
+xrandr --output HDMI-3  --mode 1920x1080 --primary &> /dev/null
+xrandr --output HDMI-0  --mode 1280x1024 --left-of HDMI-3 &> /dev/null
 #xrandr --output DVI-I-0 --mode 1920x1080 --primary --right-of DP-0 &> /dev/null
 #xrandr --output DP-0 --mode 1920x1080 --primary &> /dev/null
 #xrandr --output DVI-I-0 --mode 1680x1050 --left-of DP-0 &> /dev/null
-nvidia-settings --assign CurrentMetaMode="DP-0: nvidia-auto-select +1280+0 { ForceFullCompositionPipeline = On }, DVI-I-0: nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+nvidia-settings --assign CurrentMetaMode="HDMI-3: nvidia-auto-select +1280+0 { ForceFullCompositionPipeline = On }, HDMI-0: nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 redshift -l -33.86:151.21 -m randr &> /dev/null &
 
@@ -36,7 +36,7 @@ sudo g610-led -k  printscreen 80
 sudo g610-led -k  scrollock 80
 sudo g610-led -k  pause 80
 
-pulseaudio &
+pulseaudio -vvv &> /home/gbell2/pulseaudio_out.txt &
 
 # These are an experiment, put in on 10 Aug 2021.
 DE=gnome
