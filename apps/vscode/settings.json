@@ -1,0 +1,48 @@
+{
+    "vim.handleKeys": {
+        "F2": false,
+        "F8": false,
+        "ctrl+j": false,
+        "ctrl+shift+p": false,
+        "cmd+shift+p": false
+    },
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "thunder-client.htmlView": "Raw Html",
+    "search.useGlobalIgnoreFiles": true,
+    "files.exclude": {
+        "**/*.swo": true,
+        "**/*.swp": true,
+        "**/vendor": true
+    },
+    "go.lintTool":"golangci-lint",
+    "go.lintFlags": [
+          "--fast"
+    ],
+    "window.zoomLevel": 2,
+    "vim.foldfix": true,
+    "editor.bracketPairColorization.enabled": false,
+    "go.delveConfig": {
+        "debugAdapter": "legacy"
+    },
+    "editor.minimap.enabled": false,
+    "vim.visualModeKeyBindingsNonRecursive": [
+    
+    ]
+}

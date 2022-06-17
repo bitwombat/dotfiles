@@ -1,0 +1,151 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "F1",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+w c",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+w k",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "ctrl+w j",
+        "command": "workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "ctrl+w o",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": ", c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", p",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", n t",
+        "command": "workbench.view.explorer",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", f",
+        "command": "workbench.action.quickOpen",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", a",
+        "command": "workbench.view.search",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", j",
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", k",
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", shift+j",
+        "command": "workbench.action.moveEditorLeftInGroup",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+pageup",
+        "command": "workbench.action.moveEditorLeftInGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": ", shift+k",
+        "command": "workbench.action.moveEditorRightInGroup",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+pagedown",
+        "command": "workbench.action.moveEditorRightInGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": ", s",
+        "command": "workbench.action.gotoSymbol",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", b",
+        "command": "workbench.action.quickOpenPreviousEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": ", ,",
+        "command": "workbench.action.quickOpenPreviousEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "cmd+b",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "escape",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.focusActiveEditorGroup",
+                "workbench.action.closeSidebar"
+            ]
+        },
+        "when": "vim.mode == 'Normal'"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+cmd+r",
+        "command": "workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+        "when": "inQuickOpen && inRecentFilesPicker"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+        "when": "inQuickOpen && inRecentFilesPicker"
+    },
+    {
+        "key": "ctrl+shift+cmd+r",
+        "command": "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
+        "when": "inQuickOpen && inRecentFilesPicker"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "-workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
+        "when": "inQuickOpen && inRecentFilesPicker"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "enter",
+        "command": "list.select",
+        "when": "listFocus && !inputFocus"
+    }
+]
