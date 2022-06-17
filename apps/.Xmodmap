@@ -3,3 +3,16 @@ keycode 66 = Control_L
 add Control = Control_L
 keycode 122 = Down
 keycode 123 = Up
+
+keycode 232 = F1
+keycode 233 = F2
+keycode 128 = F3
+keycode 212 = F4
+keycode 237 = F5
+keycode 238 = F6
+!keycode  = F7
+!keycode  = F8
+!keycode  = F9
+!keycode  = F10
+keycode 122 = F11
+keycode 123 = F12
