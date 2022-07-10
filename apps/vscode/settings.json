@@ -1,7 +1,9 @@
 {
+    "gopls": { "ui.diagnostic.staticcheck": true },
     "vim.handleKeys": {
         "F2": false,
         "F8": false,
+        "F10": false,
         "ctrl+j": false,
         "ctrl+shift+p": false,
         "cmd+shift+p": false
@@ -31,7 +33,6 @@
         "**/*.swp": true,
         "**/vendor": true
     },
-    "go.lintTool":"golangci-lint",
     "go.lintFlags": [
           "--fast"
     ],
@@ -43,6 +44,11 @@
     },
     "editor.minimap.enabled": false,
     "vim.visualModeKeyBindingsNonRecursive": [
-    
-    ]
+
+    ],
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.decorations.badges": false,
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "editor.suggest.showWords": false,
+    "files.autoSave": "onFocusChange",
 }
