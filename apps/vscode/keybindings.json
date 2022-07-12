@@ -5,11 +5,11 @@
         "command": "workbench.action.files.save"
     },
 
-//    {
-//        "key": "g r",
-//        "command": "references-view.findReferences",
-//        "when": "editorHasReferenceProvider && editorTextFocus && vim.mode == 'Normal'"
-//    },
+    {
+        "key": ", r",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && vim.mode == 'Normal'"
+    },
     {
         "key": "ctrl+w c",
         "command": "workbench.action.closeActiveEditor"

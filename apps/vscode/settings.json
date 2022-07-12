@@ -51,4 +51,5 @@
     "workbench.colorTheme": "Gruvbox Dark Medium",
     "editor.suggest.showWords": false,
     "files.autoSave": "onFocusChange",
+    "go.lintTool": "golangci-lint",
 }
