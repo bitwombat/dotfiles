@@ -5,11 +5,11 @@
         "command": "workbench.action.files.save"
     },
 
-//    {
-//        "key": "g r",
-//        "command": "references-view.findReferences",
-//        "when": "editorHasReferenceProvider && editorTextFocus && vim.mode == 'Normal'"
-//    },
+    {
+        "key": ", r",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && vim.mode == 'Normal'"
+    },
     {
         "key": "ctrl+w c",
         "command": "workbench.action.closeActiveEditor"
@@ -110,6 +110,11 @@
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
     },
     {
+        "key": ", g",
+        "command": "workbench.view.scm",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
+    },
+    {
         "key": ", ,",
         "command": "workbench.action.quickOpenPreviousEditor",
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
@@ -126,7 +131,7 @@
             "sequence": [
                 "workbench.action.focusActiveEditorGroup",
                 "workbench.action.closeSidebar",
-                "workbench.action.closePanel",
+                "workbench.action.closePanel"
             ]
         },
         "when": "vim.mode == 'Normal'"

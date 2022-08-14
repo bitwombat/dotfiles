@@ -1,24 +1,41 @@
+# Docs at https://git-scm.com/docs/git-config
+#
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
+
+[init]
+	defaultBranch = master
+
+[commit]
+	template = /Users/gregb/.stCommitMsg
+
 [alias]
+    co  = checkout
+    ci  = checkin
+    br  = branch
+    st  = status
 	lg  = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	lgs = log               --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+
 [user]
 	email = greg.bell@papercut.com
 	name = Greg Bell
-[merge]
-	tool = meld
+
 [core]
 	pager = less -F -X
 	excludesfile = /Users/gregb/.gitignore
+
 [push]
 	default = simple
+
 [credential]
 	helper = osxkeychain
+
 [cola]
     spellcheck = false
 
@@ -32,24 +49,39 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true  # use n and N to move between diff sections
+    navigate = true        # use n and N to move between diff sections
 	side-by-side = true
 	syntax-theme = GitHub
     light
     hunk-header-style = omit
 
+# Lots of tools are recognised and don't need a [difftool] section. Vimdiff is
+# one of them. See
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergetool
+#
 [merge]
-    conflictstyle = diff3
+	tool = vimdiff
+	guitool = filemerge
 
 [diff]
-    colorMoved = default
+	tool = vimdiff
+	guitool = filemerge
+
+[difftool "filemerge"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "filemerge"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[init]
-	defaultBranch = master
-[commit]
-	template = /Users/gregb/.stCommitMsg
+    trustExitCode = true
+
+# Doesn't do anything unless pointed to in [merge] above
+[mergetool "vscode"]
+    cmd = vscode --wait --merge $REMOTE $LOCAL $BASE $MERGED

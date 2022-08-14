@@ -9,8 +9,11 @@ set smartindent
 filetype on
 filetype plugin indent on
 syntax on
-set mouse=a
-"set clipboard+=autoselect
+if has("macunix")
+    set clipboard+=unnamed
+else
+    set clipboard+=autoselect
+endif
 au CursorHold * checktime
 " }}}
 
@@ -84,6 +87,7 @@ set sessionoptions-=options
 
 " Load matchit which makes % pay attention to HTML / XML tags
 :source $VIMRUNTIME/macros/matchit.vim
-:source $VIMRUNTIME/ftplugin/man.vim
+" This causes about ~1 s delay on startup!
+":source $VIMRUNTIME/ftplugin/man.vim
 
 " vim:foldmethod=marker

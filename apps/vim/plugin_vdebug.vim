@@ -1,5 +1,5 @@
-" Unmap F5 so we can use it. Start Vdebug with :VdebugStart
+" Unmap F5 and F6 so we can use them normally. Start Vdebug with :VdebugStart
 let g:vdebug_keymap = {
-\    "run" : "",
-\    "close" : "",
+\    "run" : "<C-F5>",
+\    "close" : "<C-F6>",
 \}
