@@ -3,16 +3,18 @@ keycode 66 = Control_L
 add Control = Control_L
 keycode 122 = Down
 keycode 123 = Up
-
+! The Q75 keyboard doesn't generate scancodes for these keys,
+! so only X knows about them. Must map here.
+! Got the codes from evtest "code", plus 8
 keycode 232 = F1
 keycode 233 = F2
 keycode 128 = F3
 keycode 212 = F4
 keycode 237 = F5
 keycode 238 = F6
-!keycode  = F7
-!keycode  = F8
-!keycode  = F9
-!keycode  = F10
+keycode 165 = F7
+keycode 164 = F8
+keycode 163 = F9
+keycode 121 = F10
 keycode 122 = F11
 keycode 123 = F12
