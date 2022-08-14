@@ -31,6 +31,12 @@ PS1="\[\e[33m\e[31m\]\$(__git_branch)\[\e[0m\][\w]\$ "
 
 gh() { go help $1 | less; }
 
+compl() {
+    source <(kubectl completion bash)
+    source /opt/homebrew/etc/bash_completion.d/docker.bak
+    source /opt/homebrew/etc/bash_completion.d/kubectl.bak
+}
+
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-source <(kubectl completion bash)
+#source <(kubectl completion bash)
 

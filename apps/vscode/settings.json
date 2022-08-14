@@ -1,5 +1,8 @@
 {
-    "gopls": { "ui.diagnostic.staticcheck": true },
+    "gopls": { 
+        "ui.diagnostic.staticcheck": false,
+        "formatting.gofumpt": true
+    },
     "vim.handleKeys": {
         "F2": false,
         "F8": false,
@@ -33,9 +36,6 @@
         "**/*.swp": true,
         "**/vendor": true
     },
-    "go.lintFlags": [
-          "--fast"
-    ],
     "window.zoomLevel": 2,
     "vim.foldfix": true,
     "editor.bracketPairColorization.enabled": false,
@@ -51,5 +51,25 @@
     "workbench.colorTheme": "Gruvbox Dark Medium",
     "editor.suggest.showWords": false,
     "files.autoSave": "onFocusChange",
+    "go.lintFlags": ["--fix"
+    ],
+	"editor.inlayHints.enabled": "offUnlessPressed",
+    "go.inlayHints.parameterNames": true,
+    "workbench.editor.untitled.hint": "hidden",
     "go.lintTool": "golangci-lint",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "go.testEnvVars": {
+        "DATASTORE_DATASET": "pc-pmitc",
+        "DATASTORE_EMULATOR_HOST": "localhost:19698",
+        "DATASTORE_EMULATOR_HOST_PATH": "localhost:19698/datastore",
+        "DATASTORE_HOST": "http://localhost:19698",
+        "DATASTORE_PROJECT_ID": "pc-pmitc"
+    },
+    "yaml.schemas": {
+        "file:///Users/gregb/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.jira.enabled": false,
+    "redhat.telemetry.enabled": false,
 }

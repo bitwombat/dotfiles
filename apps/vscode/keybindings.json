@@ -110,6 +110,11 @@
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
     },
     {
+        "key": ", g",
+        "command": "workbench.view.scm",
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
+    },
+    {
         "key": ", ,",
         "command": "workbench.action.quickOpenPreviousEditor",
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
@@ -125,7 +130,8 @@
         "args": {
             "sequence": [
                 "workbench.action.focusActiveEditorGroup",
-                "workbench.action.closeSidebar"
+                "workbench.action.closeSidebar",
+                "workbench.action.closePanel"
             ]
         },
         "when": "vim.mode == 'Normal'"

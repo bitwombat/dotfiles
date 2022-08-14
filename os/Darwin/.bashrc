@@ -158,10 +158,10 @@ alias filemerge='/Applications/Xcode.app/Contents/Applications/FileMerge.app/Con
 function ping() {
     command ping $(echo $1 | sed -E -e 's#https?://##' | sed -e 's#/##g')
 }
-alias listpath="echo $PATH | sed -e 's/:/\n/g'"
+alias listpath="echo \$PATH | sed -e 's/:/\n/g'"
 alias flatpath=listpath
 
-alias gitdiffgo="git diff -- . ':!go.mod' ':!go.sum'"
+alias gitdiffgo="git diff -- . ':!go.mod' ':!go.sum' ':!*.pb.go'"
 
 # For many apps
 export EDITOR=vim
