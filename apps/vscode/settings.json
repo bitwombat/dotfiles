@@ -1,9 +1,15 @@
 {
-    "gopls": { "ui.diagnostic.staticcheck": true },
+    "gopls": {
+        "ui.diagnostic.staticcheck": true,
+        "formatting.gofumpt": true,
+    },
+    "go.lintTool": "golangci-lint",
+    "go.useLanguageServer": true,
     "vim.handleKeys": {
         "F2": false,
         "F8": false,
         "F10": false,
+        "ctrl+F5": false,
         "ctrl+j": false,
         "ctrl+shift+p": false,
         "cmd+shift+p": false
@@ -34,18 +40,16 @@
         "**/vendor": true
     },
     "go.lintFlags": [
-          "--fast"
+        "--fast"
     ],
     "window.zoomLevel": 2,
     "vim.foldfix": true,
     "editor.bracketPairColorization.enabled": false,
     "go.delveConfig": {
-        "debugAdapter": "legacy"
+        "debugAdapter": "dlv-dap"
     },
     "editor.minimap.enabled": false,
-    "vim.visualModeKeyBindingsNonRecursive": [
-
-    ],
+    "vim.visualModeKeyBindingsNonRecursive": [],
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.decorations.badges": false,
     "workbench.colorTheme": "Gruvbox Dark Medium",

@@ -125,7 +125,8 @@
         "args": {
             "sequence": [
                 "workbench.action.focusActiveEditorGroup",
-                "workbench.action.closeSidebar"
+                "workbench.action.closeSidebar",
+                "workbench.action.closePanel",
             ]
         },
         "when": "vim.mode == 'Normal'"

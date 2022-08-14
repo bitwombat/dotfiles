@@ -39,7 +39,7 @@ alias vl="vim -c \"normal '0\""
 
 # fuzzy find with preview then open vim
 function fvi() {
-    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim $FILE
+    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim "$FILE"
 }
 
 
@@ -67,6 +67,9 @@ export WINEARCH=win32
 
 # Pip
 pathadd $HOME/.local/bin
+
+# Go
+pathadd $HOME/go/bin
 
 # Node
 pathadd /opt/node/bin

@@ -10,7 +10,7 @@ filetype on
 filetype plugin indent on
 syntax on
 set mouse=a
-set clipboard+=autoselect
+"set clipboard+=autoselect
 au CursorHold * checktime
 " }}}
 
