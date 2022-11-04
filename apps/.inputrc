@@ -11,21 +11,25 @@ set completion-query-items 150
 C-b:unix-filename-rubout
 
 
-	$if mode=vi
-		set show-mode-in-prompt on
-        set vi-cmd-mode-string "(c)"
-        set vi-ins-mode-string "(i)"
-		set keymap vi-insert
-		"\C-a": beginning-of-line
-		"\C-e": end-of-line
-        "\e[A": history-search-backward
-        "\e[B": history-search-forward
+$if mode=vi
+    set show-mode-in-prompt on
+    set vi-ins-mode-string \1\e[2 q\2
+    set vi-cmd-mode-string \1\e[6 q\2
+    set keymap vi-insert
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
 
-		set keymap vi-command
-		"\C-a": beginning-of-line
-		"\C-e": end-of-line
+    set keymap vi-command
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
 # NOTE! C-e doesn't actually work. Bash/readline bug.
 # Use bind -m vi-command ' # "\C-e": end-of-line ' as a workaround
 # (https://stackoverflow.com/questions/54300220/)
 # Which has been placed in the top-level ~/.bashrc
-	$endif
+$endif
+
+# readline will way when it sees Esc, to see if more characters are coming.
+# This makes for a slow response on the command line.
+set keyseq-timeout 5
