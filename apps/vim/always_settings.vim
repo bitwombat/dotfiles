@@ -81,6 +81,19 @@ silent! colorscheme gruvbox
 set background=dark
 " }}}
 
+" Diff settings {{{
+if &diff
+    map gw :call IwhiteToggle()<CR>
+    function! IwhiteToggle()
+        if &diffopt =~ 'iwhite'
+            set diffopt-=iwhite
+        else
+            set diffopt+=iwhite
+        endif
+    endfunction
+endif
+" }}}
+
 " Don't save options and mappings with the session. This allows changes to
 " .vimrc to show through when the session is next loaded.
 set sessionoptions-=options
