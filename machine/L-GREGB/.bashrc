@@ -27,12 +27,14 @@ __git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+if [[ $- =~ i ]]; then  # interactive
 PS1="\
 \[\033[37;46m\]\
 \$(__git_branch)\
 \[\033[37;44m\]\
 [\w]\
 \[$(tput sgr0)\]$ "
+fi
 
 gh() { go help $1 | less; }
 

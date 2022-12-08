@@ -36,7 +36,7 @@
     "vim.foldfix": true,
     "vim.hlsearch": true,
     "vim.incsearch": true,
-    "vim.useSystemClipboard":true,
+    "vim.useSystemClipboard":false,
     "thunder-client.htmlView": "Raw Html",
     "search.useGlobalIgnoreFiles": true,
     "files.exclude": {
@@ -107,7 +107,6 @@
             "-I /Users/gregb/go/pkg/mod/github.com/bufbuild/protoc-gen-validate@v0.6.13"
         ]
     },
-    "window.zoomLevel": 1,
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
     "editor.autoSurround": "never",
@@ -118,8 +117,10 @@
     "editor.suggest.showWords": false,
     "editor.tabSize": 4,
     "files.autoSave": "onFocusChange",
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Zenburn",
     "workbench.editor.decorations.badges": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.untitled.hint": "hidden",
+    "window.zoomLevel": 2,
+    "editor.wordWrap": "off",
 }
