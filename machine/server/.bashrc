@@ -68,21 +68,17 @@ export WINEARCH=win32
 # Pip
 pathadd $HOME/.local/bin
 
-# Go
-pathadd $HOME/go/bin
-
 # Node
 pathadd /opt/node/bin
-MANPATH="/opt/node/share/man:$(manpath)"
+MANPATH="/opt/node/share/man:$MANPATH"
 
 # Composer packages
 pathadd $HOME/.composer/vendor/bin
 
 # Haskell tools
 #PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
-pathadd $HOME/.cabal
+#pathadd $HOME/.cabal
 pathadd $HOME/.ghcup/bin
-
 
 #export ENSCRIPT="-d Brother-HLL2375DW-series"
 export ENSCRIPT="-d HLL2375DW-Try3"

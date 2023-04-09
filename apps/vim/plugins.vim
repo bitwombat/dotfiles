@@ -62,6 +62,7 @@ Plug 'tpope/vim-surround'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/DrawIt'
 Plug 'Yggdroot/indentLine'
+Plug 'dhruvasagar/vim-table-mode'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

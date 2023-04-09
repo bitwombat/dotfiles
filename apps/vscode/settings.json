@@ -1,6 +1,6 @@
 {
     "gopls": {
-        "ui.diagnostic.staticcheck": false,
+        "ui.diagnostic.staticcheck": true,
         "formatting.gofumpt": true
     },
     "vim.handleKeys": {
@@ -36,7 +36,7 @@
         "**/*.swp": true,
         "**/vendor": true
     },
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 1,
     "vim.foldfix": true,
     "editor.bracketPairColorization.enabled": false,
     "go.delveConfig": {
@@ -72,4 +72,15 @@
     },
     "atlascode.jira.enabled": false,
     "redhat.telemetry.enabled": false,
+    "haskell.trace.client": "debug",
+    "haskell.trace.server": "messages",
+    "editor.formatOnSave": true,
+    "workbench.startupEditor": "none",
+    "[haskell]": {
+        "editor.defaultFormatter": "haskell.haskell"
+    },
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#e86d3b",
+    "tab.activeBackground": "#505050"
+}
 }
