@@ -45,8 +45,9 @@ Plug 'joonty/vdebug'
 Plug 'junegunn/vim-plug'  " to get help files
 Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'morhetz/gruvbox'
+Plug 'neomake/neomake'  " For shellcheck (no LSP support)
 Plug 'powerline/powerline-fonts'
-Plug 'preservim/vim-markdown'
+"Plug 'preservim/vim-markdown'
 Plug 'RRethy/vim-illuminate'
 Plug 'scrooloose/nerdtree'
 Plug 'TaDaa/vimade'

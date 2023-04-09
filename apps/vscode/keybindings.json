@@ -40,6 +40,17 @@
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/')"
     },
     {
+        "key": ", shift+p",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "editor.action.insertLineAfter",
+                "editor.action.clipboardPasteAction",
+            ]
+        },
+        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
+    },
+    {
         "key": ", p",
         "command": "editor.action.clipboardPasteAction",
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"

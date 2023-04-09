@@ -32,4 +32,10 @@ endif
 " Make the visual select much calmer
 hi Visual term=none cterm=none ctermfg=LightYellow ctermbg=darkgrey
 " }}}
+
+" Prevent the delay on macos where the terminal sends the Esc, but vim waits to
+" see if there's something else coming. This makes a delay when leaving Insert
+" mode.
+set ttimeoutlen=5
+
 " vim:foldmethod=marker

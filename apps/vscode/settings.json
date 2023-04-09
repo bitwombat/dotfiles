@@ -1,8 +1,5 @@
 {
-    "gopls": {
-        "ui.diagnostic.staticcheck": true,
-        "formatting.gofumpt": true
-    },
+	// Delegate certain key combinations back to VSCode to be handled natively.
     "vim.handleKeys": {
         "F2": false,
         "F8": false,
@@ -29,6 +26,17 @@
             ]
         }
     ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+        "before":
+        [ "<backspace>" ],
+        "commands":[ ":nohl" ],
+        },
+    ],
+    "vim.foldfix": true,
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard":false,
     "thunder-client.htmlView": "Raw Html",
     "search.useGlobalIgnoreFiles": true,
     "files.exclude": {
@@ -36,39 +44,68 @@
         "**/*.swp": true,
         "**/vendor": true
     },
-    "window.zoomLevel": 1,
-    "vim.foldfix": true,
-    "editor.bracketPairColorization.enabled": false,
+    "yaml.schemas": {
+        "file:///Users/gregb/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.jira.enabled": false,
+    "redhat.telemetry.enabled": false,
+	"workbench.colorCustomizations": {
+// Need this for Gruvbox        "editorHoverWidget.background": "#505050"
+    },
+    // These are settings for the gopls server, not the Go extension in vscode
+    // These are documented at https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+    // The example seems to indicate that the hierarchy of the document is reflected in the settings, e.g. ui.diagnostic.staticcheck
+    // But "analyses" at the root level seems to work (as opposed to ui.diagnostic.analyses)
+    // For troubleshooting
+
+    "gopls": {
+        "ui.diagnostic.staticcheck": false,
+        "formatting.gofumpt": true,
+        // available analysers at https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
+        // Note these have nothing to do with linting via golangci-lint and the Go: Lint XXXX commands.
+        // These put squiggles under problems, just like manually running the linter does, but
+        // they'll be different sometimes, and don't pay attention to the //nolint pragma.
+        "analyses": {
+            "shadow": true,
+        },
+        // For troubleshooting, with -rpc.trace below
+        //"verboseOutput": true
+    },
+	"go.useLanguageServer": true,
+    // For troubleshooting
+    // "go.languageServerFlags": [
+    //     "-rpc.trace"
+    // ],
+    "go.lintTool": "golangci-lint",
+    // Note these flags are specific to the linter chosen above. For example, staticcheck won't
+    // know what "--fix" means - that's a golangci-lint option. Delete/change this setting if
+    // using a linter other than golangci-lint.
+    "go.lintFlags": ["--fix"],
     "go.delveConfig": {
         "debugAdapter": "dlv-dap"
     },
-    "editor.minimap.enabled": false,
-    "vim.visualModeKeyBindingsNonRecursive": [
-
-    ],
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.decorations.badges": false,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "editor.suggest.showWords": false,
-    "files.autoSave": "onFocusChange",
-    "go.lintFlags": ["--fix"
-    ],
-	"editor.inlayHints.enabled": "offUnlessPressed",
     "go.inlayHints.parameterNames": true,
-    "workbench.editor.untitled.hint": "hidden",
-    "go.lintTool": "golangci-lint",
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "go.toolsEnvVars": {
+        "DATASTORE_DATASET": "pc-pmitc",
+        "DATASTORE_EMULATOR_HOST": "localhost:19698",
+        "DATASTORE_EMULATOR_HOST_PATH": "localhost:19698/datastore",
+        "DATASTORE_HOST": "http://localhost:19698",
+        "DATASTORE_PROJECT_ID": "local",
+        "PMITC_SERVICE_NAME":"data-source",
+        "INTEGRATION_TEST_RUNNER":"true",
     },
     "go.testEnvVars": {
         "DATASTORE_DATASET": "pc-pmitc",
         "DATASTORE_EMULATOR_HOST": "localhost:19698",
         "DATASTORE_EMULATOR_HOST_PATH": "localhost:19698/datastore",
         "DATASTORE_HOST": "http://localhost:19698",
-        "DATASTORE_PROJECT_ID": "pc-pmitc"
+        "DATASTORE_PROJECT_ID": "local",
+        "INTEGRATION_TEST_RUNNER":"true",
     },
-    "yaml.schemas": {
-        "file:///Users/gregb/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "protoc": {
+        "options": [
+            "-I /Users/gregb/go/pkg/mod/github.com/bufbuild/protoc-gen-validate@v0.6.13"
+        ]
     },
     "atlascode.jira.enabled": false,
     "redhat.telemetry.enabled": false,
@@ -83,4 +120,20 @@
     "tab.activeBorder": "#e86d3b",
     "tab.activeBackground": "#505050"
 }
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "editor.bracketPairColorization.enabled": false,
+	"editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.suggest.showWords": false,
+    "editor.tabSize": 4,
+    "files.autoSave": "onFocusChange",
+    "workbench.colorTheme": "Zenburn",
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.untitled.hint": "hidden",
+    "window.zoomLevel": 2,
+    "editor.wordWrap": "off",
 }
