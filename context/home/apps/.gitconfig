@@ -1,22 +1,28 @@
 [alias]
 	lg = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-	lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    ci = commit
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+
 [user]
 	email = greg@bitwombat.com.au
 	name = Greg Bell
-[merge]
-	tool = meld
+
 [core]
 	pager = less -F -X
 	excludesfile = /home/gbell2/.gitignore_global
+
 [push]
 	default = simple
+
 [credential]
 	helper = osxkeychain
+
 [cola]
     spellcheck = false
 
@@ -37,3 +43,15 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+
+[gc]
+	autoDetach = false
+
+[diff]
+    tool = vimdiff  # uses this for `git difftool`
+    guitool = meld  # uses this for `git difftool -g`
+
+[merge]
+    tool = vimdiff
+	guitool = meld
+

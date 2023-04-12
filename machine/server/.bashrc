@@ -39,7 +39,7 @@ alias vl="vim -c \"normal '0\""
 
 # fuzzy find with preview then open vim
 function fvi() {
-    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim $FILE
+    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim "$FILE"
 }
 
 
@@ -70,16 +70,15 @@ pathadd $HOME/.local/bin
 
 # Node
 pathadd /opt/node/bin
-MANPATH="/opt/node/share/man:$(manpath)"
+MANPATH="/opt/node/share/man:$MANPATH"
 
 # Composer packages
 pathadd $HOME/.composer/vendor/bin
 
 # Haskell tools
 #PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
-pathadd $HOME/.cabal
+#pathadd $HOME/.cabal
 pathadd $HOME/.ghcup/bin
-
 
 #export ENSCRIPT="-d Brother-HLL2375DW-series"
 export ENSCRIPT="-d HLL2375DW-Try3"
