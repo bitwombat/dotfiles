@@ -9,11 +9,11 @@ set smartindent
 filetype on
 filetype plugin indent on
 syntax on
-if has("macunix")
-    set clipboard+=unnamed
-else
-    set clipboard+=autoselect
-endif
+"if has("macunix")
+"    set clipboard+=unnamed
+"else
+"    set clipboard+=autoselect
+"endif
 au CursorHold * checktime
 " }}}
 
@@ -94,6 +94,12 @@ if &diff
 endif
 " }}}
 
+" Misc settings {{{
+
+" Make the oldfiles list a little more manageable. Note this is the setting
+" that determines how many files are save for file marks.
+set viminfo='15,<50,s10,h
+
 " Don't save options and mappings with the session. This allows changes to
 " .vimrc to show through when the session is next loaded.
 set sessionoptions-=options
@@ -102,5 +108,6 @@ set sessionoptions-=options
 :source $VIMRUNTIME/macros/matchit.vim
 " This causes about ~1 s delay on startup!
 ":source $VIMRUNTIME/ftplugin/man.vim
+" }}}
 
 " vim:foldmethod=marker
