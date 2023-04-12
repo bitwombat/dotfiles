@@ -288,9 +288,6 @@
     "hexeditor.defaultEndianness": "little",
     "hexeditor.inspectorType": "aside",
     "editor.inlineSuggest.enabled": true,
-    "[python]": {
-        "editor.formatOnType": true
-    },
     "git.openRepositoryInParentFolders": "never",
     "editor.stickyScroll.enabled": true,
     "github.copilot.advanced": {}
