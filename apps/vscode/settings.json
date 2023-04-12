@@ -45,7 +45,7 @@
         "**/vendor": true
     },
     "yaml.schemas": {
-        "file:///Users/gregb/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/gregb/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.enabled": false,
     "redhat.telemetry.enabled": false,
@@ -121,6 +121,16 @@
     "workbench.editor.decorations.badges": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.untitled.hint": "hidden",
-    "window.zoomLevel": 2,
     "editor.wordWrap": "off",
+    "editor.insertSpaces": true,
+    "debug.toolBarLocation": "docked",
+    "workbench.startupEditor": "none",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "window.zoomLevel": 1,
+    "hexeditor.columnWidth": 16,
+    "hexeditor.showDecodedText": true,
+    "hexeditor.defaultEndianness": "little",
+    "hexeditor.inspectorType": "aside",
 }

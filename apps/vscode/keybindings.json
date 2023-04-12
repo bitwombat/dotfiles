@@ -45,7 +45,7 @@
         "args": {
             "sequence": [
                 "editor.action.insertLineAfter",
-                "editor.action.clipboardPasteAction",
+                "editor.action.clipboardPasteAction"
             ]
         },
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
