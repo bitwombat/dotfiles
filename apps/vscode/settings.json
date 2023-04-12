@@ -26,14 +26,14 @@
             ]
         }
     ],
-    ""vim.normalModeKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
                 "<backspace>"
             ],
             "commands": [
                 ":nohl"
-            ]
+            ],
         },
         {
             "before": [
