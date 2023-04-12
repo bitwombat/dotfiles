@@ -1,14 +1,8 @@
-// Place your key bindings in this file to override the defaults
+// Probably should move the vim keybindings to settings.json
 [
     {
         "key": "F1",
         "command": "workbench.action.files.save"
-    },
-
-    {
-        "key": ", r",
-        "command": "references-view.findReferences",
-        "when": "editorHasReferenceProvider && editorTextFocus && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+w c",
@@ -35,52 +29,6 @@
         "command": "workbench.action.closeOtherEditors"
     },
     {
-        "key": ", c",
-        "command": "editor.action.clipboardCopyAction",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/')"
-    },
-    {
-        "key": ", shift+p",
-        "command": "extension.multiCommand.execute",
-        "args": {
-            "sequence": [
-                "editor.action.insertLineAfter",
-                "editor.action.clipboardPasteAction",
-            ]
-        },
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", p",
-        "command": "editor.action.clipboardPasteAction",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", n t",
-        "command": "workbench.view.explorer",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", f",
-        "command": "workbench.action.quickOpen",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", a",
-        "command": "workbench.view.search",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", j",
-        "command": "workbench.action.previousEditor",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", k",
-        "command": "workbench.action.nextEditor",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
         "key": "ctrl+j",
         "command": "workbench.action.previousEditor",
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
@@ -91,44 +39,14 @@
         "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
     },
     {
-        "key": ", shift+j",
-        "command": "workbench.action.moveEditorLeftInGroup",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
         "key": "ctrl+shift+pageup",
         "command": "workbench.action.moveEditorLeftInGroup",
         "when": "editorTextFocus"
     },
     {
-        "key": ", shift+k",
-        "command": "workbench.action.moveEditorRightInGroup",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
         "key": "ctrl+shift+pagedown",
         "command": "workbench.action.moveEditorRightInGroup",
         "when": "editorTextFocus"
-    },
-    {
-        "key": ", s",
-        "command": "workbench.action.gotoSymbol",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", b",
-        "command": "workbench.action.quickOpenPreviousEditor",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", g",
-        "command": "workbench.view.scm",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
-    },
-    {
-        "key": ", ,",
-        "command": "workbench.action.quickOpenPreviousEditor",
-        "when": "editorTextFocus && vim.mode == 'Normal' || vim.mode =~ '/Visual/'"
     },
     {
         "key": "cmd+b",
