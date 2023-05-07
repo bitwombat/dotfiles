@@ -10,6 +10,7 @@ alias ag="ag --skip-vcs-ignores --color"
 alias fd="fd --no-ignore"
 alias cdc="cd ~/code/pmitc/coordinator"
 alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 alias kube="kubectl"
 alias fd="fd --no-ignore-vcs"
 alias watchtest='find . -name "*.go" | entr -s "clear ; go test -v"'
