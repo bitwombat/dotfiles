@@ -281,7 +281,6 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "window.zoomLevel": 1,
     "hexeditor.columnWidth": 16,
     "hexeditor.showDecodedText": true,
     "hexeditor.defaultEndianness": "little",
@@ -289,11 +288,12 @@
     "editor.inlineSuggest.enabled": true,
     "git.openRepositoryInParentFolders": "never",
     "editor.stickyScroll.enabled": true,
-    "github.copilot.advanced": {}
+    "github.copilot.advanced": {},
+    "redhat.telemetry.enabled": false,
     "terminal.integrated.copyOnSelection": true,
-}
-
-\ No newline at end of file
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false,
+    "window.zoomLevel": 2,
     "typescript.format.enable": false,
     "typescript.format.insertSpaceAfterCommaDelimiter": false,
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
@@ -302,3 +302,4 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
     "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": false
+}
