@@ -14,8 +14,9 @@
     ci  = checkin
     br  = branch
     st  = status
-	lg  = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-	lgs = log               --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	lg  = log --name-status --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cs)%C(bold blue) <%an>%Creset' --abbrev-commit
+	lgs = log               --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cs)%C(bold blue) <%an>%Creset' --abbrev-commit
+	lgs2 = log              --color --graph --pretty=medium
 
 [color]
 	diff = auto
