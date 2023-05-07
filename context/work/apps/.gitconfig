@@ -59,11 +59,15 @@
 # one of them. See
 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergetool
 #
-[merge]
-	tool = vimdiff
-	guitool = filemerge
-
+# "tool" is used for `git difftool`
+# "guitool" is used for `git difftool g`
+# Confusingly "difftool" section defines what commands are run when that
+# command occurs in tool= or guitool= values.
 [diff]
+	tool = vimdiff       # uses this for `git difftool`
+	guitool = filemerge  # uses this for `git difftool -g`
+
+[merge]
 	tool = vimdiff
 	guitool = filemerge
 
@@ -77,11 +81,12 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
+
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
-# Doesn't do anything unless pointed to in [merge] above
 [mergetool "vscode"]
     cmd = vscode --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
