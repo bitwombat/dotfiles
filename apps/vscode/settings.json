@@ -24,7 +24,16 @@
             "commands": [
                 "editor.action.outdentLines"
             ]
-        }
+        },
+        {
+            "before": [
+                ",",
+                "c"
+            ],
+            "commands": [
+                "editor.action.clipboardCopyAction"
+            ],
+        },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -51,15 +60,6 @@
             ],
             "commands": [
                 "references-view.findReferences"
-            ],
-        },
-        {
-            "before": [
-                ",",
-                "c"
-            ],
-            "commands": [
-                "editor.action.clipboardCopyAction"
             ],
         },
         {
