@@ -1,10 +1,10 @@
 # Docs at https://git-scm.com/docs/git-config
 #
-[url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
+[url "ssh://git@bitbucket.org/"]
+	insteadof = https://bitbucket.org/
 
 [init]
-	defaultBranch = master
+	defaultBranch = main
 
 [commit]
 	template = /Users/gregb/.stCommitMsg
