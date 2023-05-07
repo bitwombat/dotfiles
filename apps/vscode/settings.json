@@ -291,4 +291,7 @@
     "git.openRepositoryInParentFolders": "never",
     "editor.stickyScroll.enabled": true,
     "github.copilot.advanced": {}
+    "terminal.integrated.copyOnSelection": true,
 }
+
+\ No newline at end of file
