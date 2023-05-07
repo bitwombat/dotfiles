@@ -119,11 +119,13 @@ function ol () {
     open "$latest_file"
 }
 
+gch() {  git checkout "$(git branch --all | fzf| tr -d '[:space:]')"; }
+
 # Aliases
 alias ..="cd .. ; gls -Boh --color=yes --group-directories-first"
 alias cg='cd `git rev-parse --show-toplevel`'
+alias chrome='open -a "Google Chrome" '
 alias cp='cp -i'
-alias cpv='rsync -ah --info=progress2'
 alias df="df -h --exclude=tmpfs --exclude=squashfs --exclude=devtmpfs --exclude=overlay -T"
 alias dig="dig +nostat +nocmd +nocomments"
 alias gst='git status'
@@ -133,9 +135,8 @@ alias gvi="gvim -geometry 98x24"
 alias mkdir="mkdir -vp"
 alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias mv="mv -i"
-alias o="xdg-open"
+alias o="open"
 alias ports='netstat -tulanp'
-alias rsync="rsync -a --no-inc-recursive --info=progress2 "
 alias vi="vim"
 alias wget="wget --progress=dot:mega"
 
