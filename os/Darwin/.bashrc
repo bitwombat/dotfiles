@@ -116,7 +116,7 @@ function proc() {
 # open latest modified file
 function ol () {
     latest_file="$(ls -atr $1 | egrep -v '^\.' | tail -1)"
-    xdg-open "$latest_file"
+    open "$latest_file"
 }
 
 # Aliases
