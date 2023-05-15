@@ -137,7 +137,7 @@ alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias mv="mv -i"
 alias o="open"
 alias ports='netstat -tulanp'
-alias vi="vim"
+alias vi="nvim"
 alias wget="wget --progress=dot:mega"
 
 alias cdr='cd "$(cat ~/.pwdremember)"'
