@@ -65,6 +65,9 @@ require('lazy').setup({
   {
     'fatih/vim-go',
     build = ':GoInstallBinaries',
+    config = function()
+      vim.g.go_def_mapping_enabled=0
+    end,
   },
 
   'tpope/vim-commentary',
@@ -192,6 +195,9 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- wrap at 80 columns while typing
+vim.o.textwidth = 80
 
 -- Highlight all search matches
 vim.o.hlsearch = true
@@ -567,6 +573,7 @@ cmp.setup {
     { name = 'nvim_lsp_signature_help' },
   },
 }
+
 
 vim.cmd[[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
