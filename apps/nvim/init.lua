@@ -58,8 +58,12 @@ vim.g.gruvbox_italic = 1
 
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-
+  
   'preservim/nerdtree',
+
+  -- Provides folding for markdown (and :Toc, if that's useful)
+  'preservim/vim-markdown',
+
   'hrsh7th/cmp-nvim-lsp-signature-help',
 
   {
@@ -432,9 +436,10 @@ map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("list", true, false, "List")
 map({ 'n', 'i' }, '<F2>', function() vim_opt_toggle("paste", true, false, "Paste") end, { desc = "Toggle paste mode" }) map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line numbers") end, { desc = "Toggle line numbers" })
 map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end, { desc = "Toggle relative line numbers" })
 
---map('v', 'J', ":m '>+1<CR>gv=gv")
---map('v', 'K', ":m '<-2<CR>gv=gv")
+-- change to directory of current buffer
+vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
 
+-- Move visual chunk up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
