@@ -67,11 +67,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make'
-  },
-
   'tpope/vim-commentary',
   'tpope/vim-surround',
 
@@ -195,7 +190,6 @@ require('lazy').setup({
 --  { import = 'custom.plugins' },
 }, {})
 
-require('telescope').load_extension('fzf')
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
