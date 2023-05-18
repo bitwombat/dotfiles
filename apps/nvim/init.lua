@@ -206,6 +206,10 @@ vim.o.textwidth = 80
 -- Highlight all search matches
 vim.o.hlsearch = true
 
+-- Backups
+vim.o.backup = true
+vim.o.backupdir = '/tmp'
+
 -- Make line numbers default and relative
 vim.wo.number = true
 vim.o.relativenumber = true
