@@ -58,6 +58,11 @@ require('lazy').setup({
 
   'hrsh7th/cmp-nvim-lsp-signature-help',
 
+  -- For PlantUML previewing.  Use: :PlantumlOpen
+  'weirongxu/plantuml-previewer.vim',
+  'tyru/open-browser.vim',
+  'aklt/plantuml-syntax',
+
   {
     'fatih/vim-go',
     build = ':GoInstallBinaries',
