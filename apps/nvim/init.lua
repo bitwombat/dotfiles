@@ -59,6 +59,14 @@ require('lazy').setup({
   'hrsh7th/cmp-nvim-lsp-signature-help',
 
   {
+    'iamcco/markdown-preview.nvim',
+    config = function()
+      vim.g.mkdp_browser = '/usr/bin/firefox'
+      vim.g.mkdp_echo_preview_url = 1
+    end,
+  },
+
+  {
     'fatih/vim-go',
     build = ':GoInstallBinaries',
     config = function()
