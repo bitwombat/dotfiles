@@ -9,17 +9,9 @@
 
   And then you can explore or search through `:help lua-guide`
 
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-P.S. You can delete this when you're done too. It's your config now :)
 --]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
+--  mapleader must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
@@ -202,6 +194,12 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Tabs
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- wrap at 80 columns while typing
 vim.o.textwidth = 80
 
@@ -217,12 +215,12 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+--vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+--vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
