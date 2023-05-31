@@ -23,6 +23,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -45,8 +46,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 -- Settings that need to happen first
-vim.g.gruvbox_bold = 0
-vim.g.gruvbox_italic = 1
 
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
@@ -118,26 +117,19 @@ require('lazy').setup({
   },
 
   {
-    'morhetz/gruvbox',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'gruvbox',
+        theme = 'gruvbox_dark',
         component_separators = '|',
         section_separators = '',
       },
     },
   },
+'luisiacc/gruvbox-baby',
 
   {
     -- Add indentation guides even on blank lines
@@ -582,6 +574,12 @@ cmp.setup {
   },
 }
 
+vim.o.background = "dark"
+--vim.g.gruvbox_baby_telescope_theme = 1
+vim.g.gruvbox_baby_function_style = "NONE"
+--vim.g.gruvbox_baby_keyword_style = "italic"
+
+vim.cmd[[colorscheme gruvbox-baby]]
 
 vim.cmd[[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
