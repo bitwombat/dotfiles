@@ -124,7 +124,8 @@ alias mv="mv -i"
 alias o="xdg-open"
 alias ports='netstat -tulanp'
 alias rsync="rsync -a --no-inc-recursive --info=progress2 "
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 alias wget="wget --progress=dot:mega"
 
 alias cdr='cd "$(cat ~/.pwdremember)"'

@@ -55,3 +55,7 @@
     tool = vimdiff
 	guitool = meld
 
+# Other tools can be defined with
+# [difftool "toolname"]
+#   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+# Then, 'opendiff' can be one of the tools referenced above.

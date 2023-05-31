@@ -9,17 +9,9 @@
 
   And then you can explore or search through `:help lua-guide`
 
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-P.S. You can delete this when you're done too. It's your config now :)
 --]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
+--  mapleader must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
@@ -49,7 +41,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-  
+
   'preservim/nerdtree',
 
   -- Provides folding for markdown (and :Toc, if that's useful)
@@ -63,11 +55,19 @@ require('lazy').setup({
   'aklt/plantuml-syntax',
 
   {
+    'iamcco/markdown-preview.nvim',
+    config = function()
+      vim.g.mkdp_browser = '/usr/bin/firefox'
+      vim.g.mkdp_echo_preview_url = 1
+    end,
+  },
+
+  {
     'fatih/vim-go',
     build = ':GoInstallBinaries',
     config = function()
       -- remove this once https://github.com/fatih/vim-go/issues/3547 is merged
-      vim.g.go_def_mapping_enabled=0
+      vim.g.go_def_mapping_enabled = 0
     end,
   },
 
@@ -184,12 +184,18 @@ require('lazy').setup({
   --
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
---  { import = 'custom.plugins' },
+  --  { import = 'custom.plugins' },
 }, {})
 
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- Tabs
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- wrap at 80 columns while typing
 vim.o.textwidth = 80
@@ -206,12 +212,12 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+--vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+--vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -427,9 +433,13 @@ local function vim_opt_toggle(opt, on, off, name)
   vim.notify(message)
 end
 
-map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("list", true, false, "List") end, { desc = "Toggle list hidden chars" })
-map({ 'n', 'i' }, '<F2>', function() vim_opt_toggle("paste", true, false, "Paste") end, { desc = "Toggle paste mode" }) map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line numbers") end, { desc = "Toggle line numbers" })
-map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end, { desc = "Toggle relative line numbers" })
+map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("list", true, false, "List") end,
+{ desc = "Toggle list hidden chars" })
+map({ 'n', 'i' }, '<F2>', function() vim_opt_toggle("paste", true, false, "Paste") end, { desc = "Toggle paste mode" })
+map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line numbers") end,
+{ desc = "Toggle line numbers" })
+map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end,
+{ desc = "Toggle relative line numbers" })
 
 -- change to directory of current buffer
 vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
@@ -581,7 +591,8 @@ vim.g.gruvbox_baby_function_style = "NONE"
 
 vim.cmd[[colorscheme gruvbox-baby]]
 
-vim.cmd[[hi Visual guifg=Black guibg=LightBlue gui=none]]
+
+vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
