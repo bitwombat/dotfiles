@@ -80,12 +80,7 @@ function catw() {
 
 # vim which
 function viw() {
-  vim `which $1`;
-}
-
-# gvim which
-function gviw() {
-  gvim `which $1`;
+  nvim `which $1`;
 }
 
 # vi a new executable
@@ -99,7 +94,7 @@ function vix() {
     echo "#!/" > $fn
   fi
   chmod +x $fn
-  vim $fn
+  nvim $fn
 }
 
 # open latest modified file
@@ -116,8 +111,6 @@ alias cpv='rsync -ah --info=progress2'
 alias df="df -h --exclude=tmpfs --exclude=squashfs --exclude=devtmpfs --exclude=overlay -T"
 alias dig="dig +nostat +nocmd +nocomments"
 alias gst='git status'
-alias gv="gvim -geometry 98x24"
-alias gvi="gvim -geometry 98x24"
 alias mkdir="mkdir -vp"
 alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias mv="mv -i"
@@ -143,8 +136,8 @@ alias ll='ls -Boh --color=yes --group-directories-first'
 alias lz='ls -Boh --reverse --sort=size --color=yes --group-directories-first'
 
 # For many apps
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export BROWSER=firefox
 
 # App-specific

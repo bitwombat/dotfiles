@@ -35,11 +35,11 @@ alias jillvnc="remote_vnc jbell jills"
 alias editfeed="vi scp://bitwomba@bitwombat.com.au/public_html/pods/feed.xml"
 
 # vim last
-alias vl="vim -c \"normal '0\""
+alias vl="nvim -c \"normal '0\""
 
 # fuzzy find with preview then open vim
 function fvi() {
-    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && vim "$FILE"
+    FILE=$(fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}') && nvim "$FILE"
 }
 
 
