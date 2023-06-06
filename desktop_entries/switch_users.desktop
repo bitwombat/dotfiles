@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Switch Users
-GenericName=Switch Users
-Comment=
-Exec=dm-tool switch-to-greeter
-Terminal=false
-Type=Application
-X-GNOME-Autostart-enabled=false
