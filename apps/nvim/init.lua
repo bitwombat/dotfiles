@@ -214,8 +214,8 @@ vim.o.backupdir = '/tmp'
 vim.wo.number = true
 vim.o.relativenumber = true
 
--- Enable mouse mode
---vim.o.mouse = 'a'
+-- Disable mouse mode
+vim.o.mouse=''
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -255,7 +255,7 @@ vim.o.termguicolors = true
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n' }, '<F1>', ':update<CR>')
 
--- Buffer nave
+-- Buffer nav
 vim.keymap.set('n', ',j', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', ',k', ':bprev<CR>', { silent = true })
 -- Quick switch to previous buffer
@@ -291,6 +291,16 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- change to directory of current buffer
+vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
+
+-- Move visual chunk up and down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Play macro
+vim.keymap.set('n', 'L', "@l")
+--
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -444,13 +454,6 @@ map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line
 map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end,
 { desc = "Toggle relative line numbers" })
 
--- change to directory of current buffer
-vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
-
--- Move visual chunk up and down
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-
 -- LSP settings.
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
@@ -589,7 +592,17 @@ cmp.setup {
 
 
 
+-- Make visual highlight not be all chunks of syntax highlighting colours
 vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
+
+-- Take care of tmux and window titles
+-- Tmux
+vim.cmd [[ autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'") ]]
+vim.cmd [[ autocmd VimLeave * call system("tmux setw automatic-rename") ]]
+
+-- Plain terminal
+vim.cmd [[ autocmd BufEnter * let &titlestring = ' ' . expand("%:t") ]]
+vim.opt.title = true
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
