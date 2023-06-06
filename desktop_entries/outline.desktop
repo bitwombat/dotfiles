@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=outline
+Exec=gvim /info/provinces/folder_system/outline.txt
+Categories=Office;Productivity;
+Terminal=false
