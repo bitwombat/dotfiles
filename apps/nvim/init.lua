@@ -274,10 +274,32 @@ vim.keymap.set('n', ',p', '"+p')
 vim.keymap.set('n', ',P', '"+P')
 
 -- Copy the entire buffer to the system clipboard (like Ctrl-A)
---vim.keymap.set('n', ',a', '<Esc>mkgg"+yG`k')
+-- TODO: This doesn't work. Internally mapped by nvim?
+vim.keymap.set('n', ',a', '<Esc>mkgg"+yG`k')
 
--- Call up plugins
+-- Fancier keymaps
+-- change to directory of current buffer
+vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
+
+-- Move visual chunk up and down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Play macro
+vim.keymap.set('n', 'L', "@l")
+
+-- Call up NERDTree
 vim.keymap.set('n', ',nt', ':NERDTree<CR>')
+
+-- Replace the current word and all its occurrences. (Global Change)
+vim.keymap.set('n', 'C', ':%s/<C-r>0//g<Left><Left>')
+vim.keymap.set('v', 'C', 'y:%s/<C-r>0//g<Left><Left>')
+
+-- Stay centred vertically on the screen
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+-- Stay in the same place in the line
+vim.keymap.set('n', 'J', 'mzJ`z')
 
 
 -- kickstart's original keymaps "for better default experience"
@@ -288,15 +310,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- change to directory of current buffer
-vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
+-- Replace the next space with a newline
+vim.keymap.set('n', ',J', 'f xi<CR><Esc>')
 
--- Move visual chunk up and down
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+-- Yank from the cursor to the end of the line, to be consistent with C and D.
+vim.keymap.set('n', 'Y', 'y$')
 
--- Play macro
-vim.keymap.set('n', 'L', "@l")
 --
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
