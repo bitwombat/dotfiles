@@ -61,7 +61,7 @@
 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergetool
 #
 # "tool" is used for `git difftool`
-# "guitool" is used for `git difftool g`
+# "guitool" is used for `git difftool -g`
 # Confusingly "difftool" section defines what commands are run when that
 # command occurs in tool= or guitool= values.
 [diff]
