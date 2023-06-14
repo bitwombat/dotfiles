@@ -641,6 +641,10 @@ vim.cmd [[colorscheme gruvbox-baby]]
 -- Make visual highlight not be all chunks of syntax highlighting colours
 vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
+-- Make pop-up diagnostic box look better
+vim.cmd [[hi DiagnosticError guifg=#F00000]]
+vim.cmd [[hi Pmenu guibg=#404040]]
+
 -- Take care of tmux and window titles
 -- Tmux
 vim.cmd [[ autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'") ]]
