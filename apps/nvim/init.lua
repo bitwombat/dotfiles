@@ -135,15 +135,6 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -156,7 +147,7 @@ require('lazy').setup({
       },
     },
   },
-'luisiacc/gruvbox-baby',
+  'luisiacc/gruvbox-baby',
 
   {
     -- Add indentation guides even on blank lines
@@ -643,7 +634,7 @@ vim.o.background = "dark"
 vim.g.gruvbox_baby_function_style = "NONE"
 --vim.g.gruvbox_baby_keyword_style = "italic"
 
-vim.cmd[[colorscheme gruvbox-baby]]
+vim.cmd [[colorscheme gruvbox-baby]]
 
 
 -- Make visual highlight not be all chunks of syntax highlighting colours
