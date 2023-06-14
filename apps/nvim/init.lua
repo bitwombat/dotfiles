@@ -311,10 +311,6 @@ vim.keymap.set('n', 'L', "@l")
 -- Call up NERDTree
 vim.keymap.set('n', ',nt', ':NERDTree<CR>')
 
--- Replace the current word and all its occurrences. (Global Change)
-vim.keymap.set('n', 'C', ':%s/<C-r>0//g<Left><Left>')
-vim.keymap.set('v', 'C', 'y:%s/<C-r>0//g<Left><Left>')
-
 -- Stay centred vertically on the screen
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
