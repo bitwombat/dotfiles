@@ -653,5 +653,20 @@ vim.cmd [[ autocmd VimLeave * call system("tmux setw automatic-rename") ]]
 vim.cmd [[ autocmd BufEnter * let &titlestring = ' ' . expand("%:t") ]]
 vim.opt.title = true
 
+vim.cmd([[
+function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre * call StripTrailingWhitespace()
+]])
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
