@@ -317,6 +317,12 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Stay in the same place in the line
 vim.keymap.set('n', 'J', 'mzJ`z')
 
+-- Replace the next space with a newline
+vim.keymap.set('n', ',J', 'f xi<CR><Esc>')
+
+-- Yank from the cursor to the end of the line, to be consistent with C and D.
+vim.keymap.set('n', 'Y', 'y$')
+
 
 -- kickstart's original keymaps "for better default experience"
 -- See `:help vim.keymap.set()`
@@ -325,12 +331,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Replace the next space with a newline
-vim.keymap.set('n', ',J', 'f xi<CR><Esc>')
-
--- Yank from the cursor to the end of the line, to be consistent with C and D.
-vim.keymap.set('n', 'Y', 'y$')
 
 --
 -- [[ Highlight on yank ]]
