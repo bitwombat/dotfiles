@@ -113,7 +113,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -127,7 +127,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -482,12 +483,12 @@ local function vim_opt_toggle(opt, on, off, name)
 end
 
 map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("list", true, false, "List") end,
-{ desc = "Toggle list hidden chars" })
+  { desc = "Toggle list hidden chars" })
 map({ 'n', 'i' }, '<F2>', function() vim_opt_toggle("paste", true, false, "Paste") end, { desc = "Toggle paste mode" })
 map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line numbers") end,
-{ desc = "Toggle line numbers" })
+  { desc = "Toggle line numbers" })
 map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end,
-{ desc = "Toggle relative line numbers" })
+  { desc = "Toggle relative line numbers" })
 
 -- LSP settings.
 
