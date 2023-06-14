@@ -232,7 +232,7 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 -- Disable mouse mode
-vim.o.mouse=''
+vim.o.mouse = ''
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
