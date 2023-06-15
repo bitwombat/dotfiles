@@ -202,7 +202,25 @@ require('lazy').setup({
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   --  { import = 'custom.plugins' },
-}, {})
+}, {
+  ui = {
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
+
+})
 
 
 -- [[ Setting options ]]
@@ -266,18 +284,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
--- The below isn't really required, but was hard to figure out. The problem
--- was that I wanted autocomplete, which is where it pops
--- things up in your vision while you're typing, off. But then I want a way to
--- bring up the completion options. Turns out the C-space mapping in
--- the nvim-cmp options lower down do the trick.
--- nvim-cmp is sort of a mess, horribly complex to configure,
--- and not well maintained. 100s of open issues. So, just leave things
--- the way they are!
--- If you decided to remove nvim-cmp someday, C-x C-o (omnifunc)
--- is built-in, and still yields results (from LSP?)
---vim.keymap.set({ 'n' }, '<C-x C-o>', require('cmp').complete)
 
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n' }, '<F1>', ':update<CR>')
@@ -591,6 +597,17 @@ mason_lspconfig.setup_handlers {
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
+--
+-- The problem was that I wanted autocomplete, which is where it pops
+-- things up in your vision while you're typing, off. But then I want a way to
+-- bring up the pop-up / completion options manualy. Turns out the C-space mapping below
+-- does the trick.
+-- nvim-cmp is sort of a mess, horribly complex to configure,
+-- and not well maintained. 100s of open issues. So, just leave things
+-- the way they are!
+-- If you decided to remove nvim-cmp someday, C-x C-o (omnifunc)
+-- is built-in, and still yields results (from LSP?)
+
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
