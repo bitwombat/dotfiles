@@ -44,6 +44,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
+  'RRethy/vim-illuminate',
 
   'preservim/nerdtree',
 
@@ -673,6 +674,11 @@ vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
 -- Make pop-up diagnostic box look better
 vim.cmd [[hi DiagnosticError guifg=#F00000]]
 vim.cmd [[hi Pmenu guibg=#404040]]
+
+-- More subtle Illuminate
+vim.cmd [[hi IlluminatedWordRead gui=none guibg=#404040]]
+vim.cmd [[hi IlluminatedWordWrite gui=none guibg=#404040]]
+vim.cmd [[hi IlluminatedWordText gui=none guibg=#404040]]
 
 -- Take care of tmux and window titles
 -- Tmux
