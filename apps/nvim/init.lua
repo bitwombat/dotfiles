@@ -203,6 +203,7 @@ require('lazy').setup({
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   --  { import = 'custom.plugins' },
 }, {
+  -- Settings for Lazy
   ui = {
     icons = {
       cmd = "⌘",
@@ -225,7 +226,6 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Tabs
 vim.opt.tabstop = 4
