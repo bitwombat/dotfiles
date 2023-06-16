@@ -147,7 +147,6 @@ require('lazy').setup({
       },
     },
   },
-  'luisiacc/gruvbox-baby',
 
   {
     -- Add indentation guides even on blank lines
@@ -661,11 +660,7 @@ cmp.setup {
 }
 
 vim.o.background = "dark"
---vim.g.gruvbox_baby_telescope_theme = 1
-vim.g.gruvbox_baby_function_style = "NONE"
---vim.g.gruvbox_baby_keyword_style = "italic"
-
-vim.cmd [[colorscheme gruvbox-baby]]
+vim.cmd [[colorscheme slate]]
 
 
 -- Make visual highlight not be all chunks of syntax highlighting colours
