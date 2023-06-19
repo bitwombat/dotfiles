@@ -58,6 +58,20 @@ require('lazy').setup({
   'tyru/open-browser.vim',
   'aklt/plantuml-syntax',
 
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		integrations = {
+			mason = true,
+		},
+		custom_highlights = function(colors)
+			return {
+				Pmenu = { guibg = "#808000" },
+			}
+		end
+	},
+
   {
     'iamcco/markdown-preview.nvim',
     config = function()
@@ -113,26 +127,26 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
-  {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
+	-- {
+	--   -- Adds git related signs to the gutter, as well as utilities for managing changes
+	--   'lewis6991/gitsigns.nvim',
+	--   opts = {
+	--     -- See `:help gitsigns.txt`
+	--     signs = {
+	--       add = { text = '+' },
+	--       change = { text = '~' },
+	--       delete = { text = '_' },
+	--       topdelete = { text = '‾' },
+	--       changedelete = { text = '~' },
+	--     },
+	--     on_attach = function(bufnr)
+	--       vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+	--         { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+	--       vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+	--       vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+	--     end,
+	--   },
+	-- },
 
   {
     -- Set lualine as statusline
@@ -226,6 +240,10 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+vim.opt.cursorline = true
+vim.cmd [[ autocmd InsertLeave,WinEnter * set cursorline ]]
+vim.cmd [[ autocmd InsertEnter,WinLeave * set nocursorline ]]
 
 -- Tabs
 vim.opt.tabstop = 4
@@ -654,14 +672,18 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'nvim_lsp_signature_help' },
+		{
+			name = "buffer",
+			keyword_length = 4 -- It will way until this many chars before popping up.
+		},
   },
   completion = {
     autocomplete = {} -- <C-space> will bring it up!
-  }
+	},
 }
 
 vim.o.background = "dark"
-vim.cmd [[colorscheme slate]]
+vim.cmd [[colorscheme catppuccin]]
 
 
 -- Make visual highlight not be all chunks of syntax highlighting colours
@@ -699,6 +721,8 @@ function! StripTrailingWhitespace()
 endfunction
 autocmd BufWritePre * call StripTrailingWhitespace()
 ]])
+
+vim.api.nvim_create_autocmd({ "VimLeave" }, { callback = function() vim.cmd("sleep 50m") end, })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
