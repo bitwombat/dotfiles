@@ -57,7 +57,15 @@ require('lazy').setup({
 	'weirongxu/plantuml-previewer.vim',
 	'tyru/open-browser.vim',
 	'aklt/plantuml-syntax',
-
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -75,6 +83,7 @@ require('lazy').setup({
 		}
 	},
 
+  { 'luisiacc/gruvbox-baby' },
 	{
 		'iamcco/markdown-preview.nvim',
 		config = function()
@@ -159,8 +168,6 @@ require('lazy').setup({
 			options = {
 				icons_enabled = false,
 				theme = 'gruvbox_dark',
-				component_separators = '|',
-				section_separators = '',
 			},
 		},
 	},
@@ -689,7 +696,7 @@ cmp.setup {
 }
 
 vim.o.background = "dark"
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme habamax]]
 
 
 -- Make visual highlight not be all chunks of syntax highlighting colours
@@ -697,7 +704,12 @@ vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
 -- Make pop-up diagnostic box look better
 --vim.cmd [[hi DiagnosticError guifg=#F00000]]
---vim.cmd [[hi Pmenu guibg=#404040]]
+
+-- You need these for gruvbox-baby or the other fonts, but not for catppuccin, which has
+-- an override mechanism built in and already set up above.
+vim.cmd [[hi Pmenu guibg=#404040]]
+vim.cmd [[hi NormalFloat guibg=#404040]]
+vim.cmd [[hi DiagnosticError guifg=#FF4040]]
 
 -- More subtle Illuminate
 vim.cmd [[hi IlluminatedWordRead gui=none guibg=#404040]]
