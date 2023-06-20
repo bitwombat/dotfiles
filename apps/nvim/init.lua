@@ -62,14 +62,17 @@ require('lazy').setup({
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
-		integrations = {
-			mason = true,
-		},
-		custom_highlights = function(colors)
-			return {
-				Pmenu = { guibg = "#808000" },
-			}
-		end
+		opts = {
+			integrations = {
+				mason = true,
+			},
+			custom_highlights = function(colors)
+				return {
+					Pmenu = { bg = "#404040" },
+					NormalFloat = { bg = "#303030" },
+				}
+			end,
+		}
 	},
 
 	{
@@ -690,8 +693,8 @@ vim.cmd [[colorscheme catppuccin]]
 vim.cmd [[hi Visual guifg=Black guibg=LightBlue gui=none]]
 
 -- Make pop-up diagnostic box look better
-vim.cmd [[hi DiagnosticError guifg=#F00000]]
-vim.cmd [[hi Pmenu guibg=#404040]]
+--vim.cmd [[hi DiagnosticError guifg=#F00000]]
+--vim.cmd [[hi Pmenu guibg=#404040]]
 
 -- More subtle Illuminate
 vim.cmd [[hi IlluminatedWordRead gui=none guibg=#404040]]
