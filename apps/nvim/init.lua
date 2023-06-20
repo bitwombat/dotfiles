@@ -306,6 +306,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.o.listchars = "tab:>.,trail:.,extends:#,nbsp:.,eol:$"
+
+
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n' }, '<F1>', ':update<CR>')
 
