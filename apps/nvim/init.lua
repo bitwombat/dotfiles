@@ -247,6 +247,9 @@ require('lazy').setup({
 
 })
 
+require('illuminate').configure {
+  min_count_to_highlight = 2,
+}
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
