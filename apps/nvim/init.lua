@@ -13,7 +13,6 @@ Kickstart.nvim is a template for your own configuration.
   And then you can explore or search through `:help lua-guide`
 
 --]]
-
 --  mapleader must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
@@ -139,26 +138,26 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  -- {
-  --   -- Adds git related signs to the gutter, as well as utilities for managing changes
-  --   'lewis6991/gitsigns.nvim',
-  --   opts = {
-  --     -- See `:help gitsigns.txt`
-  --     signs = {
-  --       add = { text = '+' },
-  --       change = { text = '~' },
-  --       delete = { text = '_' },
-  --       topdelete = { text = '‾' },
-  --       changedelete = { text = '~' },
-  --     },
-  --     on_attach = function(bufnr)
-  --       vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-  --         { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-  --       vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-  --       vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-  --     end,
-  --   },
-  -- },
+	{
+		-- Adds git related signs to the gutter, as well as utilities for managing changes
+		'lewis6991/gitsigns.nvim',
+		opts = {
+			-- See `:help gitsigns.txt`
+			signs = {
+				add = { text = '+' },
+				change = { text = '~' },
+				delete = { text = '_' },
+				topdelete = { text = '‾' },
+				changedelete = { text = '~' },
+			},
+			on_attach = function(bufnr)
+				vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+					{ buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+				vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+				vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+			end,
+		},
+	},
 
   {
     -- Set lualine as statusline
@@ -584,7 +583,7 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
-  -- Also make it format on save - need both this and the above?
+	-- Also make it format on save
   vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 end
 
