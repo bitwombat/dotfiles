@@ -533,8 +533,11 @@ map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line
   { desc = "Toggle line numbers" })
 map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end,
   { desc = "Toggle relative line numbers" })
-map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("syntax", true, false, "Syntax highlighting") end,
-  { desc = "Toggle syntax highlighting" })
+-- Fix this one up if your muscle memory keeps hitting it. It can't be a
+-- vim_opt_toggle, because it's actually :syntax on and :syntax off
+-- actually, that's what it was in vim. That same command doesn't work in nvim.
+--map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("syntax", true, false, "Syntax highlighting") end,
+-- { desc = "Toggle syntax highlighting" })
 map({ 'n', 'i' }, '<F9>', function() vim_opt_toggle("list", true, false, "List") end,
   { desc = "Toggle list hidden chars" })
 
