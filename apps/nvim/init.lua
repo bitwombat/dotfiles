@@ -528,13 +528,15 @@ local function vim_opt_toggle(opt, on, off, name)
   vim.notify(message)
 end
 
-map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("list", true, false, "List") end,
-  { desc = "Toggle list hidden chars" })
 map({ 'n', 'i' }, '<F2>', function() vim_opt_toggle("paste", true, false, "Paste") end, { desc = "Toggle paste mode" })
 map({ 'n', 'i' }, '<F5>', function() vim_opt_toggle("number", true, false, "Line numbers") end,
   { desc = "Toggle line numbers" })
 map({ 'n', 'i' }, '<F6>', function() vim_opt_toggle("relativenumber", true, false, "Relative line numbers") end,
   { desc = "Toggle relative line numbers" })
+map({ 'n', 'i' }, '<F7>', function() vim_opt_toggle("syntax", true, false, "Syntax highlighting") end,
+  { desc = "Toggle syntax highlighting" })
+map({ 'n', 'i' }, '<F9>', function() vim_opt_toggle("list", true, false, "List") end,
+  { desc = "Toggle list hidden chars" })
 
 -- LSP settings.
 
