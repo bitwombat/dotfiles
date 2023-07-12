@@ -108,7 +108,8 @@
         {
             "before": [
                 ",",
-                "a"
+                "a",
+                "g"
             ],
             "commands": [
                 "workbench.view.search"
