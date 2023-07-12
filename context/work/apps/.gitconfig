@@ -33,6 +33,7 @@
 
 [push]
 	default = simple
+	autoSetupRemote = true
 
 [credential]
 	helper = osxkeychain
@@ -65,29 +66,19 @@
 # Confusingly "difftool" section defines what commands are run when that
 # command occurs in tool= or guitool= values.
 [diff]
-	tool = vimdiff       # uses this for `git difftool`
-	guitool = filemerge  # uses this for `git difftool -g`
+	tool = nvim    # uses this for `git difftool`
+	guitool = vscode  # uses this for `git difftool -g`
 
 [merge]
-	tool = vimdiff
-	guitool = filemerge
+	tool = nvim
+	guitool = vscode
 
-[difftool "filemerge"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "filemerge"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[difftool "vscode"]
+    cmd = "/Applications/Visual\\ Studio\\ Code.app/Contents/MacOS/Electron" --diff \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "vscode"]
-    cmd = vscode --wait --merge $REMOTE $LOCAL $BASE $MERGED
+    cmd = "/Applications/Visual\\ Studio\\ Code.app/Contents/MacOS/Electron" --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
+[difftool "nvim"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
