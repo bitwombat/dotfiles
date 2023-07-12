@@ -275,7 +275,7 @@
     "workbench.editor.decorations.badges": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.untitled.hint": "hidden",
-    "editor.wordWrap": "off",
+    "editor.wordWrap": "on",
     "editor.insertSpaces": true,
     "debug.toolBarLocation": "docked",
     "workbench.startupEditor": "none",
@@ -302,8 +302,24 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
     "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
-    "window.zoomLevel": 1
+    "explorer.excludeGitIgnore": true,
+    "window.zoomLevel": 1,
+    "atlascode.jira.lastCreateSiteAndProject": {
+        "siteId": "",
+        "projectKey": ""
+    },
+    "atlascode.jira.hover.enabled": true,
+    "atlascode.jira.todoIssues.triggers": [
+        "FIXME:",
+        "ISSUE:",
+        "BUG:"
+    ],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
     "vim.camelCaseMotion.enable": true,
+    "vim.commandLineModeKeyBindings": []
 }
-
-\ No newline at end of file
