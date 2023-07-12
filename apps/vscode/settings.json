@@ -303,4 +303,7 @@
     "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
     "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
     "window.zoomLevel": 1
+    "vim.camelCaseMotion.enable": true,
 }
+
+\ No newline at end of file
