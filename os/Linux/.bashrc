@@ -110,7 +110,7 @@ alias cp='cp -i'
 alias cpv='rsync -ah --info=progress2'
 alias df="df -h --exclude=tmpfs --exclude=squashfs --exclude=devtmpfs --exclude=overlay -T"
 alias dig="dig +nostat +nocmd +nocomments"
-alias gst='git status'
+alias gst='git status --show-stash'
 alias mkdir="mkdir -vp"
 alias mountt="mount | column -t | sort | egrep '^/dev'"
 alias mv="mv -i"
