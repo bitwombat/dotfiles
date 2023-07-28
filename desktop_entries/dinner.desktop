@@ -2,6 +2,6 @@
 Version=1.0
 Type=Application
 Name=dinner
-Exec=localc /info/provinces/food/dinner_plan.ods
+Exec=env SAL_USE_VCLPLUGIN=gen SAL_FORCEDPI=120 localc /info/provinces/food/dinner_plan.ods
 Categories=Office;Productivity;
 Terminal=false

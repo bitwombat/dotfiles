@@ -2,6 +2,6 @@
 Version=1.0
 Type=Application
 Name=todo
-Exec=localc /home/gbell2/todo.ods
+Exec=env SAL_USE_VCLPLUGIN=gen SAL_FORCEDPI=120 localc /home/gbell2/todo.ods
 Categories=Office;Productivity;
 Terminal=false
