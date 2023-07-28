@@ -51,10 +51,6 @@ alias aplay="audacious"
 
 alias su='term root ; su'
 
-# For composer (3x speedup)
-alias xdebug_off='sudo phpdismod -v ALL -s cli xdebug'
-alias xdebug_on='sudo phpenmod -v ALL -s cli xdebug'
-
 # For dialog box passwords
 export SSH_ASKPASS=/usr/bin/ssh-askpass
 
@@ -71,9 +67,6 @@ pathadd $HOME/.local/bin
 # Node
 pathadd /opt/node/bin
 MANPATH="/opt/node/share/man:$MANPATH"
-
-# Composer packages
-pathadd $HOME/.composer/vendor/bin
 
 # Haskell tools
 #PATH=~/.stack/compiler-tools/x86_64-linux/ghc-8.6.5/bin:$PATH
