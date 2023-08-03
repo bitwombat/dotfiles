@@ -16,6 +16,8 @@
 [core]
 	pager = less -F -X
 	excludesfile = /home/gbell2/.gitignore_global
+	editor = /opt/bin/nvim
+	editor = /opt/bin/nvim
 
 [push]
 	default = simple
