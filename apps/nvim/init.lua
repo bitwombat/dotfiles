@@ -323,12 +323,20 @@ vim.o.listchars = "tab:>.,trail:.,extends:#,nbsp:.,eol:$"
 vim.keymap.set({ 'n' }, '<F1>', ':update<CR>')
 
 -- Buffer nav
-vim.keymap.set('n', ',j', ':bnext<CR>', { silent = true })
-vim.keymap.set('n', ',k', ':bprev<CR>', { silent = true })
+vim.keymap.set('n', '<leader>j', ':bnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>k', ':bprev<CR>', { silent = true })
 -- Quick switch to previous buffer
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>', ':e #<CR>', { silent = true })
 
--- closes current window and exits if last window (unlike Ctrl-W C).
+-- Location list nav
+vim.keymap.set('n', ']j', ':lnext<CR>', { silent = true })
+vim.keymap.set('n', ']k', ':lprevious<CR>', { silent = true })
+
+-- Quickfix list nav
+vim.keymap.set('n', '[j', ':cnext<CR>', { silent = true })
+vim.keymap.set('n', '[k', ':cprevious<CR>', { silent = true })
+
+-- Closes current window and exits if last window (unlike Ctrl-W C).
 vim.keymap.set('n', '<C-d>', ':q<CR>')
 
 -- Stay in visual mode when indenting, avoiding repeating gv
@@ -339,17 +347,19 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('n', '<BS>', ':nohlsearch<CR>', { silent = true })
 
 -- Clipboard
-vim.keymap.set('v', ',c', '"+y')
-vim.keymap.set('n', ',p', '"+p')
-vim.keymap.set('n', ',P', '"+P')
+vim.keymap.set('v', '<leader>c', '"+y')
+vim.keymap.set('n', '<leader>p', '"+p')
+vim.keymap.set('n', '<leader>P', '"+P')
 
 -- Copy the entire buffer to the system clipboard (like Ctrl-A)
--- TODO: This doesn't work. Internally mapped by nvim?
-vim.keymap.set('n', ',a', '<Esc>mkgg"+yG`k')
+vim.keymap.set('n', '<leader>A', '<Esc>mkgg"+yG`k')
 
 -- Fancier keymaps
 -- change to directory of current buffer
-vim.keymap.set('n', ',cd', ":cd %:h<CR>:pwd<CR>")
+vim.keymap.set('n', '<leader>cd', ":cd %:h<CR>:pwd<CR>")
+
+-- Call up NERDTree
+vim.keymap.set('n', '<leader>nt', ':NERDTree<CR>')
 
 -- Move visual chunk up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -358,9 +368,6 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- Play macro
 vim.keymap.set('n', 'L', "@l")
 
--- Call up NERDTree
-vim.keymap.set('n', ',nt', ':NERDTree<CR>')
-
 -- Stay centred vertically on the screen
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
@@ -368,7 +375,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- Replace the next space with a newline
-vim.keymap.set('n', ',J', 'f xi<CR><Esc>')
+vim.keymap.set('n', '<leader>J', 'f xi<CR><Esc>')
 
 -- Yank from the cursor to the end of the line, to be consistent with C and D.
 vim.keymap.set('n', 'Y', 'y$')

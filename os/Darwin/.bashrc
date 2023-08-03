@@ -128,7 +128,7 @@ alias chrome='open -a "Google Chrome" '
 alias cp='cp -i'
 alias df="df -h --exclude=tmpfs --exclude=squashfs --exclude=devtmpfs --exclude=overlay -T"
 alias dig="dig +nostat +nocmd +nocomments"
-alias gst='git status'
+alias gst='git status --show-stash'
 alias glg='git lg'
 alias gv="gvim -geometry 98x24"
 alias gvi="gvim -geometry 98x24"
