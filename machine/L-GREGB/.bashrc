@@ -37,8 +37,17 @@ PS1="\
 \[$(tput sgr0)\]$ "
 fi
 
-gh() { go help $1 | less; }
+myGoAlias() {
+  if [[ $1 == "test" ]]; then
+    shift
+    gotestsum --format testname -- -race "$@"
+  else
+    command go "$@"
+  fi
+}
+alias go=myGoAlias
 
+gh() { go help $1 | less; }
 compl() {
     source <(kubectl completion bash)
     source /opt/homebrew/etc/bash_completion.d/docker.bak

@@ -303,7 +303,6 @@
     "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
     "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
     "explorer.excludeGitIgnore": true,
-    "window.zoomLevel": 1,
     "atlascode.jira.lastCreateSiteAndProject": {
         "siteId": "",
         "projectKey": ""
@@ -315,11 +314,14 @@
         "BUG:"
     ],
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "plaintext": true,
         "markdown": false,
         "scminput": false
     },
     "vim.camelCaseMotion.enable": true,
-    "vim.commandLineModeKeyBindings": []
+    "vim.commandLineModeKeyBindings": [],
+    "editor.lineNumbers": "on",
+    "go.diagnostic.vulncheck": "Imports",
+    "window.zoomLevel": 1
 }
