@@ -327,7 +327,15 @@ vim.keymap.set('n', '<leader>k', ':bprev<CR>', { silent = true })
 -- Quick switch to previous buffer
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>', ':e #<CR>', { silent = true })
 
--- closes current window and exits if last window (unlike Ctrl-W C).
+-- Location list nav
+vim.keymap.set('n', ']j', ':lnext<CR>', { silent = true })
+vim.keymap.set('n', ']k', ':lprevious<CR>', { silent = true })
+
+-- Quickfix list nav
+vim.keymap.set('n', '[j', ':cnext<CR>', { silent = true })
+vim.keymap.set('n', '[k', ':cprevious<CR>', { silent = true })
+
+-- Closes current window and exits if last window (unlike Ctrl-W C).
 vim.keymap.set('n', '<C-d>', ':q<CR>')
 
 -- Stay in visual mode when indenting, avoiding repeating gv
