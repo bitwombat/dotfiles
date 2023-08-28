@@ -323,6 +323,7 @@ vim.o.listchars = "tab:>.,trail:.,extends:#,nbsp:.,eol:$"
 
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n' }, '<F1>', ':update<CR>')
+vim.keymap.set({ 'i' }, 'jj', '<ESC>')
 
 -- Buffer nav
 vim.keymap.set('n', '<leader>j', ':bnext<CR>', { silent = true })
