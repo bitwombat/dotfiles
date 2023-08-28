@@ -97,6 +97,8 @@ require('lazy').setup({
     config = function()
       -- remove this once https://github.com/fatih/vim-go/issues/3547 is merged
       vim.g.go_def_mapping_enabled = 0
+      vim.g.go_metalinter_command = 'golangci-lint'
+      vim.g.go_metalinter_enabled = ''
     end,
   },
 
