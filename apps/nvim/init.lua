@@ -738,12 +738,12 @@ vim.cmd [[hi IlluminatedWordText gui=none guibg=#404040]]
 
 -- Take care of tmux and window titles
 -- Tmux
-vim.cmd [[ autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'") ]]
-vim.cmd [[ autocmd VimLeave * call system("tmux setw automatic-rename") ]]
+--vim.cmd [[ autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'") ]]
+--vim.cmd [[ autocmd VimLeave * call system("tmux setw automatic-rename") ]]
 
 -- Plain terminal
-vim.cmd [[ autocmd BufEnter * let &titlestring = ' ' . expand("%:t") ]]
-vim.opt.title = true
+--vim.cmd [[ autocmd BufEnter * let &titlestring = ' ' . expand("%:t") ]]
+--vim.opt.title = true
 
 vim.cmd([[
 function! StripTrailingWhitespace()
