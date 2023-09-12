@@ -42,20 +42,29 @@ vim.opt.rtp:prepend(lazypath)
 -- Settings that need to happen first
 
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+  -- First, some plugins that don't require any configuration
+  --
+  -- Highlight other uses of the word under the cursor
   'RRethy/vim-illuminate',
 
+  -- NERDTree
   'preservim/nerdtree',
 
   -- Provides folding for markdown (and :Toc, if that's useful)
   'preservim/vim-markdown',
 
+  -- Helper for nvim-cmp
   'hrsh7th/cmp-nvim-lsp-signature-help',
+
+  -- Show pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
 
   -- For PlantUML previewing.  Use: :PlantumlOpen
   'weirongxu/plantuml-previewer.vim',
   'tyru/open-browser.vim',
   'aklt/plantuml-syntax',
+
+  -- Improves appearanc of Telescope and quickfix lists.
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -65,6 +74,8 @@ require('lazy').setup({
       -- refer to the configuration section below
     },
   },
+
+  -- Colorscheme
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -82,7 +93,10 @@ require('lazy').setup({
     }
   },
 
+  -- Colorscheme
   { 'luisiacc/gruvbox-baby' },
+
+  -- Markdown Preview
   {
     'iamcco/markdown-preview.nvim',
     config = function()
@@ -91,6 +105,7 @@ require('lazy').setup({
     end,
   },
 
+  -- Go LSP
   {
     'fatih/vim-go',
     build = ':GoInstallBinaries',
@@ -138,8 +153,6 @@ require('lazy').setup({
     },
   },
 
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -276,9 +289,8 @@ vim.o.hlsearch = true
 vim.o.backup = true
 vim.o.backupdir = '/tmp'
 
--- Make line numbers default and relative
+-- Make line numbers default
 vim.wo.number = true
-vim.o.relativenumber = true
 
 -- Disable mouse mode
 vim.o.mouse = ''
