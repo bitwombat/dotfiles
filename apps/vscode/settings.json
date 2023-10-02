@@ -321,7 +321,7 @@
     },
     "vim.camelCaseMotion.enable": true,
     "vim.commandLineModeKeyBindings": [],
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "go.diagnostic.vulncheck": "Imports",
     "window.zoomLevel": 1
 }
