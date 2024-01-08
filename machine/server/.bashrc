@@ -61,6 +61,17 @@ export GPG_TTY=$(tty)
 export WINEPREFIX="$HOME/.wine-32"
 export WINEARCH=win32
 
+# Go
+myGoAlias() {
+  if [[ $1 == "test" ]]; then
+    shift
+    gotestsum --format testname -- -race "$@"
+  else
+    command go "$@"
+  fi
+}
+alias go=myGoAlias
+
 # Pip
 pathadd $HOME/.local/bin
 

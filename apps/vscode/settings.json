@@ -317,7 +317,8 @@
         "*": true,
         "plaintext": true,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "go": false
     },
     "vim.camelCaseMotion.enable": true,
     "vim.commandLineModeKeyBindings": [],

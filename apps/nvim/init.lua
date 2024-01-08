@@ -278,7 +278,7 @@ vim.o.backupdir = '/tmp'
 
 -- Make line numbers default and relative
 vim.wo.number = true
-vim.o.relativenumber = true
+--vim.o.relativenumber = true
 
 -- Disable mouse mode
 vim.o.mouse = ''
@@ -586,8 +586,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  -- This next line should be mapping to i mode!
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  vim.keymap.set({ 'i' }, '<C-k>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP: Signature help" })
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -623,6 +622,7 @@ local servers = {
     },
   },
 }
+require('lspconfig').biome.setup {}
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -653,7 +653,7 @@ mason_lspconfig.setup_handlers {
 --
 -- The problem was that I wanted autocomplete, which is where it pops
 -- things up in your vision while you're typing, off. But then I want a way to
--- bring up the pop-up / completion options manualy. Turns out the C-space mapping below
+-- bring up the pop-up / completion options manually. The C-space mapping below
 -- does the trick.
 -- nvim-cmp is sort of a mess, horribly complex to configure,
 -- and not well maintained. 100s of open issues. So, just leave things

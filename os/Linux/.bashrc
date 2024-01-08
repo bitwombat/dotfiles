@@ -8,7 +8,7 @@ shopt -s histreedit
 shopt -s no_empty_cmd_completion
 shopt -s autocd
 ulimit -c 0
-umask 027
+umask 007
 
 # Turn on line editing, even though .inputrc does this, so later binds work
 set -o vi
